@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tikz packages and settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+\pgfplotsset{compat=1.11}
+
+\usetikzlibrary{shapes.geometric,calc,intersections}
+\usetikzlibrary{shapes.arrows}
+\usetikzlibrary{shadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+
+
+\usetikzlibrary{external}
+\tikzset{external/aux in dpth={false}}
+\tikzset{external/up to date check={simple}}
+\tikzset{external/optimize command away={\includetexgraphics}{2}}
+
+\tikzset{>=stealth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom macro to input a tikz picture and setting its name
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand{\includetikzgraphics}[1]{
+	\filename@parse{#1}
+	\tikzsetnextfilename{\filename@base}
+	\input{#1}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom tikz command for drawing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzset{math3d/.style=
+    {z= {(-0cm,-0.3cm)}, y={(0cm,1cm)},x={(1cm,0cm)}}}
+
+% \drawYNema {x} {y} {yAngle}
+\newcommand{\drawYnema}[3] {
+	\shade [ball color=black] (#1,#2) ellipse 
+		[x radius={sqrt(pow(cos(#3)*0.1,2)+pow(sin(#3)*0.3,2))}, y radius=0.1];
+}
+% \drawXNema {x} {y} {xAngle}
+\newcommand{\drawXnema}[3] {
+	\shade [ball color=black] (#1,#2) ellipse 
+		[y radius={sqrt(pow(cos(#3)*0.1,2)+pow(sin(#3)*0.3,2))}, x radius=0.1];
+}
+% \drawZNema {x} {y} {zAngle}
+\newcommand{\drawZnema}[3] {
+	\shade [ball color=black] (#1,#2) ellipse 
+		[x radius=0.3, y radius=0.1, rotate={#3}];
+}
+
+% \plotcylinder { radius } { heigth } { altitude }
+\newcommand{\plotcylinder}[3] {
+     \draw [math3d, fill=white, samples=100]
+        plot[domain=-pi:pi] ({#1*cos(\x r)},#3,{#1*sin(\x r)}) ;
+     \draw [math3d, fill=white, samples=100]
+        plot[domain=0:pi] ({#1*cos(\x r)},#3,{#1*sin(\x r)}) --
+        plot[domain=pi:0] ({#1*cos(\x r)},{#3-#2},{#1*sin(\x r)}) --
+        cycle;
+}
+
+% \plotpolarizer { x} { y} { z } { radius } { angle }
+\newcommand{\plotpolarizer}[5] {
+    \draw [math3d, fill=gray, opacity=0.8, samples=100]
+        plot[domain=-pi:pi] ({#1+#4*cos(\x r)},#2,{#3+#4*sin(\x r)}) ;
+    \draw [math3d, opacity=0.8]
+        ({#1+#4*cos(#5)},#2,{#3+#4*sin(#5)}) -- ({#1-#4*cos(#5)},#2,{#3-#4*sin(#5)}) ;
+}
+
+% \fancyarrow {xi} {yi} {xf} {yf} {width} {options}
+\newcommand{\fancyarrow}[6]{
+	\pgfmathsetmacro{\dx}{#3-#1};
+	\pgfmathsetmacro{\dy}{#4-#2};
+	\pgfmathsetmacro{\dl}{sqrt(\dx*\dx+\dy*\dy)};
+	\pgfmathsetmacro{\dw}{#5/2};
+	\pgfmathsetmacro{\cos}{\dx/\dl};
+	\pgfmathsetmacro{\sin}{\dy/\dl};
+	\draw [#6] (#1,#2) -- ++($\dw*(\sin,-\cos)$) 
+		-- ++(${\dl-2*\dw}*(\cos,\sin)$)
+		-- ++($\dw*(\sin,-\cos)$) -- ++($2*\dw*(\cos,\sin)+2*\dw*(-\sin,\cos)$) 
+		-- ++($-2*\dw*(\cos,\sin)+2*\dw*(-\sin,\cos)$) -- ++($\dw*(\sin,-\cos)$)
+		-- ++(${2*\dw-\dl}*(\cos,\sin)$) -- cycle;
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Custom pgf mark list
+%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotscreateplotcyclelist{colorhollowmarks}{%
+	{black,mark=x},
+	{cyan,mark=+},
+	{magenta,mark=o},
+	{teal,mark=square},
+	{violet,mark=triangle},
+	{gray,mark=diamond},
+	{brown,mark=pentagon},
+	{orange,mark=otimes},
+	{lime,mark=10-pointed star}}
+\pgfplotscreateplotcyclelist{hollowmarks}{%
+	{mark=x},
+	{mark=+},
+	{mark=o},
+	{mark=square},
+	{mark=triangle},
+	{mark=diamond},
+	{mark=pentagona},
+	{mark=otimes},
+	{mark=10-pointed star}}
+\pgfplotscreateplotcyclelist{onlycolors}{%
+	black,
+	cyan,
+	magenta,
+	teal,
+	violet,
+	lightgray,
+	brown,
+	orange,
+	lime}

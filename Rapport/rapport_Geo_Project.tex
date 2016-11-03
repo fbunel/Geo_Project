@@ -1,0 +1,180 @@
+\documentclass[10pt,a4paper]{article}
+
+% Marges du document %
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0.4cm}
+\setlength{\headsep}{0.8cm}
+\setlength{\footskip}{1cm}
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{25cm}
+\setlength{\voffset}{-1.5cm}
+\setlength{\hoffset}{-0.5cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\usepackage{amssymb}
+\usepackage{psfrag}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{eurosym} % symbole 
+\usepackage{siunitx}
+\usepackage{stmaryrd}
+\usepackage{bm}
+\def\{\euro{}}
+
+\numberwithin{equation}{section}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} 
+
+\usepackage{color} % gestion de différentes couleurs
+\definecolor{linkcolor}{rgb}{0,0,0}
+\definecolor{linkcolorurl}{rgb}{0,0,1}
+\usepackage[ pdftex,colorlinks=true,
+pdfstartview=FitV,
+linkcolor= linkcolor,
+citecolor= linkcolor,
+urlcolor= linkcolorurl,
+hyperindex=true,
+hyperfigures=false]
+{hyperref} % fichiers pdf 'intelligents', avec des liens entre les références, etc.
+
+% En-tête et pied de page % 
+\pagestyle{fancy}
+\fancyhead[L]{\scriptsize \textsc{Titre}} 
+\fancyhead[R]{\scriptsize \textsc{BUNEL Félix et VERGNET Hadrien}} 
+\fancyfoot[C]{ \thepage}
+
+\author{Bunel Félix et Vergnet Hadrien}
+
+\input{figures/preamble_tikz.tex}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\includegraphics[height=1.9cm]{logo-ens.jpg} \hfill \includegraphics[height=2cm]{logo_lyon1.jpg} \hfill \includegraphics[height=2cm]{logo_univ_lyon.jpg}
+
+
+
+Master Sciences de la matière
+\hfill
+Projet de Géophysique
+
+\textit{École Normale Supérieure de Lyon}
+\hfill
+BUNEL Félix et VERGNET Hadrien
+
+\textit{Université Claude Bernard Lyon 1}
+\hfill
+M2 Physique 2015-2016
+\vspace{0.5cm}
+
+\hrulefill
+\vspace{-0.6cm}
+
+\hrulefill
+\begin{center}\bfseries
+\begin{huge}
+    Titre
+\end{huge}
+\Large
+\vspace{0.4cm}
+
+Sous-titre
+\end{center}
+\hrulefill
+\vspace{-0.6cm}
+
+\hrulefill
+
+
+\begin{center}
+\includegraphics[height=6cm]{figures/front_simu.jpg} 
+\end{center} 
+
+
+\textbf{Résumé :} 
+\vspace{0.3cm}
+
+\textbf{Mots clefs :} cailloux, galet de référence
+\vspace{0.3cm}
+
+
+\end{titlepage}
+
+\newpage
+
+\renewcommand\thepage{}
+
+\section*{Remerciements}
+
+
+
+
+\tableofcontents
+
+
+\newpage
+\renewcommand\thepage{\arabic{page}}
+\setcounter{page}{1}
+
+
+\definecolor{linkcolor}{rgb}{0,0,1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Introduction}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Premiere partie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Première sous partie}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Conclusion}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Première annexe} \label{annexe_fonctionnelles}
+
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{rapport} 
+\addcontentsline{toc}{section}{Références} 
+
+
+\end{document}
