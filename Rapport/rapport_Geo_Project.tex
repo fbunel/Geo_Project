@@ -153,7 +153,52 @@ Sous-titre
 
 \subsection{Première sous partie}
 
-\newpage
+
+
+\section{Quelques formules}
+Remarque : $\frac{\partial F}{\partial x}$ sera noté $\partial_x F$
+
+
+Équation de la chaleur avec terme de production:
+
+\begin{equation}
+\rho C_p \partial_t T = div ( \lambda \vec{grad}(T))  + P
+\end{equation}
+
+À 1d ca devient 
+
+\begin{equation}
+\rho C_p \partial_t T = \partial_x ( \lambda \partial_x T)  + P
+\end{equation}
+
+
+ À 3D en symétrie sphérique ça devient :
+
+\begin{equation}
+\rho C_p \partial_t T = \frac{1}{r^2} \partial_r ( \lambda r^2 \partial_r T)  + P
+\end{equation}
+
+En unités adimensionnées 3D en symétrie sphérique ça devient :
+\begin{align}
+r' &= r/R_{T} \\
+t' &= \frac{\lambda}{\rho C_p R_{T}^2} \\
+p &= \frac{P R_{T}^2 }{ \lambda}\\
+\partial_{t'}T &= \frac{1}{r'^2} \partial_{r'} ({r'}^2 \partial_{r'} T)  + p
+\end{align}
+
+
+
+
+\subsection{discretisation}
+
+On note $T(t,r_i) $ : $  T^t_i$
+\begin{align}
+\partial_t T &\rightarrow  \frac{T^{t+1}_r - T^{t+1}_r}{\Delta t}\\
+\partial_r T &\rightarrow  \frac{T^t_{i+1/2} - T^{t}_{i-1/2}}{\Delta r} \\
+\frac{1}{r^2}\partial_r (r^2 \partial_r T ) &\rightarrow \frac{1}{r^2_i \Delta r} r^2_{i+1/2}\frac{T^t_{i+1} - T^{t}_{i}}{\Delta r} + r^2_{i+1/2}\frac{T^t_{i-1} - T^{t}_{i}}{\Delta r}
+\end{align}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusion}
