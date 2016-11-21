@@ -28,6 +28,8 @@
 \usepackage{siunitx}
 \usepackage{stmaryrd}
 \usepackage{bm}
+
+\usepackage{tabu}
 \def\{\euro{}}
 
 \numberwithin{equation}{section}
@@ -175,15 +177,15 @@ Remarque : $\frac{\partial F}{\partial x}$ sera noté $\partial_x F$
  À 3D en symétrie sphérique ça devient :
 
 \begin{equation}
-\rho C_p \partial_t T = \frac{1}{r^2} \partial_r ( \lambda r^2 \partial_r T)  + P
+\rho C_p \partial_{t'} T = \frac{1}{r'^2} \partial_{r'} ( \lambda {r'}^2 \partial_{r'} T)  + P
 \end{equation}
 
 En unités adimensionnées 3D en symétrie sphérique ça devient :
 \begin{align}
-r' &= r/R_{T} \\
-t' &= \frac{\lambda}{\rho C_p R_{T}^2} \\
+r &= r'/R_{T} \\
+t &= t' \frac{\lambda}{\rho C_p R_{T}^2} \\
 p &= \frac{P R_{T}^2 }{ \lambda}\\
-\partial_{t'}T &= \frac{1}{r'^2} \partial_{r'} ({r'}^2 \partial_{r'} T)  + p
+\partial_{t}T &= \frac{1}{r^2} \partial_{r} ({r}^2 \partial_{r} T)  + p
 \end{align}
 
 
@@ -195,9 +197,172 @@ On note $T(t,r_i) $ : $  T^t_i$
 \begin{align}
 \partial_t T &\rightarrow  \frac{T^{t+1}_r - T^{t+1}_r}{\Delta t}\\
 \partial_r T &\rightarrow  \frac{T^t_{i+1/2} - T^{t}_{i-1/2}}{\Delta r} \\
-\frac{1}{r^2}\partial_r (r^2 \partial_r T ) &\rightarrow \frac{1}{r^2_i \Delta r} r^2_{i+1/2}\frac{T^t_{i+1} - T^{t}_{i}}{\Delta r} + r^2_{i+1/2}\frac{T^t_{i-1} - T^{t}_{i}}{\Delta r}
+\frac{1}{r^2}\partial_r (r^2 \partial_r T ) &\rightarrow \frac{1}{r^2_i \Delta r}\Big [ r^2_{i+1/2}\frac{T^t_{i+1} - T^{t}_{i}}{\Delta r} + r^2_{i-1/2}\frac{T^t_{i-1} - T^{t}_{i}}{\Delta r} \Big]
 \end{align}
 
+\subsection{équation implicite}
+
+\begin{multline}
+\frac{T^{t+1}_i - T^{t}_i}{\Delta t} = \frac{1}{r^2_i \Delta r}\Big [ r^2_{i+1/2}\frac{T^{t+1}_{i+1} - T^{t+1}_{i}}{\Delta r} + r^2_{i-1/2}\frac{T^{t+1}_{i-1} - T^{t+1}_{i}}{\Delta r} \Big] + p^t_i \\
+T^{t+1}_i + \frac{\Delta t}{r^2_i \Delta r^2}\Big [ r^2_{i+1/2}(T^{t+1}_{i} - T^{t+1}_{i+1}) + r^2_{i-1/2}(T^{t+1}_{i}- T^{t+1}_{i-1}) \Big]  =
+ T^{t}_r  + \Delta t ~ p^t_i
+\end{multline}
+
+On a ainsi l'équation matricielle implicite suivante : $ MT^{t+1} = T^t $
+
+
+Où :
+$
+M = \Big [ Id + \frac{\Delta t ~ r^2_{i+1/2}}{r^2_i \Delta r^2} ~ d1 + \frac{\Delta t ~ r^2_{i-1/2}}{r^2_i \Delta r^2} ~ d2  \Big]
+$
+
+\begin{equation}
+d1=
+\begin{bmatrix}
+    2      & -1     & -1        & 0     &\dots      & 0 \\
+    0      &  1     & -1        & 0     &           & \vdots  \\
+    \vdots & \ddots & \ddots    &\ddots & \ddots    & \vdots \\
+    \vdots &        & \ddots    &\ddots & \ddots    & 0 \\
+    \vdots &        &           &\ddots & 1         &  -1 \\
+    0      & \dots  & \dots     &\dots  & 0         &  0
+\end{bmatrix}
+d2=
+\begin{bmatrix}
+     0     & 0      & \dots  & \dots    &\dots      & 0 \\
+    -1     & 1      & \ddots &          &           & \vdots  \\
+    0      & \ddots & \ddots & \ddots   &           & \vdots \\
+    \vdots & \ddots & \ddots & \ddots   & \ddots    & \vdots \\
+    \vdots &        & 0      &  -1      &  1        & 0\\
+    0      & \dots  & 0      &  -1      & -1        & 2 \\
+\end{bmatrix}
+\end{equation}
+
+$ \rho L \frac{\partial \phi}{\partial t} = \rho L \frac{d \phi}{d T}\frac{\partial T}{\partial t} $ avec $\phi$ qui est une marche, on peut l'approximer par une fonction un peu plus dérivable par ex :  $\phi \simeq arctan(T-T_{fusion})$ 
+
+$ \rho Cp_{eff} = \rho Cp(\phi) + \rho L  \frac{d \phi}{d T}$
+
+
+
+$R_T = a t^b , T = T(t,r/R_T(t)) $
+
+$\Rightarrow \frac{\partial T(t,r/R_T(t))}{\partial t}  = \frac{\partial T}{\partial t} + \frac{\partial \frac{r}{R_T(t)}}{\partial t}\frac{\partial T}{\partial r} = \frac{\partial T}{\partial t} + \frac{\partial \frac{r}{R_T(t)}}{\partial t}\frac{\partial T}{\partial r} $
+
+\section{Modèles}
+
+Note pour tous les modèles suivants on supposera que la Terre est composée d'un mélange homogène de $\phi = $18\% de métal et 82\% de silicates. Et que les propriétés de ces matériaux ne changent pas avec la température ou le changement d'état.
+
+Les constantes respectives et moyennes du mélange sont les suivantes :
+\tabulinesep=0.3mm
+\begin{center}
+  \begin{tabu}{ r | c c c l}
+    Grandeur & moyenne & metal & silicate & unité\\ \hline
+    Densité ($\rho$) & 4028 & 7800 &  3200 & \SI{}{kg.m^{-3}}\\ \hline
+    Capacité calorifique ($C_p$) & 1065 & 450 & 1200 &  \SI{}{J.K^{-1}.kg^{-1}} \\ \hline
+    Conductivité & 11.48 & 50 & 3 & \SI{}{W.K^{-1}.m^{-1}}  \\ \hline    
+    Chaleur latente de fusion & & 250 & 500 & \SI{}{kJ.kg^{-1}}\\ \hline
+    Température de fusion & & 1261 & 1408 & \SI{}{K}\\ \hline
+
+  \end{tabu}
+\end{center}
+
+Pour la suite $\rho$ désignera une valeur moyenne et $\rho_{materiau}$ la valeur respective d'un des matériaux.
+
+
+\subsection{Modèle 1}
+
+Fichier : sim1.py
+
+\subsubsection{Description}
+
+On fait une première simulation la plus simple possible.
+Hypothèses : 
+\begin{enumerate}
+\item Rayon de la Terre constant 
+\item Chauffage causé par la désintégration du $^{26}$Al et par le rayonnement de corps noir.
+\end{enumerate}
+
+\subsubsection{Données initiales et constantes}
+
+\begin{center}
+  \begin{tabu}{ r  c }
+    \hline
+    Rayon de la Terre & \SI{500}{km} \\ \hline
+    Température initiale & \SI{300}{K}  \\ \hline
+    Température de la nébuleuse & \SI{300}{K}  \\ \hline
+    Demi-vie du $^{26}$Al & \SI{0.74}{My}  \\ \hline
+  \end{tabu}
+\end{center}
+
+\subsubsection{Équations}
+
+On considère les variables adimentionnées suivantes: 
+
+
+\begin{equation}
+t= \frac{t'}{\tau^{Al}_{1/2}}  \quad \textrm{,} \quad   r = r' \sqrt{\frac{\rho C_p} {k_T \tau_{1/2}}} \quad  \textrm{et} \quad T = \frac{T'}{T_0} 
+\end{equation}
+
+Il en résulte l'équation suivante :
+
+
+\begin{equation}
+\frac{\rho C_p T_0}{\tau_{1/2}} \partial_{t} T = \frac{\rho C_p T_0}{\tau_{1/2}} \frac{1}{r^2} \partial_{r} ( {r}^2 \partial_{r} T)  + P + S ~(+ ~Q_L)
+\end{equation}
+
+
+Avec :
+\begin{equation}
+ P = \rho H_0 e^{-ln(2) t} 
+\end{equation}
+
+
+\begin{equation}
+ S = 4 \pi R^2 \sigma (T_{neb}^4 - (TT_0)^4)  \quad \textrm{à la surface uniquement}
+\end{equation}
+
+$Q_L$ représente la chaleur "perdue" lors du changement de phase de chaque matériau. Ce changement de phase est géré en dehors de l'équation de la chaleur. On note $\phi_{met}$ la proportion solide/liquide du métal et $\phi_{sil}$ pour le silicate ($\phi_{sil} = 0 \Rightarrow$ solide, $\phi_{sil} = 1 \Rightarrow$ liquide). On detecte le changement de phase solide $\rightarrow$ liquide du métal par la condition  $T > T_{fus,met} $ et $ \phi_{met} < 1$ on "échange" alors de la température contre du changement de phase de sorte à obtenir soit $T = T_{fus,met}$ soit $\phi_{met} = 1$. On fait de même avec la transition inverse et avec le silicate.
+
+Exemple : on part du cas $T > T_{fus,met}$ , $ \phi_{met} < 1$ pour atteindre $\phi_{met} = 1$. Calculons la température finale : 
+
+\begin{equation}
+T_{f} =  (T_{i} - T_{fus,met} ) (1-\phi_{met}) \frac{\phi L_{met}}{C_{p,met} T_{fus,met}}
+\end{equation}
+
+
+\subsubsection{Équations discrétisées}
+
+On pose $c_0 = \frac{\tau_{1/2}}{\rho C_p T_0}$ 
+
+On a l'équation matricielle suivante :
+\begin{equation}
+MT^{t+1} = T^t + c_0 \Delta t( P + S )
+\end{equation}
+
+Avec la matrice $M$ calculée plus tôt : 
+$
+M = \Big [ Id + \frac{\Delta t ~ r^2_{i+1/2}}{r^2_i \Delta r^2} ~ d1 + \frac{\Delta t ~ r^2_{i-1/2}}{r^2_i \Delta r^2} ~ d2  \Big]
+$
+
+\begin{equation}
+d1=
+\begin{bmatrix}
+    2      & -1     & -1        & 0     &\dots      & 0 \\
+    0      &  1     & -1        & 0     &           & \vdots  \\
+    \vdots & \ddots & \ddots    &\ddots & \ddots    & \vdots \\
+    \vdots &        & \ddots    &\ddots & \ddots    & 0 \\
+    \vdots &        &           &\ddots & 1         &  -1 \\
+    0      & \dots  & \dots     &\dots  & 0         &  0
+\end{bmatrix}
+d2=
+\begin{bmatrix}
+     0     & 0      & \dots  & \dots    &\dots      & 0 \\
+    -1     & 1      & \ddots &          &           & \vdots  \\
+    0      & \ddots & \ddots & \ddots   &           & \vdots \\
+    \vdots & \ddots & \ddots & \ddots   & \ddots    & \vdots \\
+    \vdots &        & 0      &  -1      &  1        & 0\\
+    0      & \dots  & 0      &  -1      & -1        & 2 \\
+\end{bmatrix}
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
