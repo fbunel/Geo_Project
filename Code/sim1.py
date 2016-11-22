@@ -130,10 +130,56 @@ class terre:
         #On part de la chaleur radioactice
         self.P = self.rho*self.H0*np.exp(-np.log(2)*t/self.t_half)
         #On complete avec la radiation de corps noir à la surface
-        self.P[-1] -= (self.R**2)*np.pi*4*self.sigma(self.T[-1]**4-T_neb**4)
+        self.P[-1] += (self.sigma/self.dr)*(T_neb**4-(self.T[-1]*T0)**4)
 
     def step(self):
-        self.T = self.lu.solve(self.T + self.c*self.P)
+        self.T = self.lu.solve(self.T + self.c0*self.P)
+
+    def fusion(self):
+        """
+        Cette fonction calcule la modification du ratio solide/liquide
+        en deux etapes : 
+        1. Si la condition pour un changement d'état est verifiée
+           on utilise toute la chaleur pour changer d'état
+        2. Si on a plus de 100% de liquide ou de solide on rebalance
+           l'excedant en chaleur
+        """
+        fus_m = np.where((self.T>self.Tfus_m)*(self.phi_m < 1))
+        sol_m = np.where((self.T<self.Tfus_m)*(self.phi_m > 0))
+        tot_m = [np.concatenate(fus,sol) for fus,sol in zip(fus_m,sol_m)]
+
+        self.phi_m[tot_m] = self.phi_m[tot_m] + (self.T[tot_m] - self.T_fus_m) * self.Cp_m/(self.phi*self.L_m)
+        self.T[tot_m] = self.T_fus_m
+
+        excess_fus = np.where(self.phi_m > 1)
+        excess_sol = np.where(self.phi_m < 0)
+
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_m[excess_fus] - 1) * (self.phi*self.L_m)/self.Cp_m
+        self.phi_m[excess_fus] =  1
+
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (self.phi*self.L_m)/self.Cp_m
+        self.phi_m[excess_sol] =  0
+
+        fus_m = np.where((self.T>self.Tfus_m)*(self.phi_m < 1))
+        sol_m = np.where((self.T<self.Tfus_m)*(self.phi_m > 0))
+        tot_m = [np.concatenate(fus,sol) for fus,sol in zip(fus_m,sol_m)]
+
+        self.phi_m[tot_m] = (self.phi_m[tot_m] + (self.T[tot_m] - self.T_fus_m) * self.Cp_m/(self.phi*self.L_m)
+        self.T[tot_m] = self.T_fus_m
+
+        excess_fus = np.where(self.phi_m > 1)
+        excess_sol = np.where(self.phi_m < 0)
+
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_m[excess_fus] - 1) * (self.phi*self.L_m)/self.Cp_m
+        self.phi_m[excess_fus] =  1
+
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (self.phi*self.L_m)/self.Cp_m
+        self.phi_m[excess_sol] =  0
+
+
+
+
+        
 
     def store(self):
         self.stored.append({

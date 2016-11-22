@@ -265,6 +265,8 @@ Les constantes respectives et moyennes du mélange sont les suivantes :
   \end{tabu}
 \end{center}
 
+Pour la suite $\rho$ désignera une valeur moyenne et $\rho_{materiau}$ la valeur respective d'un des matériaux.
+
 
 \subsection{Modèle 1}
 
@@ -313,29 +315,38 @@ Avec :
  P = \rho H_0 e^{-ln(2) t} 
 \end{equation}
 
-
+%Pour passer d'une puissance surfacique à une puissance volumique on introduit 1/delta r
 \begin{equation}
- S = 4 \pi R^2 \sigma (T_{neb}^4 - (TT_0)^4)  \quad \textrm{à la surface uniquement}
+ S =\frac{\sigma}{\Delta r}(T_{neb}^4 - (TT_0)^4)  \quad \textrm{à la surface uniquement}
 \end{equation}
 
 $Q_L$ représente la chaleur "perdue" lors du changement de phase de chaque matériau. Ce changement de phase est géré en dehors de l'équation de la chaleur. On note $\phi_{met}$ la proportion solide/liquide du métal et $\phi_{sil}$ pour le silicate ($\phi_{sil} = 0 \Rightarrow$ solide, $\phi_{sil} = 1 \Rightarrow$ liquide). On detecte le changement de phase solide $\rightarrow$ liquide du métal par la condition  $T > T_{fus,met} $ et $ \phi_{met} < 1$ on "échange" alors de la température contre du changement de phase de sorte à obtenir soit $T = T_{fus,met}$ soit $\phi_{met} = 1$. On fait de même avec la transition inverse et avec le silicate.
 
-Exemple : on part du cas $T > T_{fus,met}$ , $ \phi_{met} < 1$ pour atteindre $\phi_{met} = 1$. Calculons la température finale : 
+Exemples : on part de $T > T_{fus,met}$ , $ \phi_{met} < 1$ 
+
+
+Cas 1 on atteint $\phi_{met} = 1$. Calculons la température finale : 
 
 \begin{equation}
-T_{f} =  (T_{i} - T_{fus,met} ) (1-\phi_{met}) \frac{\phi L_{met}}{C_{p,met} T_{fus,met}}
+T_{f} =  T_{i} +  (\phi_{met} - 1 ) \frac{\phi L_{met}}{C_{p,met} }
 \end{equation}
 
+Cas 2 on atteint $T = T_{fus,met}$. Calculons le $\phi_{met}$ final : 
+
+\begin{equation}
+\phi_{f} =  \phi_{i} +  (T_{i}-T_{fus,met}) \frac{C_{p,met}}{\phi L_{met}}
+\end{equation}
 
 \subsubsection{Équations discrétisées}
 
-On pose $c = \frac{\rho C_p T_0}{\tau_{1/2}}$ 
+On pose $c_0 = \frac{\tau_{1/2}}{\rho C_p T_0}$ 
 
 On a l'équation matricielle suivante :
 \begin{equation}
-MT^{t+1} = T^t + \Delta t( P + S )
+MT^{t+1} = T^t + c_0 \Delta t( P + S )
 \end{equation}
 
+Avec la matrice $M$ calculée plus tôt : 
 $
 M = \Big [ Id + \frac{\Delta t ~ r^2_{i+1/2}}{r^2_i \Delta r^2} ~ d1 + \frac{\Delta t ~ r^2_{i-1/2}}{r^2_i \Delta r^2} ~ d2  \Big]
 $
