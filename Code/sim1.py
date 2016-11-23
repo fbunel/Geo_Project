@@ -26,6 +26,7 @@ class terre:
                     'H0'    :  1.5E-7, #W kg-1
                     'T_neb' :  300   , #K
                     'sigma' :  5.67E-8,#W m-2 K-4
+                    'phi'   :  0.18  , # sans unité
                     'kT'    :  11.48 , #W K-1 m-1
                     'kT_m'  :  50    , #W K-1 m-1
                     'kT_s'  :  3     , #W K-1 m-1
@@ -35,8 +36,10 @@ class terre:
                     'rho'   :  4028  , #kg m-3 
                     'rho_m' :  7800  , #kg m-3  
                     'rho_s' :  3200  , #kg m-3  
-                    'Tfus_m'  :  1261  , #K
-                    'Tfus_s'  :  1408  , #K
+                    'Tfus_m':  1261  , #K
+                    'Tfus_s':  1408  , #K
+                    'L_m'   :  2.5E5 , #J kg-1
+                    'L_s'   :  5.0E5 , #J kg-1
                     }
         #cst contient les constantes physiques des materiaux
         self.cst = cst
@@ -53,7 +56,7 @@ class terre:
         
         #l'equation n'est pas definie en r=0 on decale donc le premier 
         # point de dr
-        dr = Ri/self.r0/size
+        dr = Ri/(self.r0*size)
         r = np.linspace(dr, Ri/self.r0, num=size)
         self.r = r
         self.dr = dr
@@ -67,21 +70,6 @@ class terre:
         self.phi_s = np.zeros(size)
         
         
-        """
-        self.size   = size
-        self.epsilon  = epsilon  #l'equation n'est pas definie en r=0
-        self.R        = R    #rayon de la terre
-        self.r        = r    #rayon relatif [0,1], il intervient dans la formule du fait de la sym spherique
-        self.dr       = dr   #pas d'espace
-        self.dt       = dt    #pas de temps
-        self.lmbda    = lmbda #conductivité thermique
-        self.rho      = rho  #masse volumique
-        self.Cp       = Cp   #capaité calorifique
-        self.P        = P    #terme de source (nucleaire)
-        self.c        = c
-        self.sigma    = sigma
-        self.T0       = T0   #temperature du fond diffus cosmologique
-        """
         
         
         
@@ -128,7 +116,7 @@ class terre:
         #On part de la chaleur radioactive
         self.P[:] = cst['rho']*cst['H0']*np.exp(-np.log(2)*self.t)
         #On complete avec la radiation de corps noir à la surface
-        self.P[-1] += (cst['sigma']/self.dr)*(cst['T_neb']**4-(self.T[-1]*self.T0)**4)
+        self.P[-1] += (cst['sigma']/self.dr)*(cst['T_neb']**4)*(1-(self.T[-1])**4)
 
     def step(self):
         self.t += self.dt
@@ -147,34 +135,35 @@ class terre:
 
         fus_m = np.where((self.T>cst['Tfus_m'])*(self.phi_m < 1))
         sol_m = np.where((self.T<cst['Tfus_m'])*(self.phi_m > 0))
-        tot_m = [np.concatenate(fus,sol) for fus,sol in zip(fus_m,sol_m)]
+        print(fus_m,sol_m)
+        tot_m = [np.concatenate([fus,sol]) for fus,sol in zip(fus_m,sol_m)]
 
-        self.phi_m[tot_m] = self.phi_m[tot_m] + (self.T[tot_m] - self.T_fus_m) * self.Cp_m/(self.phi*self.L_m)
-        self.T[tot_m] = self.T_fus_m
+        self.phi_m[tot_m] = self.phi_m[tot_m] + (self.T[tot_m] - cst['Tfus_m']) * cst['Cp_m']/(cst['phi']*cst['L_m'])
+        self.T[tot_m] = cst['Tfus_m']
 
         excess_fus = np.where(self.phi_m > 1)
         excess_sol = np.where(self.phi_m < 0)
 
-        self.T[excess_fus] = self.T[excess_fus] + (self.phi_m[excess_fus] - 1) * (self.phi*self.L_m)/self.Cp_m
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_m[excess_fus] - 1) * (cst['phi']*cst['L_m'])/cst['Cp_m']
         self.phi_m[excess_fus] =  1
 
-        self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (self.phi*self.L_m)/self.Cp_m
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (cst['phi']*cst['L_m'])/cst['Cp_m']
         self.phi_m[excess_sol] =  0
 
         fus_s = np.where((self.T>cst['Tfus_s'])*(self.phi_s < 1))
         sol_s = np.where((self.T<cst['Tfus_s'])*(self.phi_s > 0))
-        tot_s = [np.concatenate(fus,sol) for fus,sol in zip(fus_s,sol_s)]
+        tot_s = [np.concatenate([fus,sol]) for fus,sol in zip(fus_s,sol_s)]
 
-        self.phi_s[tot_s] = self.phi_s[tot_s] + (self.T[tot_s] - self.T_fus_s) * self.Cp_s/(self.phi*self.L_s)
-        self.T[tot_s] = self.T_fus_s
+        self.phi_s[tot_s] = self.phi_s[tot_s] + (self.T[tot_s] - cst['Tfus_s']) * cst['Cp_s']/(cst['phi']*cst['L_s'])
+        self.T[tot_s] = cst['Tfus_s']
 
         excess_fus = np.where(self.phi_s > 1)
         excess_sol = np.where(self.phi_s < 0)
 
-        self.T[excess_fus] = self.T[excess_fus] + (self.phi_s[excess_fus] - 1) * ((1-self.phi)*self.L_s)/self.Cp_s
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_s[excess_fus] - 1) * ((1-cst['phi'])*cst['L_s'])/cst['Cp_s']
         self.phi_s[excess_fus] =  1
 
-        self.T[excess_sol] = self.T[excess_sol] + self.phi_s[excess_sol] * ((1-self.phi)*self.L_s)/self.Cp_s
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_s[excess_sol] * ((1-cst['phi'])*cst['L_s'])/cst['Cp_s']
         self.phi_s[excess_sol] =  0
 
 
@@ -270,12 +259,11 @@ def test():
     s = sol_ref2(r,R,D,P)
     plt.plot(r,s,lw=2,label='analytique')
 
-    P=np.zeros(1000)
-    P[0] = 1
-    P[-1] = -1
     size=1000
-    t = terre(size=size,dt=1,R=1,D=1,P=P,rho=1)
-    t.T[:] = 0
+    t = terre(Ri=100,Ti=0,dt=0.1,size=1000)
+    t.P[:] = 0
+    t.P[0] = 1
+    t.P[-1] = -1
     for _ in range(1,3):
         t.step()
         plt.plot(r,1000*(t.T[:] - t.T[-1]),label='simulé pas {}'.format(_))
@@ -301,4 +289,14 @@ def sol_ref2(r,R,D,P):
 
 
 if __name__ == '__main__' :
-    test()
+    #test()
+    t = terre(Ri=1000,Ti=3,dt=0.000001,size=1000)
+    for _ in range(2):
+        t.update_P()
+        t.step()
+        t.fusion()
+
+        plt.plot(t.T)
+
+    plt.show()
+
