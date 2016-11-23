@@ -13,59 +13,62 @@ class terre:
     On considère que le chauffage provient uniquement de la radioactivité
     de l'Al26 
     """
-    def __init__(self,**kwargs):
-        #N nombre initial de particules
+    def __init__(self, Ri, Ti, dt, size, cst=None):
+        """
+        R0 : rayon initial de la Terre en m
+        T0 : temperature initiale en K
+        dt : pas de temps en fraction de tau_al
+        size : nombre de pas d'espace
+        """
+
+        if cst is None:
+            cst = { 'tau_al':  2.3E13, #s
+                    'H0'    :  1.5E-7, #W kg-1
+                    'T_neb' :  300   , #K
+                    'sigma' :  5.67E-8,#W m-2 K-4
+                    'kT'    :  11.48 , #W K-1 m-1
+                    'kT_m'  :  50    , #W K-1 m-1
+                    'kT_s'  :  3     , #W K-1 m-1
+                    'Cp'    :  1065  , #J K-1 kg-1
+                    'Cp_m'  :  450   , #J K-1 kg-1
+                    'Cp_s'  :  1200  , #J K-1 kg-1
+                    'rho'   :  4028  , #kg m-3 
+                    'rho_m' :  7800  , #kg m-3  
+                    'rho_s' :  3200  , #kg m-3  
+                    'Tfus_m'  :  1261  , #K
+                    'Tfus_s'  :  1408  , #K
+                    }
+        #cst contient les constantes physiques des materiaux
+        self.cst = cst
+        #ces constantes permettent de définir les 
+        #paramètres d'adimensionnement
+        self.t0 = cst['tau_al'] 
+        self.r0 = np.sqrt(cst['kT']*cst['tau_al']
+                /(cst['Cp']*cst['rho']))
+        self.T0 = cst['T_neb'] 
+
+        self.t = 0
+        self.dt = dt #Le param dt doit etre en fraction de tau_al
+        self.c0 = dt*cst['tau_al']/(cst['rho']*cst['Cp']*cst['T_neb'])
+        
+        #l'equation n'est pas definie en r=0 on decale donc le premier 
+        # point de dr
+        dr = Ri/self.r0/size
+        r = np.linspace(dr, Ri/self.r0, num=size)
+        self.r = r
+        self.dr = dr
+        self.size = size
         
         
-        R, r, dr, dt, lmbda, rho, Cp, P, sigma, T0 = [1]*10
-        
-        try:
-            taille = kwargs['taille']
-        except:
-            taille = 10
-            
-        try:
-            dt = kwargs['dt']
-        except:
-            dt = 1
-        
-        try:
-            dr = kwargs['dr']
-        except:
-            dr = 1
-            
-        try:
-            lmbda = kwargs['lmbda']
-        except:
-            lmbda = 1
-            
-        try:
-            P = kwargs['P']
-        except:
-            lmbda = np.zeros(taille)        
-            
-        try:
-            rho = kwargs['rho']
-        except:
-            rho = 1    
-        
-        #l'equation n'est pas definie en r=0 on decale donc le premier point
-        epsilon = 1/taille
-        # on fait commencer r après 0 pour l'instant
-        r = np.linspace(epsilon, 1, num=taille)
-        
-        dt = 1
+        #condition initiales
+        self.T = (Ti/self.T0)*np.ones(size)
+        self.P = np.zeros(size)
+        self.phi_m = np.zeros(size)
+        self.phi_s = np.zeros(size)
         
         
-        dr=1/taille
-        lmbda = 1
-        sigma = 5.670373E-8 
-        T0 = 2.7 #2.7K fond diffus cosmologique
-        c = 1
-        
-        
-        
-        self.taille   = taille
+        """
+        self.size   = size
         self.epsilon  = epsilon  #l'equation n'est pas definie en r=0
         self.R        = R    #rayon de la terre
         self.r        = r    #rayon relatif [0,1], il intervient dans la formule du fait de la sym spherique
@@ -78,29 +81,24 @@ class terre:
         self.c        = c
         self.sigma    = sigma
         self.T0       = T0   #temperature du fond diffus cosmologique
+        """
         
-        #condition initiales
-        self.T     = np.zeros(taille)
-        #self.T[:] = 300
-        #self.rho0  = np.zeros(taille)
-        #self.P = np.zeros(taille)
-        #self.P[:20] = 1
         
         
         #quelques matrices de base pour constuire la matrice complete
-        ones = np.ones(self.taille)
+        ones = np.ones(self.size)
         self.ones = ones
-        eye = sparse.eye(taille)
-        d1 = sparse.dia_matrix(([1*ones,-1*ones],[0,1]), shape=(taille, taille))
-        c1 = ((r+dr/2)**2)/((r*dr)**2)
-        u1 = sparse.dia_matrix((c1,[0]), shape=(taille, taille))
+        eye = sparse.eye(size)
+        d1 = sparse.dia_matrix(([1*ones,-1*ones],[0,1]),
+                shape=(size, size))
+        c1 = self.dt*((r+dr/2)/(r*dr))**2 
+        # on met c1 dans une diagonale pour la multiplication avec d1
+        u1 = sparse.dia_matrix((c1,[0]), shape=(size, size))
         
-        d2 = sparse.dia_matrix(([1*ones,-1*ones],[0,-1]), shape=(taille, taille))
-        c2 = ((r-dr/2)**2)/((r*dr)**2) 
-        # on met c2 dans une diagonale pour la multiplication avec d2
-        u2 = sparse.dia_matrix((c2,[0]), shape=(taille, taille))
-        #print('u \n',u2.toarray())
-        #print('u \n',(u2*d2).toarray())
+        d2 = sparse.dia_matrix(([1*ones,-1*ones],[0,-1]),
+                shape=(size, size))
+        c2 = self.dt*((r-dr/2)/(r*dr))**2 
+        u2 = sparse.dia_matrix((c2,[0]), shape=(size, size))
 
         #condition aux limites  
         
@@ -117,8 +115,7 @@ class terre:
         #print(d1.toarray())
         #print(d2.toarray())
         #on construit m, la matrice complete 
-        c = self.dt*self.lmbda/(self.rho*self.Cp*self.R**2)
-        self.m = eye + c*u1*d1 + c*u2*d2
+        self.m = eye + u1*d1 + u2*d2
         
         #print(self.m.toarray())
         
@@ -126,13 +123,15 @@ class terre:
         self.lu = linalg.splu(self.m) #on précalcule la décomposition LU
         
         
-    def update_P(self,t,T_neb):
-        #On part de la chaleur radioactice
-        self.P = self.rho*self.H0*np.exp(-np.log(2)*t/self.t_half)
+    def update_P(self):
+        cst = self.cst
+        #On part de la chaleur radioactive
+        self.P[:] = cst['rho']*cst['H0']*np.exp(-np.log(2)*self.t)
         #On complete avec la radiation de corps noir à la surface
-        self.P[-1] += (self.sigma/self.dr)*(T_neb**4-(self.T[-1]*T0)**4)
+        self.P[-1] += (cst['sigma']/self.dr)*(cst['T_neb']**4-(self.T[-1]*self.T0)**4)
 
     def step(self):
+        self.t += self.dt
         self.T = self.lu.solve(self.T + self.c0*self.P)
 
     def fusion(self):
@@ -144,8 +143,10 @@ class terre:
         2. Si on a plus de 100% de liquide ou de solide on rebalance
            l'excedant en chaleur
         """
-        fus_m = np.where((self.T>self.Tfus_m)*(self.phi_m < 1))
-        sol_m = np.where((self.T<self.Tfus_m)*(self.phi_m > 0))
+        cst = self.cst 
+
+        fus_m = np.where((self.T>cst['Tfus_m'])*(self.phi_m < 1))
+        sol_m = np.where((self.T<cst['Tfus_m'])*(self.phi_m > 0))
         tot_m = [np.concatenate(fus,sol) for fus,sol in zip(fus_m,sol_m)]
 
         self.phi_m[tot_m] = self.phi_m[tot_m] + (self.T[tot_m] - self.T_fus_m) * self.Cp_m/(self.phi*self.L_m)
@@ -160,21 +161,21 @@ class terre:
         self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (self.phi*self.L_m)/self.Cp_m
         self.phi_m[excess_sol] =  0
 
-        fus_m = np.where((self.T>self.Tfus_m)*(self.phi_m < 1))
-        sol_m = np.where((self.T<self.Tfus_m)*(self.phi_m > 0))
-        tot_m = [np.concatenate(fus,sol) for fus,sol in zip(fus_m,sol_m)]
+        fus_s = np.where((self.T>cst['Tfus_s'])*(self.phi_s < 1))
+        sol_s = np.where((self.T<cst['Tfus_s'])*(self.phi_s > 0))
+        tot_s = [np.concatenate(fus,sol) for fus,sol in zip(fus_s,sol_s)]
 
-        self.phi_m[tot_m] = (self.phi_m[tot_m] + (self.T[tot_m] - self.T_fus_m) * self.Cp_m/(self.phi*self.L_m)
-        self.T[tot_m] = self.T_fus_m
+        self.phi_s[tot_s] = self.phi_s[tot_s] + (self.T[tot_s] - self.T_fus_s) * self.Cp_s/(self.phi*self.L_s)
+        self.T[tot_s] = self.T_fus_s
 
-        excess_fus = np.where(self.phi_m > 1)
-        excess_sol = np.where(self.phi_m < 0)
+        excess_fus = np.where(self.phi_s > 1)
+        excess_sol = np.where(self.phi_s < 0)
 
-        self.T[excess_fus] = self.T[excess_fus] + (self.phi_m[excess_fus] - 1) * (self.phi*self.L_m)/self.Cp_m
-        self.phi_m[excess_fus] =  1
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_s[excess_fus] - 1) * ((1-self.phi)*self.L_s)/self.Cp_s
+        self.phi_s[excess_fus] =  1
 
-        self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (self.phi*self.L_m)/self.Cp_m
-        self.phi_m[excess_sol] =  0
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_s[excess_sol] * ((1-self.phi)*self.L_s)/self.Cp_s
+        self.phi_s[excess_sol] =  0
 
 
 
@@ -200,7 +201,6 @@ class terre:
         plt.colorbar()
         
     def anim(self):
-        %matplotlib qt4
         i=0
         #while True:
         size = self.T.shape[0]
@@ -229,14 +229,35 @@ class terre:
             
             plt.pause(0.5)
 
+
+
+cst = { 'tau_al':  0.74 , #My
+        'T_neb' :  300  , #K
+        'kT'    :  11.48, #W K-1 m-1
+        'kT_m'  :  50   , #W K-1 m-1
+        'kT_s'  :  3    , #W K-1 m-1
+        'Cp'    :  1065 , #J K-1 kg-1
+        'Cp_m'  :  450  , #J K-1 kg-1
+        'Cp_s'  :  1200 , #J K-1 kg-1
+        'rho'   :  4028 , #kg m-3 
+        'rho_m' :  7800 , #kg m-3  
+        'rho_s' :  3200 , #kg m-3  
+        'Tf_m'  :  1261 , #K
+        'Tf_s'  :  1408 , #K
+        }
+
+
+
 def test():
     """
     Test de la classe et comparaison des resultats avec une sol 
     analytique connue
     """
     #on teste vite fait que la classe fonctionne 
-    t = terre(taille=4)
+    t = terre(Ri=100,Ti=0,dt=0.1,size=4)
+    t.update_P()
     t.step()
+    t.fusion()
 
 
     print("Comparaison solution analytique stationnaire et simulée (la simulation converge en 2 pas ici)")
@@ -252,16 +273,19 @@ def test():
     P=np.zeros(1000)
     P[0] = 1
     P[-1] = -1
-    taille=1000
-    t = terre(taille=taille,dt=1,R=1,D=1,P=P,rho=1)
+    size=1000
+    t = terre(size=size,dt=1,R=1,D=1,P=P,rho=1)
     t.T[:] = 0
     for _ in range(1,3):
-	t.step()
-	plt.plot(r,1000*(t.T[:] - t.T[-1]),label='simulé pas {}'.format(_))
+        t.step()
+        plt.plot(r,1000*(t.T[:] - t.T[-1]),label='simulé pas {}'.format(_))
 	
 
     plt.legend()
     plt.show()
+
+def test_fusion():
+    pass
 
 def sol_ref1(r,t,D):
     """
@@ -276,3 +300,5 @@ def sol_ref2(r,R,D,P):
     return (R**2 - r**2)*P/(6*D)
 
 
+if __name__ == '__main__' :
+    test()
