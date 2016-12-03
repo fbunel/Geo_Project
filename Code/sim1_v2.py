@@ -54,9 +54,9 @@ class terre:
 
         self.t = 0
         self.dt = dt #!!Le param dt doit etre en fraction de tau_al!!
-        self.c0 = dt*cst['tau_al']/(cst['rho']*cst['Cp']*cst['T_neb'])
+        self.c0 = self.dt*cst['tau_al']/(cst['rho']*cst['Cp']*cst['T_neb'])
 
-        print("rayon : {} km, dt : {} My".format(Ri*1E-3,dt*0.74))
+        print("rayon : {} km, dt : {} My, Ti : {} K, size {}".format(Ri*1E-3,dt*0.717,Ti,size))
         
         #l'equation n'est pas definie en r=0 on decale donc le premier 
         # point de dr
@@ -90,28 +90,24 @@ class terre:
         u2 = sparse.dia_matrix((c2,[0]), shape=(size, size))
 
         #condition aux limites  
-        
-        d1 = d1.tocsr()
+        d1 = sparse.lil_matrix(d1)
+        #d1 = d1.tocsr()
         d1[0,0:3]  = [2,-1,-1]
         d1[-1:,-4:] = 0
-
-        
-        d2 = d2.tocsr()
+        d2 = sparse.lil_matrix(d2)
+        #d2 = d2.tocsr()
         d2[0,0:2]  = 0
         d2[-1,-3:] = [0,-2,2]
-        #d2[-2,-1] = 0
-        #d2[-1,-2:] = [-1,1]
-        
-        
         #print(d1.toarray())
         #print(d2.toarray())
+
+        self.c1 = c1
+        self.c2 = c2
+        self.d1 = d1
+        self.d2 = d2
+
         #on construit m, la matrice complete 
         self.m = eye + u1*d1 + u2*d2
-
-        # on ajoute la condition limite radiative
-        #self.m[-1,-2] = -1
-        #self.m[-2,-1] = 1
-        #self.m[-1,-1] = 1        
 
         #print(self.m.toarray())
         
@@ -335,7 +331,7 @@ if __name__ == '__main__' :
             #'L_m'   :  1 , #J kg-1
             #'L_s'   :  1 , #J kg-1
             }
-    t = terre(Ri=500000,Ti=300,dt=0.01,size=1000,cst=cst)
+    t = terre(Ri=10000,Ti=300,dt=0.01,size=1000,cst=cst)
     #t.t = 1/0.717
     plt.figure(figsize=(6,8))
     for _ in range(40):
@@ -343,7 +339,6 @@ if __name__ == '__main__' :
             t.update_P()
             #t.P[:]=0
             t.step()
-            t.T[-1]=300
             t.fusion()
             print("t: {} My".format(t.t*0.717))
             """
