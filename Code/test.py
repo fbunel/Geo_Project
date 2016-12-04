@@ -35,5 +35,5 @@ print("dt : {} ua, dr : {} ua".format(t2.dt,t2.dr))
 print("c1/R² : {},\nc2/R² : {},\nc0 : {},  ".format(t2.c1/t2.R**2,t2.c2/t2.R**2,t2.c0))
 print("m : \n",t2.m.toarray())
 
-print(t2.d3.toarray())
+print("d3 : \n",t2.d3.toarray())
 

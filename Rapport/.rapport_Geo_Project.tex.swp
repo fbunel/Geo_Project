@@ -289,7 +289,9 @@ Hypothèses :
     Rayon de la Terre & \SI{500}{km} \\ \hline
     Température initiale & \SI{300}{K}  \\ \hline
     Température de la nébuleuse & \SI{300}{K}  \\ \hline
+    Constante de Stephan-Boltzman & \SI{5.67E-8}{W m^{-2} K^{-4}}  \\ \hline
     Demi-vie du $^{26}$Al & \SI{0.74}{My}  \\ \hline
+    Abondance du $^{26}$Al & \SI{1.5E-7}{W kg-1}  \\ \hline
   \end{tabu}
 \end{center}
 
@@ -322,7 +324,8 @@ Avec :
 
 $Q_L$ représente la chaleur "perdue" lors du changement de phase de chaque matériau. Ce changement de phase est géré en dehors de l'équation de la chaleur. On note $\phi_{met}$ la proportion solide/liquide du métal et $\phi_{sil}$ pour le silicate ($\phi_{sil} = 0 \Rightarrow$ solide, $\phi_{sil} = 1 \Rightarrow$ liquide). On detecte le changement de phase solide $\rightarrow$ liquide du métal par la condition  $T' > T_{fus,met} $ et $ \phi_{met} < 1$ on "échange" alors de la température contre du changement de phase de sorte à obtenir soit $T' = T_{fus,met}$ soit $\phi_{met} = 1$. On fait de même avec la transition inverse et avec le silicate.
 
-Exemples : on part de $T' > T_{fus,met}$ , $ \phi_{met} < 1$ 
+Exemples : on part de $T' > T_{fus,met}$ , $ \phi_{met} < 1$  \\
+\textcolor{red}{!! Attention $T_i$, $T_f$ et $T_{afus}$ sont des variables adimentionées contrairement à $T'$ et $T_{neb}$ !!}
 
 
 Cas 1 on atteint $\phi_{met} = 1$. Calculons la température finale : 
@@ -331,10 +334,10 @@ Cas 1 on atteint $\phi_{met} = 1$. Calculons la température finale :
 T_{f} =  T_{i} +  (\phi_{met} - 1 ) \frac{\phi L_{met}}{T_{neb} C_{p,met} }
 \end{equation}
 
-Cas 2 on atteint $T = T_{fus,met}$. Calculons le $\phi_{met}$ final : 
+Cas 2 on atteint $T' = T_{fus,met}$. Calculons le $\phi_{met}$ final : 
 
 \begin{equation}
-\phi_{f} =  \phi_{i} +  (T_{i}T_{neb}-T_{fus,met}) \frac{C_{p,met}}{\phi L_{met}}
+\phi_{f} =  \phi_{i} +  (T_{i}-T_{afus,met}) \frac{T_{neb} C_{p,met}}{\phi L_{met}}
 \end{equation}
 
 \subsubsection{Équations discrétisées}
@@ -371,6 +374,213 @@ d2=
     0      & \dots  & 0      &  -1      & -1        & 2 \\
 \end{bmatrix}
 \end{equation}
+
+
+
+
+
+\subsection{Modèle 2}
+
+Fichier : sim2.py
+
+\subsubsection{Description}
+
+Pour cette deuxième simulation on va prendre en compte l'accretion qui change le rayon de la Terre au cours du temps
+
+Hypothèses : 
+\begin{enumerate}
+\item Rayon de la Terre évoluant en $\dot{R} \simeq R^\beta$
+\item Chauffage causé par la désintégration du $^{26}$Al et par le rayonnement de corps noir.
+\end{enumerate}
+
+\subsubsection{Données initiales et constantes}
+
+\begin{center}
+  \begin{tabu}{ r  c }
+    \hline
+    Rayon initial de la Terre & \SI{5}{km} \\ \hline
+    Température initiale & \SI{300}{K}  \\ \hline
+    Température de la nébuleuse & \SI{300}{K}  \\ \hline
+    Constante de Stephan-Boltzman & \SI{5.67E-8}{W m^{-2} K^{-4}}  \\ \hline
+    Demi-vie du $^{26}$Al & \SI{0.74}{My}  \\ \hline
+    Abondance du $^{26}$Al & \SI{1.5E-7}{W kg-1}  \\ \hline
+  \end{tabu}
+\end{center}
+
+\subsubsection{Équations}
+
+On considère les variables adimentionnées suivantes: 
+
+\begin{equation}
+t = \frac{t'}{\tau_{1/2}}  \quad \textrm{,} \quad    r = \frac{ r'}{R(t)} \quad  \textrm{et} \quad T = \frac{T'}{T_{neb}} 
+\end{equation}
+
+\begin{equation}
+t= \frac{t'}{\tau^{Al}_{1/2}}  \quad \textrm{,} \quad   r = r' \sqrt{\frac{\rho C_p} {k_T \tau_{1/2}}} \quad  \textrm{et} \quad T = \frac{T'}{T_{neb}} 
+\end{equation}
+
+Il en résulte l'équation suivante :
+
+
+\begin{equation}
+\frac{\rho C_p T_{neb}}{\tau_{1/2}} \partial_{t} T = \frac{\rho C_p T_{neb}}{\tau_{1/2}} \frac{1}{r^2} \partial_{r} ( {r}^2 \partial_{r} T)  + P + S ~(+ ~Q_L)
+\end{equation}
+
+
+Avec :
+\begin{equation}
+ P = \rho H_0 e^{-ln(2) t} 
+\end{equation}
+
+%Pour passer d'une puissance surfacique à une puissance volumique on introduit 1/delta r
+\begin{equation}
+ S =\frac{\sigma T_{neb}^4}{\Delta r}( 1 - T^4)  \quad \textrm{à la surface uniquement}
+\end{equation}
+
+$Q_L$ représente la chaleur "perdue" lors du changement de phase de chaque matériau. Ce changement de phase est géré en dehors de l'équation de la chaleur. On note $\phi_{met}$ la proportion solide/liquide du métal et $\phi_{sil}$ pour le silicate ($\phi_{sil} = 0 \Rightarrow$ solide, $\phi_{sil} = 1 \Rightarrow$ liquide). On detecte le changement de phase solide $\rightarrow$ liquide du métal par la condition  $T' > T_{fus,met} $ et $ \phi_{met} < 1$ on "échange" alors de la température contre du changement de phase de sorte à obtenir soit $T' = T_{fus,met}$ soit $\phi_{met} = 1$. On fait de même avec la transition inverse et avec le silicate.
+
+Exemples : on part de $T' > T_{fus,met}$ , $ \phi_{met} < 1$  \\
+\textcolor{red}{!! Attention $T_i$, $T_f$ et $T_{afus}$ sont des variables adimentionées contrairement à $T'$ et $T_{neb}$ !!}
+
+
+Cas 1 on atteint $\phi_{met} = 1$. Calculons la température finale : 
+
+\begin{equation}
+T_{f} =  T_{i} +  (\phi_{met} - 1 ) \frac{\phi L_{met}}{T_{neb} C_{p,met} }
+\end{equation}
+
+Cas 2 on atteint $T' = T_{fus,met}$. Calculons le $\phi_{met}$ final : 
+
+\begin{equation}
+\phi_{f} =  \phi_{i} +  (T_{i}-T_{afus,met}) \frac{T_{neb} C_{p,met}}{\phi L_{met}}
+\end{equation}
+
+\subsubsection{Équations discrétisées}
+
+
+\begin{equation}
+\rho C_p (d_{t'} T' - r \frac{\dot{R}}{R}\partial_{r} T')= \frac{1}{r^2} \partial_{r} ( k_{T} \frac{r^2}{R^2} \partial_{r} T')  + P
+\end{equation}
+
+\begin{equation}
+\frac{\rho C_p T_{neb}}{\tau_{1/2}} \partial_{t} T =  \frac{1}{r^2} \partial_{r} ( T_{neb} k_{T} \frac{r^2}{R^2} \partial_{r} T) + \rho C_p T_{neb} r \frac{\dot{R}}{R}\partial_{r} T + P
+\end{equation}
+
+\begin{equation}
+T^{t+1} - T^t =  \frac{\tau_{1/2}    k_{T}}{\rho C_p } \frac{\Delta t}{r^2} \partial_{r} ( \frac{r^2}{R^2} \partial_{r} T)  +r \tau_{1/2} \Delta t \frac{\dot{R}}{R}\partial_{r} T + \frac{\tau_{1/2}    \Delta t}{\rho C_p T_{neb} } P
+\end{equation}
+
+
+\begin{multline}
+T^{t+1}_i + \frac{\tau_{1/2} k_T \Delta t}{\rho C \Delta r^2 R^2 r^2_i}\Big [ r^2_{i+1/2}(T^{t+1}_{i} - T^{t+1}_{i+1}) + r^2_{i-1/2}(T^{t+1}_{i}- T^{t+1}_{i-1}) \Big] \\
++ \tau_{1/2} \Delta t \frac{ r \dot{R}}{2\Delta r R}\Big [ T^{t+1}_{i-1} - T^{t+1}_{i+1}  \Big] = T^{t}_r  + \frac{\tau_{1/2} \Delta t}{\rho C T_{neb}} P^t_i
+\end{multline}
+
+
+
+
+
+
+On a l'équation matricielle suivante :
+\begin{equation}
+\Big [ Id + 
+c_1  d_1 +  
+c_2  d_2 +
+c_3  d_3
+ \Big] T^{t+1} = T^t + c_0 P  
+\end{equation}
+
+Avec  : 
+$c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
+\frac{r^2_{i+1/2}}{\Delta r^2 R^2 r^2_i}$
+, $c_2 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
+\frac{r^2_{i-1/2}}{\Delta r^2 R^2 r^2_i}$
+, $c_3 = \tau_{1/2} \Delta t \frac{ r \dot{R}}{2\Delta r R}$
+, $c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$ 
+
+\begin{equation*}
+d_1=
+\begin{bmatrix}
+    2      & -1     & -1        & 0     &\dots      & 0 \\
+    0      &  1     & -1        & 0     &           & \vdots  \\
+    \vdots & \ddots & \ddots    &\ddots & \ddots    & \vdots \\
+    \vdots &        & \ddots    &\ddots & \ddots    & 0 \\
+    \vdots &        &           &\ddots & 1         &  -1 \\
+    0      & \dots  & \dots     &\dots  & 0         &  0
+\end{bmatrix}
+d_2=
+\begin{bmatrix}
+     0     & 0      & \dots  & \dots    &\dots      & 0 \\
+    -1     & 1      & \ddots &          &           & \vdots  \\
+    0      & \ddots & \ddots & \ddots   &           & \vdots \\
+    \vdots & \ddots & \ddots & \ddots   & \ddots    & \vdots \\
+    \vdots &        & 0      &  -1      &  1        & 0\\
+    0      & \dots  & 0      &  -1      & -1        & 2 \\
+\end{bmatrix}
+d_3=
+\begin{bmatrix}
+     2     & -2     & 0      & \dots    &\dots      & 0 \\
+     1     & 0      & -1     & \ddots   &           & \vdots  \\
+    0      & \ddots & \ddots & \ddots   & \ddots    & \vdots \\
+    \vdots & \ddots & \ddots & \ddots   & \ddots    & 0 \\
+    \vdots &        & \ddots &   1      &  0        & -1\\
+    0      & \dots  & \dots  &   0      &  2        & -2 \\
+\end{bmatrix}
+\end{equation*}
+
+
+\subsubsection{Ca ne marche pas -> autre méthode }
+
+
+On peut essayer de traiter le problème en deux temps : 
+
+\begin{equation}
+\frac{ dT'}{dt'} = \partial_{t'} T' + \frac{\partial r'}{\partial t'} \partial_{r'} T' = \partial_{t'} T' + r \frac{\dot{R}}{R}\partial_{r} T'
+\end{equation}
+
+où $r'(t) = R(t)r$ avec $r \in [0,1]$
+
+\tikzstyle{int}=[draw, fill=blue!20, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex']
+    \node[below left] (a) {$T'_{t}$};
+    \node[below left,right of=a] (b) {$\tilde{T}'_{t+1}$};
+    \node[below left,above of=b] (c) {$T'_{t+1}$};
+    \path[->] (a) edge node {$\frac{ dT'}{dt'}$} (c);
+    \path[->] (a) edge node [below] {$\partial_t' T'$} (b);
+    \path[->] (b) edge node [right] {$r \frac{\dot{R}}{R}\partial_{r} T'$} (c) ;
+\end{tikzpicture}
+
+On calcule donc d'abord une première estimation de la température $\tilde{T}'_{t+1}$ avec uniquement les contributions diffusives :
+
+\begin{equation}
+\rho C_p \partial_{t'} T'= \rho C_p \frac{\tilde{T}'_{t+1} - T'_{t}}{\Delta t'} = \frac{1}{r^2} \partial_{r} ( k_{T} \frac{r^2}{R^2} \partial_{r} T')  + P
+\end{equation}
+
+On calcule a partir de cette température intermédiaire la contribution du terme de transport pour avoir la température finale:
+
+\begin{equation}
+\frac{T'_{t+1} - T'_{t}}{\Delta t'} = \frac{\tilde{T}'_{t+1} - T'_{t}}{\Delta t'} + \frac{\partial r'}{\partial t'} \partial_{r'} T' =  \frac{\tilde{T}'_{t+1} - T'_{t}}{\Delta t'} + \frac{r\Delta R}{R\Delta t'}\partial_{r} T'
+\end{equation}
+
+D'où
+
+\begin{equation}
+T'_{t+1}  = \tilde{T}'_{t+1} + \frac{r\Delta R}{R}\partial_{r} T'_{t+1}
+\end{equation}
+
+On résout à la suite ces deux équations matricielles :
+
+\begin{equation}
+\left\{
+\begin{array}{r c l}
+M_1 \tilde{T}'_{t+1} &=& T'_t + c_0 ( P + S )\\
+M_2 T'_{t+1}   &=& \tilde{T}'_{t+1}\\
+\end{array}
+\right.
+\end{equation}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

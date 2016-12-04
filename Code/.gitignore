@@ -1,0 +1,5 @@
+*.swp
+graphes/junk
+graphes/junk/*
+*.swp
+__pycache__/*

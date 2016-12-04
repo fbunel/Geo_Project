@@ -30,9 +30,10 @@ cst = { 'tau_al':  2.26E13, #s
 	#'L_m'   :  1 , #J kg-1
 	#'L_s'   :  1 , #J kg-1
 	}
-n = 140
+dt=0.001
+n = int(1/(dt*0.717))
 
-t1 = terre(Ri=500000,Ti=300,dt=0.01,size=1000,cst=cst)
+t1 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
 print("graphe 1")
 for _ in range(n):
         t1.update_P()
@@ -42,7 +43,7 @@ for _ in range(n):
         print("t: {} My".format(t1.t*0.717))
 
 print("graphe 2")
-t2 = terre(Ri=500000,Ti=300,dt=0.01,size=1000,cst=cst)
+t2 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
 t2.t = 1/0.717
 for _ in range(n):
         t2.update_P()
@@ -53,7 +54,7 @@ for _ in range(n):
 cst['L_m'] =  1  # L_m très petit ~= pas d'influence de la fusion
 cst['L_s'] =  1  #J kg-1
 
-t3 = terre(Ri=500000,Ti=300,dt=0.01,size=1000,cst=cst)
+t3 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
 print("graphe 3")
 for _ in range(n):
         t3.update_P()
@@ -63,7 +64,7 @@ for _ in range(n):
         print("t: {} My".format(t3.t*0.717))
 
 print("graphe 4")
-t4 = terre(Ri=500000,Ti=300,dt=0.01,size=1000,cst=cst)
+t4 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
 t4.t = 1/0.717
 for _ in range(n):
         t4.update_P()
@@ -82,6 +83,6 @@ plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2])
 plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'--')
 plt.xlabel('Température en K')
 plt.ylabel('Rayon adimentioné')
-plt.title('Température après : {0:.3}My'.format(t1.t*0.717)
+plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
 plt.savefig("graph_sim1_v2.png")
 plt.show()

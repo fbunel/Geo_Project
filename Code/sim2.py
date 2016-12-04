@@ -114,17 +114,17 @@ class terre:
         d1 = sparse.lil_matrix(d1) 
         #d1 = d1.tocsr()
         d1[0,0:3]  = [2,-1,-1]
-        d1[-1:,-4:] = 0
+        d1[-1:,-3:] = 0
 
         
         d2 = sparse.lil_matrix(d2) 
         #d2 = d2.tocsr()
         d2[0,0:2]  = 0
-        d2[-1,-3:] = [0,-2,2]
+        d2[-1,-3:] = [-1,-1,2]
         
         d3 = sparse.lil_matrix(d3) 
         #d3 = d3.tocsr()
-        d3[0,0:2]  = [2,-2]
+        d3[0,0:2]  = [0,-0]
         d3[-1,-2:] = [0,-0]
 
 
@@ -170,16 +170,16 @@ class terre:
             #self.alpha = (1/Ri - 1/Rf)/ta
         elif self.beta == -1:
             self.R = float(self.Ri)
+        #print(self.R)
         self.m = (self.eye 
                 + (1/self.R**2)*self.u1*self.d1 
                 + (1/self.R**2)*self.u2*self.d2 
-                + (self.R**(self.beta-1))*self.u3*self.d3)
+                + (self.alpha*self.R**(self.beta-1))*self.u3*self.d3)
 
     def update_P(self):
         cst = self.cst
         #On part de la chaleur radioactive
         self.P[:] = cst['rho']*cst['H0']*2**(-(self.t+self.dt/2))
-        self.P[-1] = 0
         #On complete avec la radiation de corps noir à la surface
         try :
             self.cS
@@ -189,7 +189,6 @@ class terre:
             *(cst['sigma'])*(cst['T_neb']**4)
             /(self.cst['kT']*self.T0))
             #on utilise un point de temperature pour definir le flux radiatif
-            self.cS=0 
         self.T[-1] = self.T[-2] + (self.R**(3/2))*self.cS*(1-(self.T[-2])**4)
         # si la température du point fictif est plus petit que 0
         # la formule de la loi de Stephan n'est plus valable et la valeur 
@@ -197,13 +196,15 @@ class terre:
         # diffusion puisse equilbrer 
         if self.T[-1] < 0 :
             self.T[-1] = 0
+        
+        self.T[-2:] = 1 #!On oublie la radition, on se contente d'injecter du materiau à 300K a la surface!#
+        self.P[-2:] = 0
         #print(self.T[-2:])
 
     def step(self):
         self.t += self.dt
         self.update_m()
         self.update_P()
-        self.T[-1]=1
         self.T = linalg.spsolve(self.m, self.T + self.c0*self.P)
         self.fusion()
 
