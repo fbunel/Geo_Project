@@ -136,6 +136,7 @@ def graphe2():
 
 
     params['beta'] = 0
+    params['dt'] = 5E-6*cst['tau_al']
     t1 = terre(**params,cst=cst)
     print("graphe 1")
     for _ in range(n):
@@ -148,6 +149,7 @@ def graphe2():
         #print("Energie totale : {}".format((t1.t*(t1.r**2)*t1.R).sum()))
 
 
+    params['dt'] = 1E-4*cst['tau_al']
     params['beta'] = 1
     t2 = terre(**params,cst=cst)
     print("graphe 2")
@@ -213,6 +215,6 @@ def graphe2():
 
 
 
-graphe1()
+#graphe1()
 graphe2()
 plt.show()

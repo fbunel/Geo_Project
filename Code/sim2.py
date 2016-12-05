@@ -179,17 +179,25 @@ class terre:
     def update_P(self):
         cst = self.cst
         #On part de la chaleur radioactive
-        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t+self.dt/2))
+        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t))
+        #!On oublie la radiation, on se contente d'injecter du materiau 
+        #à 300K a la surface!
+        #la convection à tendance à causer des grosses instabilités sinon
+        self.T[-2:] = 1 
+        self.P[-1:] = 0
+
+        return 
+
+        #Pour la sim2, ce qui suit n'est JAMAIS exécuté
         #On complete avec la radiation de corps noir à la surface
         try :
             self.cS
         except AttributeError:
-            self.cS = ((((self.r[-1]*self.dr)/(self.r[-1]+self.dr))**2)
-            *self.dr
-            *(cst['sigma'])*(cst['T_neb']**4)
+            self.cS = (((self.r[-1]/(self.r[-1]+self.dr))**2)
+            *self.dr*self.r0*cst['sigma']*(cst['T_neb']**4)
             /(self.cst['kT']*self.T0))
             #on utilise un point de temperature pour definir le flux radiatif
-        self.T[-1] = self.T[-2] + (self.R**(3/2))*self.cS*(1-(self.T[-2])**4)
+        self.T[-1] = self.T[-2] + self.R*self.cS*(1-(self.T[-2])**4)
         # si la température du point fictif est plus petit que 0
         # la formule de la loi de Stephan n'est plus valable et la valeur 
         # calculée explose, il faut donc borner par zero pour que la 
@@ -197,8 +205,6 @@ class terre:
         if self.T[-1] < 0 :
             self.T[-1] = 0
         
-        self.T[-2:] = 1 #!On oublie la radition, on se contente d'injecter du materiau à 300K a la surface!#
-        self.P[-2:] = 0
         #print(self.T[-2:])
 
     def step(self):
@@ -420,31 +426,18 @@ if __name__ == '__main__' :
             #'L_m'   :  1 , #J kg-1
             #'L_s'   :  1 , #J kg-1
             }
-    t = terre(Ri=50000,Rf=500000,ta=1*cst['tau_al'],beta=1,Ti=200,dt=1E-4*cst['tau_al'],size=1000,cst=cst)
+    t = terre(Ri=50000,Rf=500000,ta=1*cst['tau_al'],beta=1,Ti=200,dt=5E-4*cst['tau_al'],size=1000,cst=cst)
     print(t.alpha,t.beta)
-    #t.t = 1/0.717
     plt.figure(figsize=(6,8))
-    for _ in range(10):
-        for __ in range(1000):
-            """
-            print("rayon : {} km, t : {} My".format(t.R*1E-3,t.t*0.717))
-            print("m[:3,:3]")
-            print(t.m.toarray()[:3,:3])
-            print("m[-3:,-3:]")
-            print(t.m.toarray()[-3:,-3:])
-            """
+    n = int(t.ta/(5*t.dt))
+    for _ in range(5):
+        for __ in range(n):
             t.update_P()
             t.update_m()
             #t.P[:]=0
             t.step()
             t.fusion()
-            print("R: {:.6}  , t: {:.4} My".format(t.R,t.t*0.717))
-            """
-            if t.t*0.74 > 1.0 :
-                break
-        if t.t*0.74 > 1.0 :
-            break
-            """
+            print("R: {:.6}  , t: {:.3} My".format(t.R,t.t*0.717))
 
         plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
         #plt.plot(t.phi_m,'-')

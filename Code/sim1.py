@@ -22,7 +22,7 @@ class terre:
         """
 
         if cst is None:
-            cst = { 'tau_al':  2.3E13, #s
+            cst = { 'tau_al':  2.26E13,#s
                     'H0'    :  1.5E-7, #W kg-1
                     'T_neb' :  300   , #K
                     'sigma' :  5.67E-8,#W m-2 K-4
@@ -53,8 +53,10 @@ class terre:
         self.cst['Tafus_s'] = self.cst['Tfus_s']/self.T0
 
         self.t = 0
-        self.dt = dt #Le param dt doit etre en fraction de tau_al
-        self.c0 = dt*cst['tau_al']/(cst['rho']*cst['Cp']*cst['T_neb'])
+        self.dt = dt #!!Le param dt doit etre en fraction de tau_al!!
+        self.c0 = self.dt*cst['tau_al']/(cst['rho']*cst['Cp']*cst['T_neb'])
+
+        print("rayon : {} km, dt : {} My, Ti : {} K, size {}".format(Ri*1E-3,dt*0.717,Ti,size))
         
         #l'equation n'est pas definie en r=0 on decale donc le premier 
         # point de dr
@@ -88,22 +90,25 @@ class terre:
         u2 = sparse.dia_matrix((c2,[0]), shape=(size, size))
 
         #condition aux limites  
-        
-        d1 = d1.tocsr()
+        d1 = sparse.lil_matrix(d1)
+        #d1 = d1.tocsr()
         d1[0,0:3]  = [2,-1,-1]
-        d1[-1,-3:] = 0
-
-        
-        d2 = d2.tocsr()
+        d1[-1:,-4:] = 0
+        d2 = sparse.lil_matrix(d2)
+        #d2 = d2.tocsr()
         d2[0,0:2]  = 0
-        d2[-1,-3:] = [-1,-1,2]
-        
-        
+        d2[-1,-3:] = [0,-2,2]
         #print(d1.toarray())
         #print(d2.toarray())
+
+        self.c1 = c1
+        self.c2 = c2
+        self.d1 = d1
+        self.d2 = d2
+
         #on construit m, la matrice complete 
         self.m = eye + u1*d1 + u2*d2
-        
+
         #print(self.m.toarray())
         
         self.m = sparse.csc_matrix(self.m) #format csc plus efficace
@@ -112,9 +117,28 @@ class terre:
     def update_P(self):
         cst = self.cst
         #On part de la chaleur radioactive
-        self.P[:] = cst['rho']*cst['H0']*np.exp(-np.log(2)*self.t)
+        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t+self.dt/2))
+        self.P[-1] = 0
         #On complete avec la radiation de corps noir à la surface
-        self.P[-1] += (cst['sigma']/(self.dr*self.r0))*(cst['T_neb']**4)*(1-(self.T[-1])**4)
+        try :
+            self.cS
+        except AttributeError:
+            self.cS = (((self.r[-1]/(self.r[-1]+self.dr))**2)
+            *self.dr*self.r0*cst['sigma']*(cst['T_neb']**4)
+            /(self.cst['kT']*self.T0))
+            #on utilise un point de temperature pour definir le flux radiatif
+        #print("T_rad",self.cS*(1-(self.T[-2]**4)))
+        self.T[-1] = self.T[-2] + self.cS*(1-(self.T[-2])**4)
+
+        #print("Cs",self.cS)
+
+        # si la température du point fictif est plus petit que 0
+        # la formule de la loi de Stephan n'est plus valable et la valeur 
+        # calculée explose, il faut donc borner par zero pour que la 
+        # diffusion puisse equilbrer 
+        if self.T[-1] < 0 :
+            self.T[-1] = 0
+        #print(self.T[-2:])
 
     def step(self):
         self.t += self.dt
@@ -282,15 +306,18 @@ def sol_ref2(r,R,D,P):
     return (R**2 - r**2)*P/(6*D)
 
 if __name__ == '__main__' :
-    test()
+    #test()
 
-    test_fusion()
+    #test_fusion()
 
-    cst = { 'tau_al':  2.3E13, #s
+    cst = { 'tau_al':  2.2611E13, #s
             'H0'    :  1.5E-7, #W kg-1
             'T_neb' :  300   , #K
-            'sigma' :  0 ,#Pas de radiation
+            'sigma' :  5.67E-8,#W m-2 K-4
+            #'sigma' :  0,#W m-2 K-4
+            #'sigma' :  0,#W m-2 K-4
             'phi'   :  0.18  , # sans unité
+            #'kT'    :  11.48 , #W K-1 m-1
             'kT'    :  11.48 , #W K-1 m-1
             'kT_m'  :  50    , #W K-1 m-1
             'kT_s'  :  3     , #W K-1 m-1
@@ -304,17 +331,30 @@ if __name__ == '__main__' :
             'Tfus_s':  1408  , #K
             'L_m'   :  2.5E5 , #J kg-1
             'L_s'   :  5.0E5 , #J kg-1
+            #'L_m'   :  1 , #J kg-1
+            #'L_s'   :  1 , #J kg-1
             }
-    t = terre(Ri=20000,Ti=0,dt=0.1,size=100)
-    t.T[:]  = np.linspace(0,10,100)
-    plt.plot(t.T/10)
-    for _ in range(3):
-        #t.update_P()
-        t.step()
-        t.fusion()
+    t = terre(Ri=1000,Ti=300,dt=0.001,size=1000,cst=cst)
+    #t.t = 1/0.717
+    plt.figure(figsize=(6,8))
+    for _ in range(10):
+        for __ in range(1000):
+            t.update_P()
+            #t.P[:]=0
+            t.step()
+            t.fusion()
+            print("t: {} My".format(t.t*0.717))
+            """
+            if t.t*0.74 > 1.0 :
+                break
+        if t.t*0.74 > 1.0 :
+            break
+            """
 
-        plt.plot(t.T/10)
-        plt.plot(t.phi_m,'-')
+        plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
+        #plt.plot(t.phi_m,'-')
 
+    plt.xlabel('Température en K')
+    plt.ylabel('Rayon adimentioné')
     plt.show()
 
