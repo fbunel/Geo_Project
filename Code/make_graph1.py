@@ -1,4 +1,4 @@
-from sim1_v2 import terre
+from sim1 import terre
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -30,59 +30,113 @@ cst = { 'tau_al':  2.26E13, #s
 	#'L_m'   :  1 , #J kg-1
 	#'L_s'   :  1 , #J kg-1
 	}
-dt=0.001
-n = int(1/(dt*0.717))
 
-t1 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
-print("graphe 1")
-for _ in range(n):
-        t1.update_P()
-        #t.P[:]=0
-        t1.step()
-        t1.fusion()
-        print("t: {} My".format(t1.t*0.717))
+def graphe1():
+    print("Calcule la figure 1 de l'article")
+    dt=0.001
+    n = int(1/(dt*0.717))
 
-print("graphe 2")
-t2 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
-t2.t = 1/0.717
-for _ in range(n):
-        t2.update_P()
-        t2.step()
-        t2.fusion()
-        print("t: {} My".format(t2.t*0.717))
+    t1 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
+    print("graphe 1")
+    for _ in range(n):
+            t1.update_P()
+            #t.P[:]=0
+            t1.step()
+            t1.fusion()
+            print("t: {:.3} My     ".format(t1.t*0.717),end="\r")
+    print()
 
-cst['L_m'] =  1  # L_m très petit ~= pas d'influence de la fusion
-cst['L_s'] =  1  #J kg-1
+    print("graphe 2")
+    t2 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
+    t2.t = 1/0.717
+    for _ in range(n):
+            t2.update_P()
+            t2.step()
+            t2.fusion()
+            print("t: {:.3} My     ".format(t2.t*0.717),end="\r")
+    print()
 
-t3 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
-print("graphe 3")
-for _ in range(n):
-        t3.update_P()
-        #t.P[:]=0
-        t3.step()
-        t3.fusion()
-        print("t: {} My".format(t3.t*0.717))
+    cst['L_m'] =  1  # L_m très petit ~= pas d'influence de la fusion
+    cst['L_s'] =  1  #J kg-1
 
-print("graphe 4")
-t4 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
-t4.t = 1/0.717
-for _ in range(n):
-        t4.update_P()
-        t4.step()
-        t4.fusion()
-        print("t: {} My".format(t4.t*0.717))
+    t3 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
+    print("graphe 3")
+    for _ in range(n):
+            t3.update_P()
+            #t.P[:]=0
+            t3.step()
+            t3.fusion()
+            print("t: {:.3} My     ".format(t3.t*0.717),end="\r")
+    print()
+
+    print("graphe 4")
+    t4 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
+    t4.t = 1/0.717
+    for _ in range(n):
+            t4.update_P()
+            t4.step()
+            t4.fusion()
+            print("t: {:.3} My     ".format(t4.t*0.717),end="\r")
+    print()
 
 
 
 
 
-plt.figure(figsize=(6,8))
-plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2])
-plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'--')
-plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2])
-plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'--')
-plt.xlabel('Température en K')
-plt.ylabel('Rayon adimentioné')
-plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
-plt.savefig("graph_sim1_v2.png")
+    plt.figure(figsize=(6,8))
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2])
+    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'--')
+    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2])
+    plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'--')
+    plt.xlabel('Température en K')
+    plt.ylabel('Rayon adimentioné')
+    plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
+    plt.savefig("graph_sim1_fig1.png")
+
+def graphe2():
+    print("Calcule un graphe qui compare les 2 deux régimes de diffusion selon le rayon")
+    dt=0.001
+    n = int(1/(dt*0.717))
+
+    t1 = terre(Ri=5000,Ti=300,dt=dt,size=1000,cst=cst)
+    print("graphe 1")
+    for _ in range(n):
+            t1.update_P()
+            #t.P[:]=0
+            t1.step()
+            t1.fusion()
+            print("t: {:.3} My     ".format(t1.t*0.717),end="\r")
+    print()
+
+    print("graphe 2")
+    t2 = terre(Ri=30000,Ti=300,dt=dt,size=1000,cst=cst)
+    for _ in range(n):
+            t2.update_P()
+            t2.step()
+            t2.fusion()
+            print("t: {:.3} My     ".format(t2.t*0.717),end="\r")
+    print()
+
+    t3 = terre(Ri=200000,Ti=300,dt=dt,size=1000,cst=cst)
+    print("graphe 3")
+    for _ in range(n):
+            t3.update_P()
+            #t.P[:]=0
+            t3.step()
+            t3.fusion()
+            print("t: {:.3} My     ".format(t3.t*0.717),end="\r")
+    print()
+
+    plt.figure(figsize=(6,8))
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],label=r"$R \ll L_d$")
+    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],label=r"$R \simeq L_d$")
+    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],label=r"$R \gg L_d$")
+    plt.legend(loc="best")
+    plt.xlabel('Température en K')
+    plt.ylabel('Rayon adimentioné')
+    plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
+    plt.savefig("graph_sim1_fig2.png")
+
+graphe1()
+graphe2()
 plt.show()
