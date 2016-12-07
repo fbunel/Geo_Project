@@ -46,7 +46,7 @@ def graphe1():
 
     params['beta'] = 0
     t1 = terre(**params,cst=cst)
-    print("couple 1")
+    print("courbe 1")
     for _ in range(n):
         t1.update_P()
         t1.update_m()
@@ -59,7 +59,7 @@ def graphe1():
 
     params['beta'] = 1
     t2 = terre(**params,cst=cst)
-    print("couple 2")
+    print("courbe 2")
     for _ in range(n):
         t2.update_P()
         t2.update_m()
@@ -70,7 +70,7 @@ def graphe1():
 
     params['beta'] = 2
     t3 = terre(**params,cst=cst)
-    print("couple 3")
+    print("courbe 3")
     for _ in range(n):
         t3.update_P()
         t3.update_m()
@@ -82,7 +82,7 @@ def graphe1():
     """
     params['beta'] = -1
     t4 = terre(**params,cst=cst)
-    print("couple 4")
+    print("courbe 4")
     for _ in range(n):
         t4.update_P()
         t4.update_m()
@@ -95,7 +95,7 @@ def graphe1():
     params['beta'] = -1
     params['Ri'] = params['Rf']
     t5 = terre(**params,cst=cst)
-    print("couple 5")
+    print("courbe 5")
     for _ in range(n):
         t5.update_P()
         t5.update_m()
@@ -137,7 +137,7 @@ def graphe2():
 
     params['beta'] = 0
     t1 = terre(**params,cst=cst)
-    print("couple 1")
+    print("courbe 1")
     for _ in range(n):
         t1.update_P()
         t1.update_m()
@@ -150,7 +150,7 @@ def graphe2():
 
     params['beta'] = 1
     t2 = terre(**params,cst=cst)
-    print("couple 2")
+    print("courbe 2")
     for _ in range(n):
         t2.update_P()
         t2.update_m()
@@ -161,7 +161,7 @@ def graphe2():
 
     params['beta'] = 2
     t3 = terre(**params,cst=cst)
-    print("couple 3")
+    print("courbe 3")
     for _ in range(n):
         t3.update_P()
         t3.update_m()
@@ -173,7 +173,7 @@ def graphe2():
     """
     params['beta'] = -1
     t4 = terre(**params,cst=cst)
-    print("couple 4")
+    print("courbe 4")
     for _ in range(n):
         t4.update_P()
         t4.update_m()
@@ -186,7 +186,7 @@ def graphe2():
     params['beta'] = -1
     params['Ri'] = params['Rf']
     t5 = terre(**params,cst=cst)
-    print("couple 5")
+    print("courbe 5")
     for _ in range(n):
         t5.update_P()
         t5.update_m()
@@ -212,7 +212,71 @@ def graphe2():
     plt.savefig("graph_sim2_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
 
 
+def graphe_R():
+    global R1,R2,t1,t2
+    params = {'Ri':5E3,
+    'Rf':5E5,
+    'beta': 0,
+    'ta':1*cst['tau_al']/0.717,#5My
+    'Ti':300,
+    'dt':1E-3*cst['tau_al']/0.717,
+    'size':1000,
+    }
+    n = int(params['ta']/params['dt'])
+#n=10
 
-graphe1()
-graphe2()
+    print("courbe 1")
+    params['beta'] = 0
+    t1 = terre(**params,cst=cst)
+    t1.d1,t1.d2,t1.d3,t1.u1,t1.u2,t1.u3=[0]*6
+    R1 = []
+    for _ in range(n):
+        t1.update_m()
+        t1.t += t1.dt
+        R1.append([t1.t*0.717,t1.R/params['Rf']])
+        print("t: {:.3} My    ".format(t1.t*0.717),end='\r')
+    
+    
+    print("courbe 2")
+    params['beta'] = 1
+    t2 = terre(**params,cst=cst)
+    t2.d1,t2.d2,t2.d3,t2.u1,t2.u2,t2.u3=[0]*6
+    R2 = []
+    for _ in range(n):
+        t2.update_m()
+        t2.t += t2.dt
+        R2.append([t2.t*0.717,t2.R/params['Rf']])
+        print("t: {:.3} My    ".format(t2.t*0.717),end='\r')
+
+    print("courbe 3")
+    params['beta'] = 2
+    t3 = terre(**params,cst=cst)
+    t3.d1,t3.d2,t3.d3,t3.u1,t3.u2,t3.u3=[0]*6
+    R3 = []
+    for _ in range(n):
+        t3.update_m()
+        t3.t += t3.dt
+        R3.append([t3.t*0.717,t3.R/params['Rf']])
+        print("t: {:.3} My    ".format(t3.t*0.717),end='\r')
+
+
+    plt.figure(figsize=(8,5))
+    plt.plot([0,0.78,1],[0,0.23,1],'k-.',color = '0.5')
+    plt.plot([0,0.95,1],[0,0.08,1],'k-.',color = '0.5')
+    plt.plot(*list(zip(*R1)),label=r"$\beta = 0$")
+    plt.plot(*list(zip(*R2)),label=r"$\beta = 1$")
+    plt.plot(*list(zip(*R3)),label=r"$\beta = 2$")
+
+
+    plt.xlabel(r'Temps en My')
+    plt.ylabel(r'R(t)/R$_{final}$')
+    plt.title('Évolution du rayon')
+    plt.legend(loc="best")
+    from datetime import datetime
+    plt.savefig("graph_sim2_fig2_3_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+
+
+#graphe1()
+#graphe2()
+graphe_R()
 plt.show()

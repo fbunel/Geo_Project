@@ -473,9 +473,9 @@ d_3=
 
 \subsubsection{Résultats}
 
-On peut observer sur la figure \ref{fig2} les conséquences de l'évolution du rayon du planétésimal au cours du temps sur le profil de température. On constate sur la figure \ref{fig2:1} qu'une croissance linéaire du rayon ($\beta=0$) sur un temps comparable au temps de demi-vie du $^{26}$Al (\SI{0.717}{My}) donne un profil qui atteint une température maximale de \SI{3000}{K} proche des \SI{3100}{K} atteint dans notre premier modèle, le profil évolue ensuite linéairement jusqu'à atteindre \SI{300}{K} à la surface. 
+On peut observer sur la figure \ref{fig2} les conséquences de l'évolution du rayon du planétésimal au cours du temps sur le profil de température. On constate sur la figure \ref{fig2:1} qu'une croissance linéaire du rayon ($\beta=0$) sur un temps comparable au temps de demi-vie du $^{26}$Al (\SI{0.717}{My}) donne un profil qui atteint une température maximale de \SI{3000}{K} proche des \SI{3100}{K} atteint dans notre premier modèle, le profil évolue ensuite linéairement jusqu'à atteindre \SI{300}{K} à la surface. Dans le cas où la croissance est plus accélérée, comme on peut le voir sur la figure \ref{fig2_3}, il est possible de distinguer deux périodes dans l'histoire du planétésimal: une première période de croissance lente avec un rayon faible durant laquelle l'influence des pertes radiatives est grande, suivie d'une inflation très rapide de l'astre où il acquiert la plupart de son épaisseur. La température de l'épaisseur crée lors de cette deuxième phase reste proche de \SI{300}{K} puisque l'intensité du chauffage radioactif à déjà eu le temps, au cours de la première période, de diminuer de moitié dans le cas d'une croissance en \SI{1}{My} et de s'épuiser totalement dans le cas de la croissance en \SI{5}{My} du fait de la demi-vie de \SI{0.717}{My} du $^{26}$Al.
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -492,6 +492,48 @@ On peut observer sur la figure \ref{fig2} les conséquences de l'évolution du r
 \caption{Profil de température dans une planète qui croît par accrétion de \SI{5}{km} à \SI{500}{km} sur une période de \SI{1}{My} sur la figure (a) et de \SI{5}{My} sur la figure (b). Chaque courbe correspond à un taux de croissance différent, les courbes en pointillé  correspondent à un astre dont le rayon est constant à \SI{500}{km} }
 \label{fig2}
 \end{figure}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[height=7cm]{./figures/graph_sim2_fig2_3.eps}
+\caption{Croissance du rayon en fonction du temps et selon le paramètre $\beta$. On notera que le temps est donné à titre indicatif, en effet le profil de croissance est identique quelque soit l'échelle de croissance choisie. Pour $\beta=1$ et $\beta=2$ les deux régimes de croissances (symbolisé par les courbes pointillées) que l'on peut distinguer sont une croissance lente jusqu'à \SI{0.8}{My} pour $\beta=1$  et \SI{0.95}{My} pour $\beta=2$ suivie d'une croissance rapide jusqu'au rayon final en \SI{0.2}{My} et \SI{0.05}{My} respectivement.}
+\label{fig2_3}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conclusion}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Conclusion}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Première annexe} \label{annexe_fonctionnelles}
+$ \rho L \frac{\partial \phi}{\partial t} = \rho L \frac{d \phi}{d T}\frac{\partial T}{\partial t} $ avec $\phi$ qui est une marche, on peut l'approximer par une fonction un peu plus dérivable par ex :  $\phi \simeq arctan(T-T_{fusion})$ 
+
+$ \rho Cp_{eff} = \rho Cp(\phi) + \rho L  \frac{d \phi}{d T}$
+
+
+
+$R_T = a t^b , T = T(t,r/R_T(t)) $
+
+$\Rightarrow \frac{\partial T(t,r/R_T(t))}{\partial t}  = \frac{\partial T}{\partial t} + \frac{\partial \frac{r}{R_T(t)}}{\partial t}\frac{\partial T}{\partial r} = \frac{\partial T}{\partial t} + \frac{\partial \frac{r}{R_T(t)}}{\partial t}\frac{\partial T}{\partial r} $
+
 
 \subsubsection{autre méthode possible (en fait pas besoin de ca)}
 
@@ -544,37 +586,6 @@ M_2 T'_{t+1}   &=& \tilde{T}'_{t+1}\\
 \end{array}
 \right.
 \end{equation}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Conclusion}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\addcontentsline{toc}{section}{Conclusion}
-
-
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Première annexe} \label{annexe_fonctionnelles}
-$ \rho L \frac{\partial \phi}{\partial t} = \rho L \frac{d \phi}{d T}\frac{\partial T}{\partial t} $ avec $\phi$ qui est une marche, on peut l'approximer par une fonction un peu plus dérivable par ex :  $\phi \simeq arctan(T-T_{fusion})$ 
-
-$ \rho Cp_{eff} = \rho Cp(\phi) + \rho L  \frac{d \phi}{d T}$
-
-
-
-$R_T = a t^b , T = T(t,r/R_T(t)) $
-
-$\Rightarrow \frac{\partial T(t,r/R_T(t))}{\partial t}  = \frac{\partial T}{\partial t} + \frac{\partial \frac{r}{R_T(t)}}{\partial t}\frac{\partial T}{\partial r} = \frac{\partial T}{\partial t} + \frac{\partial \frac{r}{R_T(t)}}{\partial t}\frac{\partial T}{\partial r} $
-
 
 \newpage
 \bibliographystyle{unsrt}
