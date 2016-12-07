@@ -17,7 +17,7 @@ cst = { 'tau_al':  2.26E13, #s
 	'kT'    :  11.48 , #W K-1 m-1
 	'kT_m'  :  50    , #W K-1 m-1
 	'kT_s'  :  3     , #W K-1 m-1
-	'Cp'    :  1065  , #J K-1 kg-1
+	'Cp'    :  939   , #J K-1 kg-1
 	'Cp_m'  :  450   , #J K-1 kg-1
 	'Cp_s'  :  1200  , #J K-1 kg-1
 	'rho'   :  4028  , #kg m-3 
@@ -33,7 +33,7 @@ cst = { 'tau_al':  2.26E13, #s
 
 def graphe1():
     print("Calcule la figure 1 de l'article")
-    dt=0.001
+    dt=0.0001
     n = int(1/(dt*0.717))
 
     t1 = terre(Ri=500000,Ti=300,dt=dt,size=1000,cst=cst)
@@ -84,18 +84,18 @@ def graphe1():
 
 
     plt.figure(figsize=(6,8))
-    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2])
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'b')
     plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'--')
-    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2])
-    plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'--')
+    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'r')
+    plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'r--')
     plt.xlabel('Température en K')
     plt.ylabel('Rayon adimentioné')
     plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
-    plt.savefig("graph_sim1_fig1.png")
+    plt.savefig("graph_sim1_fig1.eps")
 
 def graphe2():
     print("Calcule un graphe qui compare les 2 deux régimes de diffusion selon le rayon")
-    dt=0.001
+    dt=0.0001
     n = int(1/(dt*0.717))
 
     t1 = terre(Ri=5000,Ti=300,dt=dt,size=1000,cst=cst)
@@ -128,14 +128,16 @@ def graphe2():
     print()
 
     plt.figure(figsize=(6,8))
-    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],label=r"$R \ll L_d$")
-    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],label=r"$R \simeq L_d$")
-    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],label=r"$R \gg L_d$")
+    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'b',label=r"$R \gg L_d$")
+    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g--',label=r"$R \simeq L_d$")
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'r-.',label=r"$R \ll L_d$")
+    
+    
     plt.legend(loc="best")
     plt.xlabel('Température en K')
     plt.ylabel('Rayon adimentioné')
     plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
-    plt.savefig("graph_sim1_fig2.png")
+    plt.savefig("graph_sim1_fig2.eps")
 
 graphe1()
 graphe2()

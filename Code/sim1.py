@@ -30,7 +30,7 @@ class terre:
                     'kT'    :  11.48 , #W K-1 m-1
                     'kT_m'  :  50    , #W K-1 m-1
                     'kT_s'  :  3     , #W K-1 m-1
-                    'Cp'    :  1065  , #J K-1 kg-1
+                    'Cp'    :  939   , #J K-1 kg-1
                     'Cp_m'  :  450   , #J K-1 kg-1
                     'Cp_s'  :  1200  , #J K-1 kg-1
                     'rho'   :  4028  , #kg m-3 

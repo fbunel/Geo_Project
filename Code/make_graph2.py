@@ -18,7 +18,7 @@ cst = { 'tau_al':  2.26E13, #s
 	'kT'    :  11.48 , #W K-1 m-1
 	'kT_m'  :  50    , #W K-1 m-1
 	'kT_s'  :  3     , #W K-1 m-1
-	'Cp'    :  1065  , #J K-1 kg-1
+	'Cp'    :  939   , #J K-1 kg-1
 	'Cp_m'  :  450   , #J K-1 kg-1
 	'Cp_s'  :  1200  , #J K-1 kg-1
 	'rho'   :  4028  , #kg m-3 
@@ -46,7 +46,7 @@ def graphe1():
 
     params['beta'] = 0
     t1 = terre(**params,cst=cst)
-    print("graphe 1")
+    print("couple 1")
     for _ in range(n):
         t1.update_P()
         t1.update_m()
@@ -59,7 +59,7 @@ def graphe1():
 
     params['beta'] = 1
     t2 = terre(**params,cst=cst)
-    print("graphe 2")
+    print("couple 2")
     for _ in range(n):
         t2.update_P()
         t2.update_m()
@@ -70,7 +70,7 @@ def graphe1():
 
     params['beta'] = 2
     t3 = terre(**params,cst=cst)
-    print("graphe 3")
+    print("couple 3")
     for _ in range(n):
         t3.update_P()
         t3.update_m()
@@ -82,7 +82,7 @@ def graphe1():
     """
     params['beta'] = -1
     t4 = terre(**params,cst=cst)
-    print("graphe 4")
+    print("couple 4")
     for _ in range(n):
         t4.update_P()
         t4.update_m()
@@ -95,7 +95,7 @@ def graphe1():
     params['beta'] = -1
     params['Ri'] = params['Rf']
     t5 = terre(**params,cst=cst)
-    print("graphe 5")
+    print("couple 5")
     for _ in range(n):
         t5.update_P()
         t5.update_m()
@@ -118,7 +118,7 @@ def graphe1():
     plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
     plt.legend(loc='best')
     from datetime import datetime
-    plt.savefig("graph_sim2_{}.png".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+    plt.savefig("graph_sim2_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
     
 
 
@@ -136,9 +136,8 @@ def graphe2():
 
 
     params['beta'] = 0
-    params['dt'] = 5E-6*cst['tau_al']
     t1 = terre(**params,cst=cst)
-    print("graphe 1")
+    print("couple 1")
     for _ in range(n):
         t1.update_P()
         t1.update_m()
@@ -149,10 +148,9 @@ def graphe2():
         #print("Energie totale : {}".format((t1.t*(t1.r**2)*t1.R).sum()))
 
 
-    params['dt'] = 1E-4*cst['tau_al']
     params['beta'] = 1
     t2 = terre(**params,cst=cst)
-    print("graphe 2")
+    print("couple 2")
     for _ in range(n):
         t2.update_P()
         t2.update_m()
@@ -163,7 +161,7 @@ def graphe2():
 
     params['beta'] = 2
     t3 = terre(**params,cst=cst)
-    print("graphe 3")
+    print("couple 3")
     for _ in range(n):
         t3.update_P()
         t3.update_m()
@@ -175,7 +173,7 @@ def graphe2():
     """
     params['beta'] = -1
     t4 = terre(**params,cst=cst)
-    print("graphe 4")
+    print("couple 4")
     for _ in range(n):
         t4.update_P()
         t4.update_m()
@@ -188,7 +186,7 @@ def graphe2():
     params['beta'] = -1
     params['Ri'] = params['Rf']
     t5 = terre(**params,cst=cst)
-    print("graphe 5")
+    print("couple 5")
     for _ in range(n):
         t5.update_P()
         t5.update_m()
@@ -211,10 +209,10 @@ def graphe2():
     plt.title('Température après : {0:.3}My'.format(t1.t*0.717))
     plt.legend(loc='best')
     from datetime import datetime
-    plt.savefig("graph_sim2_{}.png".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+    plt.savefig("graph_sim2_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
 
 
 
-#graphe1()
+graphe1()
 graphe2()
 plt.show()
