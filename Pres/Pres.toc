@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Th\IeC {\'e}orie}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Donn\IeC {\'e}es du probl\IeC {\`e}me}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{M\IeC {\'e}thodes num\IeC {\'e}rique}{5}{0}{1}
+\beamer@sectionintoc {2}{Diffusion sans accr\IeC {\'e}tion}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{yolo}{6}{0}{2}
+\beamer@sectionintoc {3}{Diffusion avec accr\IeC {\'e}tion}{7}{0}{3}
+\beamer@subsectionintoc {3}{1}{yolo}{7}{0}{3}
+\beamer@sectionintoc {4}{Chauffage par impact}{8}{0}{4}
+\beamer@subsectionintoc {4}{1}{yolo}{8}{0}{4}
