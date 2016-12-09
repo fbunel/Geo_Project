@@ -337,17 +337,17 @@ d2=
   \caption{}
   \label{fig:sub2}
 \end{subfigure}
-\caption{On peut voir sur ces figures le profil de température dans une planète après \SI{1}{My} de chauffage par la décomposition radioactive du $^{26}$Al. Sur la figure (a) on peut voir en trait plein le profil en supposant une origine des temps à \SI{0}{My} et en pointillé une origine des temps à \SI{1}{My}, les courbes bleues tiennent compte de la fusion des matériaux et les courbes rouges n'en tienne pas compte. Sur la figure (b) on peut voir le profil de température après \SI{1}{My} selon le rapport entre le rayon de la planète $R$ et la longueur caractéristique de diffusion $L_d$. }
+\caption{On peut voir sur ces figures le profil de température dans une planète après \SI{1}{My} de chauffage par la décomposition radioactive du $^{26}$Al. Sur la figure (a) on peut voir en trait plein le profil en supposant une origine des temps à \SI{0}{My} et en pointillé une origine des temps à \SI{1}{My}, les courbes bleues tiennent compte de la fusion des matériaux et les courbes rouges n'en tienne pas compte. Sur la figure (b) on peut voir le profil de température après \SI{1}{My} selon le rapport entre le rayon de la planète $R$ et la longueur caractéristique de diffusion $L_d \simeq 10 km $. }
 \label{fig:test}
 \end{figure}
 
 Comme on peut l'observer sur la figure \ref{fig:sub1} lorsqu'on considère un planétésimal de rayon \SI{500}{km}, le profil de température est constant sur 95\% de l'épaisseur de l'astre et chute rapidement quand on approche de la surface. Dans le cas où le chauffage a lieu de manière normale (courbes en trait plein), on constate une augmentation totale de la température d'environ \SI{3527}{K} par rapport à la température initiale de \SI{300}{K} ce qui est proche de \SI{3543}{K}, la température attendue pour un système adiabatique dans les mêmes conditions, quand on ne tient pas compte de la fusion des matériaux (courbes rouges). Si on tient compte de la fusion la température finale est de \SI{3085}{K}, ce qui correspond à la différence attendue d'environ \SI{440}{K} perdus dans la chaleur latente de fusion. Lorsque l'on prend des conditions initiales retardées de \SI{1}{My} (courbes en tirets) les températures finales sont réduites de moitié \textcolor{red}{(la raison de ce calcul est d'illustrer le lien entre le début de la formation des planètes et la formation du soleil  (soleil -> fabrique les elements -> flottent dans l'espace  -> s'agrègent en planètes  après x annèes de décroissance radioactive dans l'espace , donc délai x influe sur T final))} .
 
-Les résultats de ce modèle simple permettent aussi de distinguer plusieurs régimes de diffusion selon le rayon du planétésimal considéré. En effet le rayonnement radiatif à la surface étant extrêmement efficace du fait de sa variation en $T^4$, la température de la surface est reste quasiment égale à \SI{300}{K}, la température de la nébuleuse. C'est ensuite l'efficacité de la diffusion de la température dans le planétésimal qui détermine si l'influence de la température de surface reste confinée en surface ou si elle diffuse jusqu'au centre de l'astre. On peut observer ces différents régimes sur la figure \ref{fig:sub2}: pour un rayon petit devant la longueur caractéristique de diffusion $L_d$, le chauffage radioactif n'a quasiment aucune influence, après \SI{1}{My} la température du centre à augmenté d'environ \SI{100}{K}
+Les résultats de ce modèle simple permettent aussi de distinguer plusieurs régimes de diffusion selon le rapport du rayon du planétésimal considéré à la longueur caractérique de diffusion sur l'échelle de temps considérée $L_d = \sqrt{\frac{k_T \tau_{1/2}}{\rho C_p}} \simeq 10 km$. En effet le rayonnement radiatif à la surface étant extrêmement efficace du fait de sa variation en $T^4$, la température de la surface est reste quasiment égale à \SI{300}{K}, la température de la nébuleuse. C'est ensuite l'efficacité de la diffusion de la température dans le planétésimal qui détermine si l'influence de la température de surface reste confinée en surface ou si elle diffuse jusqu'au centre de l'astre. On peut observer ces différents régimes sur la figure \ref{fig:sub2}: pour un rayon petit devant la longueur caractéristique de diffusion, le chauffage radioactif n'a quasiment aucune influence, après \SI{1}{My} la température du centre à augmenté d'environ \SI{100}{K}
 
 \textcolor{red}{C'est la figure (b) la plus intéressante pour le quidam, je trouve. Peut etre fusionner le deux, à voir}
 
-C'est un résultat que l'on attendait aussi qualitativement du fait du rapport qu'il existe entre les termes de production volumiques et surfaciques dans une sphère : la production totale d'énergie totale due aux premiers est proportionnelle à $\frac{4}{3} \pi R^3$ et celle due aux seconds à $4 \pi R^2$. Ainsi le rapport "production volumique"/"production surfacique" évolue comme $R^3/R^2$ autrement dit comme $R$. Ainsi quand $R \rightarrow 0$ le système est dominé par l'influence du terme surfacique tandis que pour $R \rightarrow +\infty$ c'est l'influence de la production volumique qui domine.
+C'est un résultat que l'on attendait aussi qualitativement du fait du rapport qu'il existe entre les termes de production volumiques et surfaciques dans une sphère : la production totale d'énergie totale due aux premiers est proportionnelle à $\frac{4}{3} \pi R^3$ et celle due aux seconds à $4 \pi R^2$. Ainsi le rapport \textit{production volumique/production surfacique} évolue comme $R^3/R^2$ autrement dit comme $R$. Ainsi quand $R \rightarrow 0$ le système est dominé par l'influence du terme surfacique tandis que pour $R \rightarrow +\infty$ c'est l'influence de la production volumique qui domine.
 
 \subsection{Modèle 2}
 
@@ -382,14 +382,16 @@ On considère les mêmes équations que pour le problème précédent cependant 
 r = \frac{ r'}{R(t)} \quad \textrm{et on conserve} \quad t = \frac{t'}{\tau_{1/2}}    \quad      \textrm{et} \quad T = \frac{T'}{T_{neb}} 
 \end{equation}
 
+Que l'on remplace dans l'équation qui tient compte du rayon variable :
+\begin{equation}
+\rho C_p (\partial_{t'} T' - r \frac{\dot{R}}{R}\partial_{r} T')= \frac{1}{r^2} \partial_{r} ( k_{T} \frac{r^2}{R^2} \partial_{r} T')  + P
+\end{equation}
 
 L'équation adimensionnée s'écrit alors :
 
-
 \begin{equation}
-\frac{\rho C_p T_{neb}}{\tau_{1/2}} \partial_{t} T = \frac{\rho C_p T_{neb}}{\tau_{1/2}} \frac{1}{r^2} \partial_{r} ( {r}^2 \partial_{r} T)  + P 
+\frac{\rho C_p T_{neb}}{\tau_{1/2}} \partial_{t} T =  \frac{1}{r^2} \partial_{r} ( T_{neb} k_{T} \frac{r^2}{R^2} \partial_{r} T) + \frac{\rho C_p T_{neb}}{\tau_{1/2}} r \frac{\dot{R}}{R}\partial_{r} T + P
 \end{equation}
-
 
 Avec :
 \begin{equation}
@@ -400,22 +402,18 @@ Avec :
 \subsubsection{Équations discrétisées}
 
 
-\begin{equation}
-\rho C_p (d_{t'} T' - r \frac{\dot{R}}{R}\partial_{r} T')= \frac{1}{r^2} \partial_{r} ( k_{T} \frac{r^2}{R^2} \partial_{r} T')  + P
-\end{equation}
+
+
+
 
 \begin{equation}
-\frac{\rho C_p T_{neb}}{\tau_{1/2}} \partial_{t} T =  \frac{1}{r^2} \partial_{r} ( T_{neb} k_{T} \frac{r^2}{R^2} \partial_{r} T) + \rho C_p T_{neb} r \frac{\dot{R}}{R}\partial_{r} T + P
-\end{equation}
-
-\begin{equation}
-T^{t+1} - T^t =  \frac{\tau_{1/2}    k_{T}}{\rho C_p } \frac{\Delta t}{r^2} \partial_{r} ( \frac{r^2}{R^2} \partial_{r} T)  +r \tau_{1/2} \Delta t \frac{\dot{R}}{R}\partial_{r} T + \frac{\tau_{1/2}    \Delta t}{\rho C_p T_{neb} } P
+T^{t+1} - T^t =  \frac{\tau_{1/2}    k_{T}}{\rho C_p } \frac{\Delta t}{r^2} \partial_{r} ( \frac{r^2}{R^2} \partial_{r} T)  +r \Delta t \frac{\dot{R}}{R}\partial_{r} T + \frac{\tau_{1/2}    \Delta t}{\rho C_p T_{neb} } P
 \end{equation}
 
 
 \begin{multline}
 T^{t+1}_i + \frac{\tau_{1/2} k_T \Delta t}{\rho C \Delta r^2 R^2 r^2_i}\Big [ r^2_{i+1/2}(T^{t+1}_{i} - T^{t+1}_{i+1}) + r^2_{i-1/2}(T^{t+1}_{i}- T^{t+1}_{i-1}) \Big] \\
-+ \tau_{1/2} \Delta t \frac{ r \dot{R}}{2\Delta r R}\Big [ T^{t+1}_{i-1} - T^{t+1}_{i+1}  \Big] = T^{t}_r  + \frac{\tau_{1/2} \Delta t}{\rho C T_{neb}} P^t_i
++  \Delta t \frac{ r \dot{R}}{2\Delta r R}\Big [ T^{t+1}_{i-1} - T^{t+1}_{i+1}  \Big] = T^{t}_r  + \frac{\tau_{1/2} \Delta t}{\rho C T_{neb}} P^t_i
 \end{multline}
 
 
@@ -437,7 +435,7 @@ $c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
 \frac{r^2_{i+1/2}}{\Delta r^2 R^2 r^2_i}$
 , $c_2 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
 \frac{r^2_{i-1/2}}{\Delta r^2 R^2 r^2_i}$
-, $c_3 = \tau_{1/2} \Delta t \frac{ r \dot{R}}{2\Delta r R}$
+, $c_3 = \Delta t \frac{ r \dot{R}}{2\Delta r R}$
 , $c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$ 
 
 \begin{equation*}
@@ -473,7 +471,9 @@ d_3=
 
 \subsubsection{Résultats}
 
-On peut observer sur la figure \ref{fig2} les conséquences de l'évolution du rayon du planétésimal au cours du temps sur le profil de température. On constate sur la figure \ref{fig2:1} qu'une croissance linéaire du rayon ($\beta=0$) sur un temps comparable au temps de demi-vie du $^{26}$Al (\SI{0.717}{My}) donne un profil qui atteint une température maximale de \SI{3000}{K} proche des \SI{3100}{K} atteint dans notre premier modèle, le profil évolue ensuite linéairement jusqu'à atteindre \SI{300}{K} à la surface. Dans le cas où la croissance est plus accélérée, comme on peut le voir sur la figure \ref{fig2_3}, il est possible de distinguer deux périodes dans l'histoire du planétésimal: une première période de croissance lente avec un rayon faible durant laquelle l'influence des pertes radiatives est grande, suivie d'une inflation très rapide de l'astre où il acquiert la plupart de son épaisseur. La température de l'épaisseur crée lors de cette deuxième phase reste proche de \SI{300}{K} puisque l'intensité du chauffage radioactif à déjà eu le temps, au cours de la première période, de diminuer de moitié dans le cas d'une croissance en \SI{1}{My} et de s'épuiser totalement dans le cas de la croissance en \SI{5}{My} du fait de la demi-vie de \SI{0.717}{My} du $^{26}$Al.
+On peut observer sur la figure \ref{fig2} les conséquences de l'évolution du rayon du planétésimal au cours du temps sur le profil de température. On constate sur la figure \ref{fig2:1} qu'une croissance linéaire du rayon ($\beta=0$) sur un temps comparable au temps de demi-vie du $^{26}$Al (\SI{0.717}{My}) donne un profil qui atteint une température maximale de \SI{3000}{K} proche des \SI{3100}{K} atteint dans notre premier modèle, le profil évolue ensuite linéairement jusqu'à atteindre \SI{300}{K} à la surface. Dans le cas où la croissance est plus accélérée, comme on peut le voir sur la figure \ref{fig2_3}, il est possible de distinguer deux périodes dans l'histoire du planétésimal: une première période de croissance lente avec un rayon faible durant laquelle l'influence des pertes radiatives est grande, suivie d'une inflation très rapide de l'astre où il acquiert la plupart de son épaisseur. La température de l'épaisseur crée lors de cette deuxième phase reste proche de \SI{300}{K} puisque l'intensité du chauffage radioactif à déjà eu le temps, au cours de la première période, de diminuer de moitié dans le cas d'une croissance en \SI{1}{My} et de s'épuiser totalement dans le cas de la croissance en \SI{5}{My} du fait de la demi-vie de \SI{0.717}{My} du $^{26}$Al. On relève au centre des planétésimaux les températures suivantes : \SI{3600}{K}, \SI{950}{K} et \SI{400}{K} pour $\beta$ valant respectivement $0$, $1$ et $2$.
+
+Dans le cas étudié par sur la figure \ref{fig2:2}, la croissance du rayon se fait sur \SI{5}{My}, cette croissance plus lente implique que le planétésimal passe plus de temps dans le régime où la chaleur est rapidement diffusée vers la surface. De ce fait, le chauffage initial est moins efficace et la température du centre croit moins que dans le cas précédent. On relève \SI{3600}{K}, \SI{950}{K} et \SI{400}{K} pour $\beta$ valant respectivement $0$, $1$ et $2$. 
 
 \begin{figure}[h!]
 \centering
@@ -502,6 +502,75 @@ On peut observer sur la figure \ref{fig2} les conséquences de l'évolution du r
 \end{figure}
 
 
+\subsection{Modèle 3}
+
+Fichier : sim3.py
+
+\subsubsection{Description}
+
+On reprend la physique du modèle 2 en tenant compte cette fois de l'apport de chaleur qui résulte des impacts. Cette chaleur provient à la fois de la température propre du corps impactant et de l'énergie cinétique de ce dernier, acquise du fait de l'attraction entre le planétésimal et le corps impactant. L'impact ne permet toutefois pas au planétésimal de récupérer l'intégralité de l'énergie de l'impactant, seule une portion $f=20-40\%$ étant capturée et le restant étant immédiatement perdu par rayonnement. On comparera plusieurs possibilité sur la température de ces corps impactants.
+
+Hypothèses : 
+\begin{enumerate}
+\item Rayon de la Terre évoluant en $\dot{R} \simeq R^\beta$ avec $\beta = 0$, $1$ ou $2$
+\item Chauffage causé par la désintégration du $^{26}$Al, par le rayonnement de corps noir et par la déposition d'une fraction $f=20\%$ de l'énergie propre des corps impactants.
+\item La taille moyenne des impactants évolue proportionnellement au rayon du planétésimal et vaut $R(t)/5$.
+\item Le chauffage provoqué par l'impact se fait uniformément dans un couche d'épaisseur $\Delta R = R(t)/5$ à la surface.
+\item La température de l'impactant sera supposé soit constante égale à \SI{1000}{K} soit variable estimée à partir du modèle 2.
+\end{enumerate}
+
+\subsubsection{Données initiales et constantes}
+
+\begin{center}
+  \begin{tabu}{ r  c }
+    \hline
+    Rayon initial de la Terre & \SI{5}{km} \\ \hline
+    Rayon final de la Terre & \SI{500}{km} \\ \hline
+    Temps de croissance & \SI{1}{My} ou \SI{5}{My}\\ \hline
+    Fraction d'énergie déposée & 20\%       \\ \hline
+  \end{tabu}
+\end{center}
+
+\subsubsection{Équations}
+
+\begin{equation}
+\frac{\rho C_p T_{neb}}{\tau_{1/2}} (\partial_{t} T -  r \frac{\dot{R}}{R} \partial_{r} T)= \frac{\rho C_p T_{neb}}{\tau_{1/2}} \frac{1}{r^2} \partial_{r} ( {r}^2 \partial_{r} T)  + P + H_g
+\end{equation}
+Avec :
+\begin{equation}
+ P = \rho H_0 e^{-ln(2) t} 
+\end{equation}
+et sur la couche $\Delta R$:
+ 
+\begin{align}
+ &H_g = \frac{f}{4 \pi \rho R^2 \Delta R}(\partial_{t} E_g + \partial_{t} E_t) \\
+ &\partial_{t} E_g =\frac{16}{3} \pi^2 G \rho^2 R^4 \dot R \\
+ &\partial_{t} E_t = 4 \pi \rho C_p ( T_{imp} - T_{neb} ) R^2 \dot R
+\end{align}
+
+\begin{equation}
+H_g = f\frac{\dot R}{\Delta R}(\frac{4 \pi}{3} G\rho R^2 + C_p ( T_{imp} - T_{neb} ) )
+\end{equation}
+
+
+\subsubsection{Équations discrétisées}
+
+L'équation matricielle du modèle précédent reste valable, on doit juste ajouter le terme de production supplémentaire :
+\begin{equation}
+\Big [ Id + 
+c_1  d_1 +  
+c_2  d_2 +
+c_3  d_3
+ \Big] T^{t+1} = T^t + c_0 (P + H_g(r))
+\end{equation}
+
+Les matrices $d1$, $d2$ et $d3$ sont inchangée et on rappelle la valeur des coefficients : \\
+$c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
+\frac{r^2_{i+1/2}}{\Delta r^2 R^2 r^2_i}$
+, $c_2 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
+\frac{r^2_{i-1/2}}{\Delta r^2 R^2 r^2_i}$
+, $c_3 = \Delta t \frac{ r \dot{R}}{2\Delta r R}$
+, $c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$ 
 
 
 

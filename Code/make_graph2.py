@@ -1,8 +1,9 @@
 from sim2 import terre
 #from sim2_v2 import terre
 import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid.axes_grid import Grid
 import numpy as np
-
+from datetime import datetime
 
 #on va calculer T à t=+infini(~20My) pour 4 CI différentes :
 # 1.  t0 = 0My  , avec fusion des materiaux
@@ -274,9 +275,73 @@ def graphe_R():
     plt.legend(loc="best")
     from datetime import datetime
     plt.savefig("graph_sim2_fig2_3_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+    
+def graphes_T_moy():
+    print("T moy des impactants (rayon : R(t)/5 ie 1km -> 100km)")
+    T1 = np.load("T_imp_1My.npy")
+    T2 = np.load("T_imp_5My.npy")
+    fig = plt.figure(figsize=(9,5))
+    plt.title("Évolution de la température moyenne des impactants")
+    axes = Grid(fig,"111",(1,2))
+    ax1 = plt.subplot2grid((1,6), (0, 0), colspan=2)
+    ax2 = plt.subplot2grid((1,6), (0, 2), colspan=4)
+    ax1.set_ylim(0,1400)
+    ax2.set_ylim(0,1400)
+    axes = [ax1,ax2]
+    for i,T in enumerate([T1,T2]):
+        axes[i].plot(T[0],T[4],label=r'$\beta = 0$')
+        axes[i].plot(T[0],T[5],label=r'$\beta = 1$')
+        axes[i].plot(T[0],T[6],label=r'$\beta = 2$')
+
+    ax1.set_xticks([0,0.5,1])
+    ax1.set_xticklabels([0,0.5,1])
+    ax1.set_ylabel('Température moyenne (en K)')
+    ax1.set_xlabel('Temps (en My)')
+    ax1.set_title('1 My')
+    ax2.set_title('5 My')
+    ax2.set_xlabel('Temps (en My)')
+    ax2.set_xlim(0,5)
+    ax2.set_yticklabels([],visible=False)
+    ax2.legend(loc='best')
+    plt.tight_layout()
+
+    plt.savefig("graph_sim2_fig2_4_imp_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
 
 
-#graphe1()
-#graphe2()
+
+    print("T moy du planétésimal de réference (R(t) 5km -> 500km)")
+    T1 = np.load("T_pla_1My.npy")
+    T2 = np.load("T_pla_5My.npy")
+
+    fig = plt.figure(figsize=(9,5))
+    axes = Grid(fig,"111",(1,2))
+    ax1 = plt.subplot2grid((1,6), (0, 0), colspan=2)
+    ax2 = plt.subplot2grid((1,6), (0, 2), colspan=4)
+    ax1.set_ylim(0,1400)
+    ax2.set_ylim(0,1400)
+    axes = [ax1,ax2]
+    for i,T in enumerate([T1,T2]):
+        axes[i].plot(T[0],T[4],label=r'$\beta = 0$')
+        axes[i].plot(T[0],T[5],label=r'$\beta = 1$')
+        axes[i].plot(T[0],T[6],label=r'$\beta = 2$')
+
+    ax1.set_xticks([0,0.5,1])
+    ax1.set_xticklabels([0,0.5,1])
+    ax1.set_ylabel('Température moyenne (en K)')
+    ax1.set_xlabel('Temps (en My)')
+    ax1.set_title('1 My')
+    ax2.set_title('5 My')
+    ax2.set_xlabel('Temps (en My)')
+    ax2.set_xlim(0,5)
+    ax2.set_yticklabels([],visible=False)
+    ax2.legend(loc='best')
+    plt.tight_layout()
+
+    plt.savefig("graph_sim2_fig2_4_pla_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+
+
+graphe1()
+graphe2()
 graphe_R()
+graphes_T_moy()
 plt.show()
