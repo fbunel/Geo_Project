@@ -543,14 +543,13 @@ Avec :
 et sur la couche $\Delta R$:
  
 \begin{align}
- &H_g = \frac{f}{4 \pi R^2 \Delta R}(\partial_{t} E_g + \partial_{t} E_t) \\
+ &H_g = \frac{f}{4 \pi \rho R^2 \Delta R}(\partial_{t} E_g + \partial_{t} E_t) \\
  &\partial_{t} E_g =\frac{16}{3} \pi^2 G \rho^2 R^4 \dot R \\
  &\partial_{t} E_t = 4 \pi \rho C_p ( T_{imp} - T_{neb} ) R^2 \dot R
 \end{align}
 
-
 \begin{equation}
-H_g = f \frac{4 \pi}{3} G \rho^2 \frac{R^2\dot R}{\Delta R} + f \rho C_p \frac{\dot R}{\Delta R} ( T_{imp} - T_{neb} )
+H_g = f\frac{\dot R}{\Delta R}(\frac{4 \pi}{3} G\rho R^2 + C_p ( T_{imp} - T_{neb} ) )
 \end{equation}
 
 
@@ -573,7 +572,6 @@ $c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
 , $c_3 = \Delta t \frac{ r \dot{R}}{2\Delta r R}$
 , $c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$ 
 
-<<<<<<< HEAD
 \section{Condition initiale}
 
 Energie gravitationnelle nécessaire pour apporter une particule de masse $dm$ de l'infini à une distance $R$ d'un objet de masse $m$ :
@@ -609,8 +607,6 @@ soit :
 $$T_0 = T_{neb} + \frac{4\pi}{5}\frac{\rho G}{C_p} R^2$$
 
 
-=======
->>>>>>> 230ade8c47688baa8723187ea76c86c5090dbefb
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
