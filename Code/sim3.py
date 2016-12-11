@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import sparse
 from scipy.sparse  import linalg
+from scipy.interpolate import interp1d
 
 
 
@@ -13,7 +14,7 @@ class terre:
     On considère que le chauffage provient uniquement de la radioactivité
     de l'Al26 
     """
-    def __init__(self, Ri, Rf, ta, beta, Ti, dt, size, cst=None):
+    def __init__(self, Ri, Rf, ta, beta, Ti, dt, size, T_imp=None, cst=None):
         """
         R0 : rayon initial de la Terre en m
         T0 : temperature initiale en K
@@ -23,6 +24,8 @@ class terre:
 
         if cst is None:
             cst = { #'tau_al':  0.717 ,#My
+                    'f'     :  0.2   , #20%
+                    'G'     : 6.67E-11,#N m2 kg-2
                     'tau_al':  2.26E13, #s
                     'H0'    :  1.5E-7, #W kg-1
                     'T_neb' :  300   , #K
@@ -79,6 +82,27 @@ class terre:
         elif self.beta == -1:
             self.alpha = 0
         
+        
+        if isinstance(T_imp, str):
+            print("T_imp from {}".format(T_imp))
+            T_imp = np.load(T_imp)
+            T_imp[0] = T_imp[0]/0.717 #My -> adim
+            self.T_imp = interp1d(T_imp[0],T_imp[4+beta],kind='linear',
+                    fill_value="extrapolate",assume_sorted=True) 
+
+        elif isinstance(T_imp, int) or isinstance(T_imp, float) : 
+            print("T_imp = {}K".format(T_imp))
+            T_imp = np.ones(6,2)*T_imp
+            T_imp[0] = [0,100]
+            self.T_imp = interp1d(T_imp[0],T_imp[4+beta],kind='nearest',
+                    fill_value="extrapolate",assume_sorted=True) 
+
+        elif T_imp is None : 
+            print("T_imp = 1000K")
+            T_imp = np.ones(6,2)*1000
+            T_imp[0] = [0,100]
+            self.T_imp = interp1d(T_imp[0],T_imp[4+beta],kind='nearest',
+                    fill_value="extrapolate",assume_sorted=True) 
         
         #condition initiales
         self.T = (Ti/self.T0)*np.ones(size)
@@ -179,12 +203,35 @@ class terre:
     def update_P(self):
         cst = self.cst
         DR=self.R/5
+
         #On part de la chaleur radioactive
         self.P[:] = cst['rho']*cst['H0']*2**(-(self.t))
-        self.P[DR:] += (cst['f']*cst['rho']*self.alpha*(self.R**self.beta)/DR*
-                ((4/3)*np.pi*cst['G']*cst['rho']*self.alpha*(self.R**(self.beta+2)) 
-                + cst['Cp']*(T_imp-cst['T_neb'])*self.alpha*(self.R**self.beta)
-                )
+        """
+        print(int(self.size*DR/self.R))
+        print("a",cst['f']*cst['rho']*self.alpha*(self.R**(self.beta-1))/DR)
+        print("b",(4/3)*np.pi*cst['G']*cst['rho']*self.alpha*(self.R**(self.beta+2)))
+        print("c",cst['Cp']*(self.T_imp(self.t)-cst['T_neb']))
+        print("d",self.alpha*(self.R**self.beta))
+        print("e",self.T_imp(self.t))
+
+        print("i",self.P[-1])
+        print(self.T_imp(self.t))
+        print(cst['T_neb'])
+
+        """
+        """
+        h0 = cst['f']*cst['rho']*cst['Cp']*(
+                self.T_imp(self.t) - cst['T_neb'])
+        #h1 = 
+        """
+        self.P[-int(self.size*DR/self.R):] += (
+            cst['f']*cst['rho']*self.alpha*self.R**self.beta
+            /(DR*cst['tau_al'])
+            *( (4/3)*np.pi*cst['G']*cst['rho']*self.R**2 
+               + cst['Cp']*(self.T_imp(self.t)-cst['T_neb'])
+             )
+            )
+        #print("f",self.P[-1])
         #!On oublie la radiation, on se contente d'injecter du materiau 
         #à 300K a la surface!
         #la convection à tendance à causer des grosses instabilités sinon
@@ -407,7 +454,9 @@ if __name__ == '__main__' :
 
     #test_R()
 
-    cst = { 'tau_al':  2.26E13,
+    cst = { 'f'     :    0.2 ,#20%
+            'G'     : 6.67E-11,#N m2 kg-2
+            'tau_al':  2.26E13,
             'H0'    :  1.5E-7, #W kg-1
             'T_neb' :  300   , #K
             'sigma' :  5.67E-8,#W m-2 K-4
@@ -440,6 +489,7 @@ if __name__ == '__main__' :
             t.step()
             t.fusion()
             print("R: {:.6}  , t: {:.3} My".format(t.R,t.t*0.717))
+            #raise Exception
 
         plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
         #plt.plot(t.phi_m,'-')

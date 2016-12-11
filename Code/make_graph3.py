@@ -1,4 +1,5 @@
-from sim2 import terre
+from sim3 import terre
+from sim2 import terre as terre2
 #from sim2_v2 import terre
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid.axes_grid import Grid
@@ -11,7 +12,9 @@ from datetime import datetime
 # 3.  t0 = 0My  , sans fusion des materiaux
 # 4.  t0 = 1My  , sans fusion des materiaux
 
-cst = { 'tau_al':  2.26E13, #s
+cst = { 'f'     :  0.2   , #20% 
+        'G'     : 6.67E-11,#N m2 kg-2
+        'tau_al':  2.26E13, #s
 	'H0'    :  1.5E-7, #W kg-1
 	'T_neb' :  300   , #K
 	'sigma' :  5.67E-8,#W m-2 K-4
@@ -29,8 +32,6 @@ cst = { 'tau_al':  2.26E13, #s
 	'Tfus_s':  1408  , #K
 	'L_m'   :  2.5E5 , #J kg-1
 	'L_s'   :  5.0E5 , #J kg-1
-	#'L_m'   :  1 , #J kg-1
-	#'L_s'   :  1 , #J kg-1
 	}
 
 def graphe1():
@@ -41,6 +42,7 @@ def graphe1():
     'Ti':300,
     'dt':1E-4*cst['tau_al'],
     'size':1000,
+    'T_imp':'T_imp_1My.npy',
     }
     n = int(params['ta']/params['dt'])
 
@@ -80,31 +82,6 @@ def graphe1():
         t3.fusion()
         print("t: {:.3} My    ".format(t3.t*0.717),end='\r')
 
-    """
-    params['beta'] = -1
-    t4 = terre(**params,cst=cst)
-    print("courbe 4")
-    for _ in range(n):
-        t4.update_P()
-        t4.update_m()
-        #t.P[:]=0
-        t4.step()
-        t4.fusion()
-        print("t: {:.3} My    ".format(t4.t*0.717),end='\r')
-
-    """
-    params['beta'] = -1
-    params['Ri'] = params['Rf']
-    t5 = terre(**params,cst=cst)
-    print("courbe 5")
-    for _ in range(n):
-        t5.update_P()
-        t5.update_m()
-        #t.P[:]=0
-        t5.step()
-        t5.fusion()
-        print("t: {:.3} My    ".format(t5.t*0.717),end='\r')
-
 
     print()
 
@@ -112,15 +89,67 @@ def graphe1():
     plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'b',label=r"$\beta = 0$")
     plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g',label=r"$\beta = 1$")
     plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'r',label=r"$\beta = 2$")
-#plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'k-.',label=r"$\beta = -1$")
-    plt.plot(t5.T[:-1]*t5.T0,t5.r[:-1]/t5.r[-2],'k-.',label=r"$\beta = \varnothing $")
     plt.xlabel('Température en K')
     plt.ylabel('Rayon adimentioné')
     plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
     plt.legend(loc='best')
     from datetime import datetime
-    plt.savefig("graph_sim2_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+    plt.savefig("graph_sim3_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
     
+def graphe1_addref():
+    params = {'Ri':5E3,
+    'Rf':5E5,
+    'beta': 0,
+    'ta':1*cst['tau_al']/0.717,#1My
+    'Ti':300,
+    'dt':1E-4*cst['tau_al'],
+    'size':1000,
+    }
+    n = int(params['ta']/params['dt'])
+
+
+    params['beta'] = 0
+    t1 = terre2(**params,cst=cst)
+    print("courbe 1")
+    for _ in range(n):
+        t1.update_P()
+        t1.update_m()
+        #t.P[:]=0
+        t1.step()
+        t1.fusion()
+        print("t: {:.3} My    ".format(t1.t*0.717),end='\r')
+
+    params['beta'] = 1
+    t2 = terre2(**params,cst=cst)
+    print("courbe 2")
+    for _ in range(n):
+        t2.update_P()
+        t2.update_m()
+        #t.P[:]=0
+        t2.step()
+        t2.fusion()
+        print("t: {:.3} My    ".format(t2.t*0.717),end='\r')
+
+    params['beta'] = 2
+    t3 = terre2(**params,cst=cst)
+    print("courbe 3")
+    for _ in range(n):
+        t3.update_P()
+        t3.update_m()
+        #t.P[:]=0
+        t3.step()
+        t3.fusion()
+        print("t: {:.3} My    ".format(t3.t*0.717),end='\r')
+
+
+    print()
+
+    #plt.figure(figsize=(6,8))
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'b--',lw=0.5,label=r"$\beta = 0$")
+    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g--',lw=0.5,label=r"$\beta = 1$")
+    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'r--',lw=0.5,label=r"$\beta = 2$")
+    plt.savefig("graph_sim3_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+
 def graphe2():
     params = {'Ri':5E3,
     'Rf':5E5,
@@ -129,6 +158,7 @@ def graphe2():
     'Ti':300,
     'dt':1E-4*cst['tau_al'],
     'size':1000,
+    'T_imp':'T_imp_5My.npy',
     }
     n = int(params['ta']/params['dt'])
 #n=10
@@ -144,8 +174,6 @@ def graphe2():
         t1.step()
         t1.fusion()
         print("t: {:.3} My    ".format(t1.t*0.717),end='\r')
-        #print("Energie totale : {}".format((t1.t*(t1.r**2)*t1.R).sum()))
-
 
     params['beta'] = 1
     t2 = terre(**params,cst=cst)
@@ -169,31 +197,6 @@ def graphe2():
         t3.fusion()
         print("t: {:.3} My    ".format(t3.t*0.717),end='\r')
 
-    """
-    params['beta'] = -1
-    t4 = terre(**params,cst=cst)
-    print("courbe 4")
-    for _ in range(n):
-        t4.update_P()
-        t4.update_m()
-        #t.P[:]=0
-        t4.step()
-        t4.fusion()
-        print("t: {:.3} My    ".format(t4.t*0.717),end='\r')
-
-    """
-    params['beta'] = -1
-    params['Ri'] = params['Rf']
-    t5 = terre(**params,cst=cst)
-    print("courbe 5")
-    for _ in range(n):
-        t5.update_P()
-        t5.update_m()
-        #t.P[:]=0
-        t5.step()
-        t5.fusion()
-        print("t: {:.3} My    ".format(t5.t*0.717),end='\r')
-
 
     print()
 
@@ -201,14 +204,67 @@ def graphe2():
     plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'b',label=r"$\beta = 0$")
     plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g',label=r"$\beta = 1$")
     plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'r',label=r"$\beta = 2$")
-#plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'k-.',label=r"$\beta = -1$")
-    plt.plot(t5.T[:-1]*t5.T0,t5.r[:-1]/t5.r[-2],'k-.',label=r"$\beta = \varnothing $")
     plt.xlabel('Température en K')
     plt.ylabel('Rayon adimentioné')
     plt.title('Température après : {0:.3}My'.format(t1.t*0.717))
     plt.legend(loc='best')
     from datetime import datetime
-    plt.savefig("graph_sim2_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+    plt.savefig("graph_sim3_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
+
+def graphe2_addref():
+    params = {'Ri':5E3,
+    'Rf':5E5,
+    'beta': 0,
+    'ta':5*cst['tau_al']/0.717,#5My
+    'Ti':300,
+    'dt':1E-4*cst['tau_al'],
+    'size':1000,
+    }
+    n = int(params['ta']/params['dt'])
+#n=10
+
+
+    params['beta'] = 0
+    t1 = terre2(**params,cst=cst)
+    print("courbe 1")
+    for _ in range(n):
+        t1.update_P()
+        t1.update_m()
+        #t.P[:]=0
+        t1.step()
+        t1.fusion()
+        print("t: {:.3} My    ".format(t1.t*0.717),end='\r')
+
+    params['beta'] = 1
+    t2 = terre2(**params,cst=cst)
+    print("courbe 2")
+    for _ in range(n):
+        t2.update_P()
+        t2.update_m()
+        #t.P[:]=0
+        t2.step()
+        t2.fusion()
+        print("t: {:.3} My    ".format(t2.t*0.717),end='\r')
+
+    params['beta'] = 2
+    t3 = terre2(**params,cst=cst)
+    print("courbe 3")
+    for _ in range(n):
+        t3.update_P()
+        t3.update_m()
+        #t.P[:]=0
+        t3.step()
+        t3.fusion()
+        print("t: {:.3} My    ".format(t3.t*0.717),end='\r')
+
+
+    print()
+
+    #plt.figure(figsize=(6,8))
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'b--',lw=0.5,label=r"$\beta = 0$")
+    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g--',lw=0.5,label=r"$\beta = 1$")
+    plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'r--',lw=0.5,label=r"$\beta = 2$")
+    plt.savefig("graph_sim3_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
 
 def graphe_R():
     global R1,R2,t1,t2
@@ -338,7 +394,9 @@ def graphes_T_moy():
 
 
 graphe1()
+graphe1_addref()
 graphe2()
-graphe_R()
-graphes_T_moy()
+graphe2_addref()
+#graphe_R()
+#graphes_T_moy()
 plt.show()

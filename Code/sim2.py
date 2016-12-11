@@ -179,7 +179,7 @@ class terre:
     def update_P(self):
         cst = self.cst
         #On part de la chaleur radioactive
-        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t))
+        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t+self.dt))
         #!On oublie la radiation, on se contente d'injecter du materiau 
         #à 300K a la surface!
         #la convection à tendance à causer des grosses instabilités sinon
