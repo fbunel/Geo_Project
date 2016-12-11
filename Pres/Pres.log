@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  9 DEC 2016 18:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  11 DEC 2016 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1617,7 +1617,11 @@ Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemewh
 ale.sty
 Package: beamercolorthemewhale 2010/06/17  (rcs-revision d02a7cf4d8ae)
-)) (./Pres.aux)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemeseri
+f.sty
+Package: beamerfontthemeserif 2010/06/17  (rcs-revision d02a7cf4d8ae)
+) (./Pres.aux)
 \openout1 = `Pres.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -1704,60 +1708,6 @@ LaTeX Info: Redefining \nameref on input line 35.
 \@outlinefile=\write5
 \openout5 = `Pres.out'.
 
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 35.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 35.
-\symnumbers=\mathgroup12
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 35.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/cmss/m/it on input line 3
-5.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/bx/sl --> OT1/cmss/m/it on input line 
-35.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 35.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 35.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 35.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 35.
-LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 35.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 35.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 35.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 3
-5.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-35.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
@@ -1788,27 +1738,27 @@ LaTeX Info: Redefining \includegraphics on input line 35.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.13} (current compat level: 1.11).
 
-(./Pres.nav) <figures/logo_lyon1.jpg, id=60, 4642.34375pt x 3362.5625pt>
+(./Pres.nav) <figures/logo_lyon1.jpg, id=72, 4642.34375pt x 3362.5625pt>
 File: figures/logo_lyon1.jpg Graphic file (type jpg)
 
 <use figures/logo_lyon1.jpg>
-Package pdftex.def Info: figures/logo_lyon1.jpg used on input line 58.
+Package pdftex.def Info: figures/logo_lyon1.jpg used on input line 57.
 (pdftex.def)             Requested size: 51.00218pt x 36.98866pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 58.
+LaTeX Font Info:    Try loading font information for U+msa on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 58.
+LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 58.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 58.
+line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1816,142 +1766,183 @@ thkerncmss.
 )
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 58.
+(Font)              using `U/stmry/m/n' instead on input line 57.
 
-<figures/logo_ens.jpg, id=61, 1032.85875pt x 384.6872pt>
+<figures/logo_ens.jpg, id=73, 1032.85875pt x 384.6872pt>
 File: figures/logo_ens.jpg Graphic file (type jpg)
 
 <use figures/logo_ens.jpg>
-Package pdftex.def Info: figures/logo_ens.jpg used on input line 58.
+Package pdftex.def Info: figures/logo_ens.jpg used on input line 57.
 (pdftex.def)             Requested size: 99.30461pt x 36.98866pt.
 
-Overfull \hbox (5.41043pt too wide) in paragraph at lines 58--58
+Overfull \hbox (5.41043pt too wide) in paragraph at lines 57--57
  [] 
  []
 
-<figures/logo_univ_lyon.jpg, id=62, 590.205pt x 301.125pt>
+<figures/logo_univ_lyon.jpg, id=74, 590.205pt x 301.125pt>
 File: figures/logo_univ_lyon.jpg Graphic file (type jpg)
 
 <use figures/logo_univ_lyon.jpg>
-Package pdftex.def Info: figures/logo_univ_lyon.jpg used on input line 58.
+Package pdftex.def Info: figures/logo_univ_lyon.jpg used on input line 57.
 (pdftex.def)             Requested size: 72.49661pt x 36.98866pt.
 
-<figures/sdm.png, id=69, 437.9072pt x 140.25279pt>
+<figures/sdm.png, id=81, 437.9072pt x 140.25279pt>
 File: figures/sdm.png Graphic file (type png)
  <use figures/sdm.png>
-Package pdftex.def Info: figures/sdm.png used on input line 58.
+Package pdftex.def Info: figures/sdm.png used on input line 57.
 (pdftex.def)             Requested size: 151.02467pt x 48.36958pt.
 
-<figures/geol.jpg, id=71, 1421.31pt x 562.1pt>
+<figures/geol.jpg, id=83, 1421.31pt x 562.1pt>
 File: figures/geol.jpg Graphic file (type jpg)
  <use figures/geol.jpg>
-Package pdftex.def Info: figures/geol.jpg used on input line 58.
+Package pdftex.def Info: figures/geol.jpg used on input line 57.
 (pdftex.def)             Requested size: 107.91658pt x 42.67912pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/logo_lyon1.jpg> 
 <./figures/logo_ens.jpg> <./figures/logo_univ_lyon.jpg> <./figures/sdm.png> <./
-figures/geol.jpg>]
+figures/geol.jpg>] <figures/radioactif.png, id=95, 710.85246pt x 710.85246pt>
+File: figures/radioactif.png Graphic file (type png)
+
+<use figures/radioactif.png>
+Package pdftex.def Info: figures/radioactif.png used on input line 102.
+(pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
+
+<figures/asteroid.png, id=96, 205.0059pt x 225.9642pt>
+File: figures/asteroid.png Graphic file (type png)
+
+<use figures/asteroid.png>
+Package pdftex.def Info: figures/asteroid.png used on input line 102.
+(pdftex.def)             Requested size: 56.9055pt x 62.72131pt.
+
+<figures/terre_core.pdf, id=97, 670.66563pt x 514.56241pt>
+File: figures/terre_core.pdf Graphic file (type pdf)
+
+<use figures/terre_core.pdf>
+Package pdftex.def Info: figures/terre_core.pdf used on input line 102.
+(pdftex.def)             Requested size: 113.81102pt x 87.31741pt.
+
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 67.
+(Font)              size <5> substituted on input line 102.
 
-<figures/mini.jpeg, id=83, 91.34125pt x 108.405pt>
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 67.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
 
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 2/9 [][] 
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 2/12 [][] 
  []
 
 [2
 
- <./figures/mini.jpeg>] (./Pres.toc)
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 76.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
-
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 3/9 [][] 
+ <./figures/terre_core.pdf> <./figures/radioactif.png> <./figures/asteroid.png>
+] (./Pres.toc)
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 3/12 [][] 
  []
 
 [3
 
-]
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 87.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
+] <figures/blackbody.pdf, id=142, 413.44318pt x 341.86714pt>
+File: figures/blackbody.pdf Graphic file (type pdf)
 
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 4/9 [][] 
+<use figures/blackbody.pdf>
+Package pdftex.def Info: figures/blackbody.pdf used on input line 147.
+(pdftex.def)             Requested size: 142.26378pt x 117.6313pt.
+
+<figures/lattentheat.pdf, id=143, 446.46254pt x 376.20212pt>
+File: figures/lattentheat.pdf Graphic file (type pdf)
+
+<use figures/lattentheat.pdf>
+Package pdftex.def Info: figures/lattentheat.pdf used on input line 147.
+(pdftex.def)             Requested size: 142.26378pt x 119.87624pt.
+
+Overfull \vbox (2.96388pt too high) detected at line 147
+ []
+
+
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 4/12 [][] 
  []
 
 [4
 
-]
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 97.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
+ <./figures/blackbody.pdf> <./figures/lattentheat.pdf
 
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 5/9 [][] 
+pdfTeX warning: pdflatex (file ./figures/lattentheat.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>] <figures/chrono.png, id=246, 262.9825pt x 369.38pt>
+File: figures/chrono.png Graphic file (type png)
+
+<use figures/chrono.png>
+Package pdftex.def Info: figures/chrono.png used on input line 223.
+(pdftex.def)             Requested size: 40.51306pt x 56.9055pt.
+ <figures/ruban.png, id=247, 660.4675pt x 392.46625pt>
+File: figures/ruban.png Graphic file (type png)
+
+<use figures/ruban.png>
+Package pdftex.def Info: figures/ruban.png used on input line 223.
+(pdftex.def)             Requested size: 95.76028pt x 56.9055pt.
+ <figures/thermo.png, id=248, 256.96pt x 256.96pt>
+File: figures/thermo.png Graphic file (type png)
+
+<use figures/thermo.png>
+Package pdftex.def Info: figures/thermo.png used on input line 223.
+(pdftex.def)             Requested size: 56.90385pt x 56.9055pt.
+
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 5/12 [][] 
  []
 
 [5
 
-]
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 108.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
-
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 6/9 [][] 
+ <./figures/chrono.png> <./figures/ruban.png> <./figures/thermo.png>]
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 6/12 [][] 
  []
 
 [6
 
 ]
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 119.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
-
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 7/9 [][] 
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 7/12 [][] 
  []
 
 [7
 
 ]
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 130.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
-
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 8/9 [][] 
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 8/12 [][] 
  []
 
 [8
 
 ]
-File: figures/mini.jpeg Graphic file (type jpg)
- <use figures/mini.jpeg>
-Package pdftex.def Info: figures/mini.jpeg used on input line 139.
-(pdftex.def)             Requested size: 28.45274pt x 33.7673pt.
-
-Overfull \hbox (29.39624pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 9/9 [][] 
+Overfull \hbox (32.58379pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 9/12 [][] 
  []
 
-Package atenddvi Info: Last page = 9.
 [9
+
+]
+Overfull \hbox (35.77133pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 10/12 [][] 
+ []
+
+[10
+
+]
+Overfull \hbox (35.77133pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 11/12 [][] 
+ []
+
+[11
+
+]
+Overfull \hbox (35.77133pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 12/12 [][] 
+ []
+
+Package atenddvi Info: Last page = 12.
+[12
 
 ]
 \tf@nav=\write6
@@ -1963,13 +1954,13 @@ Package atenddvi Info: Last page = 9.
 \tf@snm=\write8
 \openout8 = `Pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 143.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 143.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 352.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 352.
  (./Pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 143.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 143.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 352.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 352.
 Package rerunfilecheck Info: File `Pres.out' has not changed.
-(rerunfilecheck)             Checksum: E5600D9DC348C2A82678E1EE7C737606;530.
+(rerunfilecheck)             Checksum: A43873EBA16FE37B77B7DB2BD90CE71B;729.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1978,24 +1969,32 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 143.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 352.
  ) 
 Here is how much of TeX's memory you used:
- 40611 strings out of 493029
- 943982 string characters out of 6136235
- 1107745 words of memory out of 5000000
- 43335 multiletter control sequences out of 15000+600000
- 14184 words of font info for 52 fonts, out of 8000000 for 9000
+ 40791 strings out of 493029
+ 947904 string characters out of 6136235
+ 1112051 words of memory out of 5000000
+ 43487 multiletter control sequences out of 15000+600000
+ 22261 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,16n,86p,10424b,665s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb>
-Output written on Pres.pdf (9 pages, 1054083 bytes).
+ 61i,16n,86p,10424b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Pres.pdf (12 pages, 4142271 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 227 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 355 PDF objects out of 1000 (max. 8388607)
+ 280 compressed objects within 3 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 

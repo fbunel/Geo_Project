@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg4397"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="lattentheat.svg">
+  <defs
+     id="defs4399">
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5657"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5659"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5346"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Sstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Sstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5343"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) translate(6,0)" />
+    </marker>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.39618433,0,0,2.5240776,-18.673386,180.76374)"
+       y2="7.1313181"
+       x2="519.95996"
+       y1="7.1313181"
+       x1="363.46716"
+       id="grad_spectrum">
+      <stop
+         id="stop3357"
+         stop-color="#020005"
+         offset="0.000000" />
+      <stop
+         id="stop3359"
+         stop-color="#020006"
+         offset="0.013514" />
+      <stop
+         id="stop3361"
+         stop-color="#030008"
+         offset="0.027027" />
+      <stop
+         id="stop3363"
+         stop-color="#04000a"
+         offset="0.040541" />
+      <stop
+         id="stop3365"
+         stop-color="#06000d"
+         offset="0.054054" />
+      <stop
+         id="stop3367"
+         stop-color="#080110"
+         offset="0.067568" />
+      <stop
+         id="stop3369"
+         stop-color="#0c0117"
+         offset="0.081081" />
+      <stop
+         id="stop3371"
+         stop-color="#11021f"
+         offset="0.094595" />
+      <stop
+         id="stop3373"
+         stop-color="#17032a"
+         offset="0.108108" />
+      <stop
+         id="stop3375"
+         stop-color="#1f053a"
+         offset="0.121622" />
+      <stop
+         id="stop3377"
+         stop-color="#25084b"
+         offset="0.135135" />
+      <stop
+         id="stop3379"
+         stop-color="#290a5c"
+         offset="0.148649" />
+      <stop
+         id="stop3381"
+         stop-color="#2b0e6f"
+         offset="0.162162" />
+      <stop
+         id="stop3383"
+         stop-color="#291380"
+         offset="0.175676" />
+      <stop
+         id="stop3385"
+         stop-color="#1f237b"
+         offset="0.189189" />
+      <stop
+         id="stop3387"
+         stop-color="#132e74"
+         offset="0.202703" />
+      <stop
+         id="stop3389"
+         stop-color="#09376c"
+         offset="0.216216" />
+      <stop
+         id="stop3391"
+         stop-color="#0a3e66"
+         offset="0.229730" />
+      <stop
+         id="stop3393"
+         stop-color="#0c4667"
+         offset="0.243243" />
+      <stop
+         id="stop3395"
+         stop-color="#0e4f6a"
+         offset="0.256757" />
+      <stop
+         id="stop3397"
+         stop-color="#10596c"
+         offset="0.270270" />
+      <stop
+         id="stop3399"
+         stop-color="#11636d"
+         offset="0.283784" />
+      <stop
+         id="stop3401"
+         stop-color="#146e6f"
+         offset="0.297297" />
+      <stop
+         id="stop3403"
+         stop-color="#177970"
+         offset="0.310811" />
+      <stop
+         id="stop3405"
+         stop-color="#178672"
+         offset="0.324324" />
+      <stop
+         id="stop3407"
+         stop-color="#1a9574"
+         offset="0.337838" />
+      <stop
+         id="stop3409"
+         stop-color="#1da375"
+         offset="0.351351" />
+      <stop
+         id="stop3411"
+         stop-color="#1db273"
+         offset="0.364865" />
+      <stop
+         id="stop3413"
+         stop-color="#20c070"
+         offset="0.378378" />
+      <stop
+         id="stop3415"
+         stop-color="#22cb6b"
+         offset="0.391892" />
+      <stop
+         id="stop3417"
+         stop-color="#21d662"
+         offset="0.405405" />
+      <stop
+         id="stop3419"
+         stop-color="#23e054"
+         offset="0.418919" />
+      <stop
+         id="stop3421"
+         stop-color="#36e842"
+         offset="0.432432" />
+      <stop
+         id="stop3423"
+         stop-color="#50ed28"
+         offset="0.445946" />
+      <stop
+         id="stop3425"
+         stop-color="#73eb22"
+         offset="0.459459" />
+      <stop
+         id="stop3427"
+         stop-color="#8fe722"
+         offset="0.472973" />
+      <stop
+         id="stop3429"
+         stop-color="#a5e221"
+         offset="0.486486" />
+      <stop
+         id="stop3431"
+         stop-color="#b9dc22"
+         offset="0.500000" />
+      <stop
+         id="stop3433"
+         stop-color="#cbd621"
+         offset="0.513514" />
+      <stop
+         id="stop3435"
+         stop-color="#dcce20"
+         offset="0.527027" />
+      <stop
+         id="stop3437"
+         stop-color="#ecc420"
+         offset="0.540541" />
+      <stop
+         id="stop3439"
+         stop-color="#f2b735"
+         offset="0.554054" />
+      <stop
+         id="stop3441"
+         stop-color="#f5ab42"
+         offset="0.567568" />
+      <stop
+         id="stop3443"
+         stop-color="#f69f49"
+         offset="0.581081" />
+      <stop
+         id="stop3445"
+         stop-color="#f7944b"
+         offset="0.594595" />
+      <stop
+         id="stop3447"
+         stop-color="#f98848"
+         offset="0.608108" />
+      <stop
+         id="stop3449"
+         stop-color="#fa7b42"
+         offset="0.621622" />
+      <stop
+         id="stop3451"
+         stop-color="#fb6c39"
+         offset="0.635135" />
+      <stop
+         id="stop3453"
+         stop-color="#fd5b2e"
+         offset="0.648649" />
+      <stop
+         id="stop3455"
+         stop-color="#fc471f"
+         offset="0.662162" />
+      <stop
+         id="stop3457"
+         stop-color="#f7300f"
+         offset="0.675676" />
+      <stop
+         id="stop3459"
+         stop-color="#ea220d"
+         offset="0.689189" />
+      <stop
+         id="stop3461"
+         stop-color="#d42215"
+         offset="0.702703" />
+      <stop
+         id="stop3463"
+         stop-color="#bf2318"
+         offset="0.716216" />
+      <stop
+         id="stop3465"
+         stop-color="#a92309"
+         offset="0.729730" />
+      <stop
+         id="stop3467"
+         stop-color="#981f07"
+         offset="0.743243" />
+      <stop
+         id="stop3469"
+         stop-color="#871b06"
+         offset="0.756757" />
+      <stop
+         id="stop3471"
+         stop-color="#771805"
+         offset="0.770270" />
+      <stop
+         id="stop3473"
+         stop-color="#671504"
+         offset="0.783784" />
+      <stop
+         id="stop3475"
+         stop-color="#591303"
+         offset="0.797297" />
+      <stop
+         id="stop3477"
+         stop-color="#4d1103"
+         offset="0.810811" />
+      <stop
+         id="stop3479"
+         stop-color="#420e02"
+         offset="0.824324" />
+      <stop
+         id="stop3481"
+         stop-color="#370c01"
+         offset="0.837838" />
+      <stop
+         id="stop3483"
+         stop-color="#2e0a01"
+         offset="0.851351" />
+      <stop
+         id="stop3485"
+         stop-color="#270801"
+         offset="0.864865" />
+      <stop
+         id="stop3487"
+         stop-color="#210600"
+         offset="0.878378" />
+      <stop
+         id="stop3489"
+         stop-color="#1e0400"
+         offset="0.891892" />
+      <stop
+         id="stop3491"
+         stop-color="#1a0300"
+         offset="0.905405" />
+      <stop
+         id="stop3493"
+         stop-color="#170200"
+         offset="0.918919" />
+      <stop
+         id="stop3495"
+         stop-color="#130100"
+         offset="0.932432" />
+      <stop
+         id="stop3497"
+         stop-color="#100100"
+         offset="0.945946" />
+      <stop
+         id="stop3499"
+         stop-color="#0c0100"
+         offset="0.959459" />
+      <stop
+         id="stop3501"
+         stop-color="#080100"
+         offset="0.972973" />
+      <stop
+         id="stop3503"
+         stop-color="#060100"
+         offset="0.986486" />
+      <stop
+         id="stop3505"
+         stop-color="#040100"
+         offset="1.000000" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="marker5012"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path5014" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5442"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5444"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="880.33421"
+     inkscape:cy="550.88212"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4402">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       transform="translate(-22.673386,177.76374)"
+       id="g3517"
+       style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(-22.673386,177.76374)"
+       id="g3519"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(556.42661,622.66375)"
+       style="color:#000000;font-size:15px;font-family:Arial;text-anchor:middle;fill:#000000;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g3725">
+      <text
+         id="text3727"
+         style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none">
+        <tspan
+           id="tspan3729"
+           style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none" />
+      </text>
+    </g>
+    <g
+       transform="matrix(0,-1,1,0,3.2266143,392.86375)"
+       style="color:#000000;font-size:15px;font-family:Arial;text-anchor:middle;fill:#000000;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g3733" />
+    <g
+       transform="translate(307.32661,649.66375)"
+       style="color:#000000;font-size:15px;font-family:Arial;text-anchor:middle;fill:#000000;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g3739">
+      <text
+         id="text3741"
+         style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none">
+        <tspan
+           id="tspan3743"
+           style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none" />
+      </text>
+    </g>
+    <g
+       transform="translate(315.62661,304.76375)"
+       style="color:#000000;font-size:15px;font-family:Arial;text-anchor:start;fill:#000000;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g3763">
+      <text
+         id="text3765"
+         style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none">
+        <tspan
+           id="tspan3767"
+           style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none" />
+      </text>
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path5709"
+       d="M 83.571429,580.21935 223.21429,440.57649"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g3771"
+       transform="translate(5.1837569,2.7637398)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 365.38822,442.02482 505.03107,302.38196"
+       id="path5711"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5715"
+       d="m 221.44341,441.30455 145.71429,0"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5717"
+       y="507.82422"
+       x="-313.53342"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="507.82422"
+         x="-313.53342"
+         id="tspan5719"
+         sodipodi:role="line">Solide</tspan></text>
+    <text
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5721"
+       y="611.34802"
+       x="-23.861681"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="611.34802"
+         x="-23.861681"
+         id="tspan5723"
+         sodipodi:role="line">Liquide</tspan></text>
+    <text
+       transform="matrix(0,-1,1,0,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5729"
+       y="44.171654"
+       x="-525.56134"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="44.171654"
+         x="-525.56134"
+         id="tspan5731"
+         sodipodi:role="line">Température</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text5737"
+       y="645.06873"
+       x="124.45079"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="645.06873"
+         x="124.45079"
+         id="tspan5739"
+         sodipodi:role="line">Energie apportée</tspan></text>
+    <a
+       transform="translate(-22.673386,177.76374)"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="a3777"
+       xlink:title="Plot #2">
+      <g
+         id="g3779"
+         style="color:#008000;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    </a>
+    <a
+       transform="translate(-22.673386,177.76374)"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="a3783"
+       xlink:title="Plot #3">
+      <g
+         id="g3785"
+         style="color:#0000ff;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    </a>
+    <g
+       transform="translate(-22.673386,177.76374)"
+       id="g3789"
+       style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(-22.673386,177.76374)"
+       id="g3791"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(-22.673386,177.76374)"
+       id="g3795"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(-22.673386,177.76374)"
+       id="g4053"
+       style="color:#ffffff;fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+    <flowRoot
+       transform="translate(-22.673386,177.76374)"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="flowRoot4071"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4073"><rect
+           style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none"
+           y="85.970146"
+           x="24.179104"
+           height="26.865671"
+           width="0"
+           id="rect4075" /></flowRegion><flowPara
+         id="flowPara4077" /></flowRoot>    <path
+       inkscape:connector-curvature="0"
+       id="path5098"
+       d="m 65.826614,595.76375 0,-393.32045"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5657)" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Send)"
+       d="m 60.616324,598.10353 490.006286,0"
+       id="path5440" />
+  </g>
+</svg>
