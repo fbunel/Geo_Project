@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  11 DEC 2016 16:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  11 DEC 2016 18:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1828,7 +1828,7 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 
 
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 2/15 [][] 
+[]     \OT1/cmss/m/n/6 2/16 [][] 
  []
 
 [2
@@ -1836,7 +1836,7 @@ Overfull \hbox (32.58379pt too wide) has occurred while \output is active
  <./figures/terre_core.pdf> <./figures/radioactif.png> <./figures/asteroid.png>
 ] (./Pres.toc)
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 3/15 [][] 
+[]     \OT1/cmss/m/n/6 3/16 [][] 
  []
 
 [3
@@ -1860,7 +1860,7 @@ Overfull \vbox (2.96388pt too high) detected at line 147
 
 
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 4/15 [][] 
+[]     \OT1/cmss/m/n/6 4/16 [][] 
  []
 
 [4
@@ -1889,7 +1889,7 @@ Package pdftex.def Info: figures/thermo.png used on input line 223.
 (pdftex.def)             Requested size: 56.90385pt x 56.9055pt.
 
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 5/15 [][] 
+[]     \OT1/cmss/m/n/6 5/16 [][] 
  []
 
 [5
@@ -1913,114 +1913,119 @@ Overfull \hbox (5.69044pt too wide) detected at line 258
 
 
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 6/15 [][] 
+[]     \OT1/cmss/m/n/6 6/16 [][] 
  []
 
 [6
 
  <./figures/dust.png> <./figures/mimas.png>]
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 7/15 [][] 
+[]     \OT1/cmss/m/n/6 7/16 [][] 
  []
 
 [7
 
-] <figures/diffusion1.pdf, id=289, 578.16pt x 433.62pt>
-File: figures/diffusion1.pdf Graphic file (type pdf)
+] <figures/diffusion2.pdf, id=289, 532.06108pt x 412.32324pt>
+File: figures/diffusion2.pdf Graphic file (type pdf)
 
-<use figures/diffusion1.pdf>
-Package pdftex.def Info: figures/diffusion1.pdf used on input line 308.
-(pdftex.def)             Requested size: 284.52756pt x 213.39536pt.
-
-Overfull \vbox (0.45573pt too high) detected at line 308
- []
-
+<use figures/diffusion2.pdf>
+Package pdftex.def Info: figures/diffusion2.pdf used on input line 310.
+(pdftex.def)             Requested size: 256.0748pt x 198.45396pt.
 
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 8/15 [][] 
+[]     \OT1/cmss/m/n/6 8/16 [][] 
  []
 
 [8
 
- <./figures/diffusion1.pdf>]
-<figures/diffusion2.pdf, id=313, 578.16pt x 433.62pt>
-File: figures/diffusion2.pdf Graphic file (type pdf)
+ <./figures/diffusion2.pdf>]
+<figures/diffusion1.pdf, id=318, 532.06108pt x 412.32324pt>
+File: figures/diffusion1.pdf Graphic file (type pdf)
 
-<use figures/diffusion2.pdf>
-Package pdftex.def Info: figures/diffusion2.pdf used on input line 325.
-(pdftex.def)             Requested size: 284.52756pt x 213.39536pt.
-
-Overfull \vbox (0.45573pt too high) detected at line 325
- []
-
+<use figures/diffusion1.pdf>
+Package pdftex.def Info: figures/diffusion1.pdf used on input line 325.
+(pdftex.def)             Requested size: 256.0748pt x 198.45396pt.
 
 Overfull \hbox (32.58379pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 9/15 [][] 
+[]     \OT1/cmss/m/n/6 9/16 [][] 
  []
 
 [9
 
- <./figures/diffusion2.pdf>]
-File: figures/diffusion2.pdf Graphic file (type pdf)
- <use figures/diffusion2.pdf>
-Package pdftex.def Info: figures/diffusion2.pdf used on input line 337.
-(pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
+ <./figures/diffusion1.pdf>]
+File: figures/diffusion1.pdf Graphic file (type pdf)
+ <use figures/diffusion1.pdf>
+Package pdftex.def Info: figures/diffusion1.pdf used on input line 342.
+(pdftex.def)             Requested size: 256.0748pt x 198.45396pt.
 
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 10/15 [][] 
+[]     \OT1/cmss/m/n/6 10/16 [][] 
  []
 
 [10
 
 ]
-Overfull \hbox (11.26231pt too wide) detected at line 358
+Overfull \hbox (11.26231pt too wide) detected at line 363
 [] \OMS/cmsy/m/n/20.74 ' \OML/cmm/m/it/20.74 R[]
  []
 
 <figures/rayon.pdf, id=340, 578.16pt x 361.35pt>
 File: figures/rayon.pdf Graphic file (type pdf)
  <use figures/rayon.pdf>
-Package pdftex.def Info: figures/rayon.pdf used on input line 358.
+Package pdftex.def Info: figures/rayon.pdf used on input line 363.
 (pdftex.def)             Requested size: 256.0748pt x 160.0421pt.
 
-Overfull \vbox (7.65999pt too high) detected at line 358
+Overfull \vbox (7.65999pt too high) detected at line 363
  []
 
 
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 11/15 [][] 
+[]     \OT1/cmss/m/n/6 11/16 [][] 
  []
 
 [11
 
  <./figures/rayon.pdf>]
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 12/15 [][] 
+[]     \OT1/cmss/m/n/6 12/16 [][] 
  []
 
 [12
 
-]
+] <figures/impact.pdf, id=401, 2100.1322pt x 1303.17468pt>
+File: figures/impact.pdf Graphic file (type pdf)
+
+<use figures/impact.pdf>
+Package pdftex.def Info: figures/impact.pdf used on input line 400.
+(pdftex.def)             Requested size: 183.3958pt x 113.81102pt.
+
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 13/15 [][] 
+[]     \OT1/cmss/m/n/6 13/16 [][] 
  []
 
 [13
 
-]
+ <./figures/impact.pdf>]
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 14/15 [][] 
+[]     \OT1/cmss/m/n/6 14/16 [][] 
  []
 
 [14
 
 ]
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
-[]     \OT1/cmss/m/n/6 15/15 [][] 
+[]     \OT1/cmss/m/n/6 15/16 [][] 
  []
 
-Package atenddvi Info: Last page = 15.
 [15
+
+]
+Overfull \hbox (35.77133pt too wide) has occurred while \output is active
+[]     \OT1/cmss/m/n/6 16/16 [][] 
+ []
+
+Package atenddvi Info: Last page = 16.
+[16
 
 ]
 \tf@nav=\write6
@@ -2032,13 +2037,13 @@ Package atenddvi Info: Last page = 15.
 \tf@snm=\write8
 \openout8 = `Pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 432.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 432.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 462.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 462.
  (./Pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 432.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 432.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 462.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 462.
 Package rerunfilecheck Info: File `Pres.out' has not changed.
-(rerunfilecheck)             Checksum: 57338140AF90BE42F08AE463AFCB0CBB;990.
+(rerunfilecheck)             Checksum: 071E3A68B8092BA0B14FDFCE3F17F4E2;990.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2047,13 +2052,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 432.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 462.
  ) 
 Here is how much of TeX's memory you used:
- 40871 strings out of 493029
- 949216 string characters out of 6136235
+ 40894 strings out of 493029
+ 949738 string characters out of 6136235
  1112048 words of memory out of 5000000
- 43551 multiletter control sequences out of 15000+600000
+ 43571 multiletter control sequences out of 15000+600000
  28711 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,16n,86p,10424b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2071,10 +2076,10 @@ ss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb>
-Output written on Pres.pdf (15 pages, 5458111 bytes).
+Output written on Pres.pdf (16 pages, 9425382 bytes).
 PDF statistics:
- 476 PDF objects out of 1000 (max. 8388607)
- 348 compressed objects within 4 object streams
- 45 named destinations out of 1000 (max. 500000)
- 327 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 368 compressed objects within 4 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 332 words of extra memory for PDF output out of 10000 (max. 10000000)
 
