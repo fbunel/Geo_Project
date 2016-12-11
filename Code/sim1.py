@@ -117,7 +117,7 @@ class terre:
     def update_P(self):
         cst = self.cst
         #On part de la chaleur radioactive
-        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t+self.dt/2))
+        self.P[:] = cst['rho']*cst['H0']*2**(-(self.t+self.dt))
         self.P[-1] = 0
         #On complete avec la radiation de corps noir à la surface
         try :
