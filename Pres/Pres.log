@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  11 DEC 2016 18:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  11 DEC 2016 19:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1738,7 +1738,7 @@ LaTeX Info: Redefining \includegraphics on input line 35.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.13} (current compat level: 1.11).
 
-(./Pres.nav) <figures/logo_lyon1.jpg, id=80, 4642.34375pt x 3362.5625pt>
+(./Pres.nav) <figures/logo_lyon1.jpg, id=84, 4642.34375pt x 3362.5625pt>
 File: figures/logo_lyon1.jpg Graphic file (type jpg)
 
 <use figures/logo_lyon1.jpg>
@@ -1768,7 +1768,7 @@ thkerncmss.
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
 (Font)              using `U/stmry/m/n' instead on input line 57.
 
-<figures/logo_ens.jpg, id=81, 1032.85875pt x 384.6872pt>
+<figures/logo_ens.jpg, id=85, 1032.85875pt x 384.6872pt>
 File: figures/logo_ens.jpg Graphic file (type jpg)
 
 <use figures/logo_ens.jpg>
@@ -1779,20 +1779,20 @@ Overfull \hbox (5.41043pt too wide) in paragraph at lines 57--57
  [] 
  []
 
-<figures/logo_univ_lyon.jpg, id=82, 590.205pt x 301.125pt>
+<figures/logo_univ_lyon.jpg, id=86, 590.205pt x 301.125pt>
 File: figures/logo_univ_lyon.jpg Graphic file (type jpg)
 
 <use figures/logo_univ_lyon.jpg>
 Package pdftex.def Info: figures/logo_univ_lyon.jpg used on input line 57.
 (pdftex.def)             Requested size: 72.49661pt x 36.98866pt.
 
-<figures/sdm.png, id=89, 437.9072pt x 140.25279pt>
+<figures/sdm.png, id=93, 437.9072pt x 140.25279pt>
 File: figures/sdm.png Graphic file (type png)
  <use figures/sdm.png>
 Package pdftex.def Info: figures/sdm.png used on input line 57.
 (pdftex.def)             Requested size: 151.02467pt x 48.36958pt.
 
-<figures/geol.jpg, id=91, 1421.31pt x 562.1pt>
+<figures/geol.jpg, id=95, 1421.31pt x 562.1pt>
 File: figures/geol.jpg Graphic file (type jpg)
  <use figures/geol.jpg>
 Package pdftex.def Info: figures/geol.jpg used on input line 57.
@@ -1801,21 +1801,21 @@ Package pdftex.def Info: figures/geol.jpg used on input line 57.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/logo_lyon1.jpg> 
 <./figures/logo_ens.jpg> <./figures/logo_univ_lyon.jpg> <./figures/sdm.png> <./
-figures/geol.jpg>] <figures/radioactif.png, id=103, 710.85246pt x 710.85246pt>
+figures/geol.jpg>] <figures/radioactif.png, id=107, 710.85246pt x 710.85246pt>
 File: figures/radioactif.png Graphic file (type png)
 
 <use figures/radioactif.png>
 Package pdftex.def Info: figures/radioactif.png used on input line 102.
 (pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
 
-<figures/asteroid.png, id=104, 205.0059pt x 225.9642pt>
+<figures/asteroid.png, id=108, 205.0059pt x 225.9642pt>
 File: figures/asteroid.png Graphic file (type png)
 
 <use figures/asteroid.png>
 Package pdftex.def Info: figures/asteroid.png used on input line 102.
 (pdftex.def)             Requested size: 56.9055pt x 62.72131pt.
 
-<figures/terre_core.pdf, id=105, 670.66563pt x 514.56241pt>
+<figures/terre_core.pdf, id=109, 670.66563pt x 514.56241pt>
 File: figures/terre_core.pdf Graphic file (type pdf)
 
 <use figures/terre_core.pdf>
@@ -1841,14 +1841,14 @@ Overfull \hbox (32.58379pt too wide) has occurred while \output is active
 
 [3
 
-] <figures/blackbody.pdf, id=155, 413.44318pt x 341.86714pt>
+] <figures/blackbody.pdf, id=161, 413.44318pt x 341.86714pt>
 File: figures/blackbody.pdf Graphic file (type pdf)
 
 <use figures/blackbody.pdf>
 Package pdftex.def Info: figures/blackbody.pdf used on input line 147.
 (pdftex.def)             Requested size: 142.26378pt x 117.6313pt.
 
-<figures/lattentheat.pdf, id=156, 446.46254pt x 376.20212pt>
+<figures/lattentheat.pdf, id=162, 446.46254pt x 376.20212pt>
 File: figures/lattentheat.pdf Graphic file (type pdf)
 
 <use figures/lattentheat.pdf>
@@ -1869,19 +1869,19 @@ Overfull \hbox (32.58379pt too wide) has occurred while \output is active
 
 pdfTeX warning: pdflatex (file ./figures/lattentheat.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
->] <figures/chrono.png, id=259, 262.9825pt x 369.38pt>
+>] <figures/chrono.png, id=265, 262.9825pt x 369.38pt>
 File: figures/chrono.png Graphic file (type png)
 
 <use figures/chrono.png>
 Package pdftex.def Info: figures/chrono.png used on input line 223.
 (pdftex.def)             Requested size: 40.51306pt x 56.9055pt.
- <figures/ruban.png, id=260, 660.4675pt x 392.46625pt>
+ <figures/ruban.png, id=266, 660.4675pt x 392.46625pt>
 File: figures/ruban.png Graphic file (type png)
 
 <use figures/ruban.png>
 Package pdftex.def Info: figures/ruban.png used on input line 223.
 (pdftex.def)             Requested size: 95.76028pt x 56.9055pt.
- <figures/thermo.png, id=261, 256.96pt x 256.96pt>
+ <figures/thermo.png, id=267, 256.96pt x 256.96pt>
 File: figures/thermo.png Graphic file (type png)
 
 <use figures/thermo.png>
@@ -1895,13 +1895,13 @@ Overfull \hbox (32.58379pt too wide) has occurred while \output is active
 [5
 
  <./figures/chrono.png> <./figures/ruban.png> <./figures/thermo.png>]
-<figures/dust.png, id=274, 834.11626pt x 509.905pt>
+<figures/dust.png, id=280, 834.11626pt x 509.905pt>
 File: figures/dust.png Graphic file (type png)
  <use figures/dust.png>
 Package pdftex.def Info: figures/dust.png used on input line 258.
 (pdftex.def)             Requested size: 186.1662pt x 113.81102pt.
 
-<figures/mimas.png, id=275, 1170.3725pt x 1134.2375pt>
+<figures/mimas.png, id=281, 1170.3725pt x 1134.2375pt>
 File: figures/mimas.png Graphic file (type png)
  <use figures/mimas.png>
 Package pdftex.def Info: figures/mimas.png used on input line 258.
@@ -1925,7 +1925,7 @@ Overfull \hbox (32.58379pt too wide) has occurred while \output is active
 
 [7
 
-] <figures/diffusion2.pdf, id=289, 532.06108pt x 412.32324pt>
+] <figures/diffusion2.pdf, id=295, 532.06108pt x 412.32324pt>
 File: figures/diffusion2.pdf Graphic file (type pdf)
 
 <use figures/diffusion2.pdf>
@@ -1939,7 +1939,7 @@ Overfull \hbox (32.58379pt too wide) has occurred while \output is active
 [8
 
  <./figures/diffusion2.pdf>]
-<figures/diffusion1.pdf, id=318, 532.06108pt x 412.32324pt>
+<figures/diffusion1.pdf, id=324, 532.06108pt x 412.32324pt>
 File: figures/diffusion1.pdf Graphic file (type pdf)
 
 <use figures/diffusion1.pdf>
@@ -1965,17 +1965,22 @@ Overfull \hbox (35.77133pt too wide) has occurred while \output is active
 [10
 
 ]
-Overfull \hbox (11.26231pt too wide) detected at line 363
-[] \OMS/cmsy/m/n/20.74 ' \OML/cmm/m/it/20.74 R[]
+Overfull \hbox (2.31317pt too wide) detected at line 363
+ [] \OMS/cmsy/m/n/20.74 ' \OML/cmm/m/it/20.74 R[]
  []
 
-<figures/rayon.pdf, id=340, 578.16pt x 361.35pt>
+<figures/rayon.pdf, id=346, 522.17662pt x 354.50726pt>
 File: figures/rayon.pdf Graphic file (type pdf)
  <use figures/rayon.pdf>
 Package pdftex.def Info: figures/rayon.pdf used on input line 363.
-(pdftex.def)             Requested size: 256.0748pt x 160.0421pt.
+(pdftex.def)             Requested size: 241.84842pt x 164.18964pt.
 
-Overfull \vbox (7.65999pt too high) detected at line 363
+Overfull \hbox (5.69046pt too wide) detected at line 363
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+
+Overfull \vbox (11.80753pt too high) detected at line 363
  []
 
 
@@ -1992,12 +1997,16 @@ Overfull \hbox (35.77133pt too wide) has occurred while \output is active
 
 [12
 
-] <figures/impact.pdf, id=401, 2100.1322pt x 1303.17468pt>
+] <figures/impact.pdf, id=369, 2100.1322pt x 1303.17468pt>
 File: figures/impact.pdf Graphic file (type pdf)
 
 <use figures/impact.pdf>
 Package pdftex.def Info: figures/impact.pdf used on input line 400.
-(pdftex.def)             Requested size: 183.3958pt x 113.81102pt.
+(pdftex.def)             Requested size: 229.25276pt x 142.26378pt.
+
+Overfull \vbox (2.32419pt too high) detected at line 400
+ []
+
 
 Overfull \hbox (35.77133pt too wide) has occurred while \output is active
 []     \OT1/cmss/m/n/6 13/16 [][] 
@@ -2037,13 +2046,13 @@ Package atenddvi Info: Last page = 16.
 \tf@snm=\write8
 \openout8 = `Pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 462.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 462.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 492.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 492.
  (./Pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 462.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 462.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 492.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 492.
 Package rerunfilecheck Info: File `Pres.out' has not changed.
-(rerunfilecheck)             Checksum: 071E3A68B8092BA0B14FDFCE3F17F4E2;990.
+(rerunfilecheck)             Checksum: CB01F9AE9EA23F4E23E7BF307D3DA1CF;1094.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2052,16 +2061,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 462.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 492.
  ) 
 Here is how much of TeX's memory you used:
- 40894 strings out of 493029
- 949738 string characters out of 6136235
- 1112048 words of memory out of 5000000
- 43571 multiletter control sequences out of 15000+600000
- 28711 words of font info for 104 fonts, out of 8000000 for 9000
+ 40942 strings out of 493029
+ 950831 string characters out of 6136235
+ 1114074 words of memory out of 5000000
+ 43612 multiletter control sequences out of 15000+600000
+ 31176 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,16n,86p,10424b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,16n,86p,10424b,668s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -2072,14 +2081,15 @@ type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb>
-Output written on Pres.pdf (16 pages, 9425382 bytes).
+ss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb>
+Output written on Pres.pdf (16 pages, 9415365 bytes).
 PDF statistics:
- 510 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
- 47 named destinations out of 1000 (max. 500000)
- 332 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 481 PDF objects out of 1000 (max. 8388607)
+ 379 compressed objects within 4 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 340 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -13,4 +13,5 @@
 \beamer@subsectionintoc {3}{1}{Evolution du rayon}{11}{0}{3}
 \beamer@subsectionintoc {3}{2}{Influence sur les temp\IeC {\'e}ratures}{12}{0}{3}
 \beamer@sectionintoc {4}{Chauffage par impact}{13}{0}{4}
-\beamer@subsectionintoc {4}{1}{yolo}{13}{0}{4}
+\beamer@subsectionintoc {4}{1}{Description du mod\IeC {\`e}le}{13}{0}{4}
+\beamer@subsectionintoc {4}{2}{Influence sur les temp\IeC {\'e}ratures}{14}{0}{4}
