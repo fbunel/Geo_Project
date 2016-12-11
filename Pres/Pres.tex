@@ -29,13 +29,12 @@
 \titlegraphic{\includegraphics[height=1.7cm]{figures/sdm.png} \includegraphics[height=1.5cm]{figures/geol.jpg}} 
 \date{12/12/2016}
 
-
+\usefonttheme[onlymath]{serif}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\logo{\includegraphics[width=1cm]{figures/mini.jpeg}\vspace{6.5cm}\hspace{-0.05cm}}
 %%%%%%%%%%%%% Slide de garde
 \begin{frame}[plain]
 
@@ -58,11 +57,47 @@
 \end{frame}
 %%%%%%%%%%%%%
 
-\title{Yolo}
+\title{Chauffage par impact des planétésimaux}
 %%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Introduction}
 \framesubtitle{\ }
+
+\begin{center}
+ \Large Comment un noyau peut il se former rapidement ?
+\end{center}
+
+\begin{itemize}
+\item La séparation des métaux des silicates se fait sous forme (partiellement) fondue.
+\end{itemize}
+
+\begin{center}
+ \Large D'où vient l'énergie nécessaire à la fusion ?
+\end{center}
+
+\begin{textblock*}{5cm}(0.5cm,4.5cm) % {block width} (coords)
+	\center
+	\begin{itemize}
+		\item Chauffage radioactif
+	\end{itemize}
+	\vspace{0.1cm}
+	
+    \includegraphics[width = 2cm]{figures/radioactif.png}
+\end{textblock*}
+
+\begin{textblock*}{5cm}(7.5cm,4.5cm) % {block width} (coords)
+	\center
+	\begin{itemize}
+		\item Chauffage par impact
+	\end{itemize}
+	
+	\vspace{0.1cm}
+    \includegraphics[width = 2cm]{figures/asteroid.png}
+\end{textblock*}
+
+\center
+\vspace{1cm}
+\includegraphics[width = 4cm]{figures/terre_core.pdf}
 
 \end{frame}
 %%%%%%%%%%%%%
@@ -76,24 +111,150 @@
 \end{frame}
 %%%%%%%%%%%%%
 
-\section{Théorie}
-\subsection{Données du problème}
+\section{Un problème de diffusion}
+\subsection{Equation de la diffusion}
 
 %%%%%%%%%%%%% 
 \begin{frame}
-	\frametitle{Théorie}
-	\framesubtitle{Données du problème}
+	\frametitle{Un problème de diffusion}
+	\framesubtitle{Equation de la diffusion}
+
+{\Large
+$$\rho C_p \dfrac{\partial T}{\partial t}= k_{T} \Delta T  + P$$
+}
+\begin{columns}
+    \begin{column}{6cm}
+      \center {\Large + }{\large perte radiative\\ à la surface}
+	\end{column}
+
+	\begin{column}{6cm}
+      \center {\Large + }{\large chaleur latente\\ de changement d'état}
+	\end{column}
+\end{columns}
+
+\begin{columns}
+    \begin{column}{6cm}      
+	  \center \includegraphics[width = 5cm]{figures/blackbody.pdf}  
+	\end{column}
+
+	\begin{column}{6cm}     
+      \center \includegraphics[width = 5cm]{figures/lattentheat.pdf}
+      \vspace{-0.4cm}
+      
+	\end{column}
+\end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%
+
+\subsection{Grandeurs caractéristiques}
+
+%%%%%%%%%%%%% 
+\begin{frame}
+	\frametitle{Un problème de diffusion}
+	\framesubtitle{Grandeurs caractéristiques}
+	
+
+\begin{columns}
+    \begin{column}{4cm}
+      \center \includegraphics[height =  2cm]{figures/chrono.png}
+	\end{column}
+
+	\begin{column}{4cm}
+      \center \includegraphics[height = 2cm]{figures/ruban.png}
+	\end{column}
+	
+	\begin{column}{4cm}
+      \center \includegraphics[height = 2cm]{figures/thermo.png}
+	\end{column}
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{columns}
+    \begin{column}{4cm}
+      \center
+      Temps de demi-vie
+	\end{column}
+
+	\begin{column}{4cm}
+      \center
+      Longueur de diffusion 
+	\end{column}
+	
+	\begin{column}{4cm}
+      \center
+      Température de la nébuleuse
+	\end{column}
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{columns}
+    \begin{column}{4cm}
+      $$\tau_{1/2}$$
+	\end{column}
+
+	\begin{column}{4cm}
+      $$\sqrt{\dfrac{k_T\tau_{1/2}}{\rho C_p}}$$
+	\end{column}
+	
+	\begin{column}{4cm}
+      $$T_{neb}$$     
+	\end{column}
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{columns}
+    \begin{column}{4cm}
+      $$\simeq 0.7 \text{ My}$$
+	\end{column}
+
+	\begin{column}{4cm}
+      $$\simeq 10\text{ km}$$
+	\end{column}
+	
+	\begin{column}{4cm}
+      $$\simeq 300 \text{ K}$$       
+	\end{column}
+\end{columns}
 	
 \end{frame}
 %%%%%%%%%%%%%
 
-\subsection{Méthodes numérique}
+
+\subsection{Méthodes numériques}
 
 %%%%%%%%%%%%% 
 \begin{frame}
-	\frametitle{Théorie}
-	\framesubtitle{Méthode numérique}
+	\frametitle{Un problème de diffusion}
+	\framesubtitle{Discrétisation}
 	
+
+Spatiale : $T(r) \rightarrow T_i$ 
+$$\Delta T = \frac{T_{i+1} + T_{i-1} - 2T_{i}}{\Delta r ^2} $$ 
+
+
+Temporelle : $T(t) \rightarrow T^i$ 
+$$\dfrac{\partial T}{\partial t} = \frac{T^{i+1}-T^{i}}{\Delta t} $$
+
+
+$$\rho C_p \dfrac{\partial T}{\partial t}= k_{T} \Delta T  + P
+\quad \sim \quad (Id + M) T^{i+1}=T^i + P$$
+
+
+$$
+M =
+\begin{bmatrix}
+    2      & -1     & -1        &      &     \\
+    -1      &  2     & -1        &     &              \\
+     & \ddots & \ddots    & \ddots &       \\
+ &     &  -1      &  2     & -1                      \\
+     &    &    -1      & -1     & 2          
+\end{bmatrix}
+$$
+
 \end{frame}
 %%%%%%%%%%%%%
 
@@ -130,7 +291,53 @@
 \end{frame}
 %%%%%%%%%%%%%
 
+\section{Perspectives}
+\subsection{yolo}
 
+%%%%%%%%%%%%% 
+\begin{frame}
+	\frametitle{Perspectives}
+	\framesubtitle{yolo}
+	
+\end{frame}
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%% 
+\begin{frame}
+	\frametitle{Equation matricielle}
+	\framesubtitle{\ }
+	
+$$
+(Id + M)T^{t+1} = T^t + c_0 ( P + S )
+$$	
+	
+$$c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$$ 
+
+$$
+M = \frac{\Delta t ~ r^2_{i+1/2}}{r^2_i \Delta r^2} ~ d1 + \frac{\Delta t ~ r^2_{i-1/2}}{r^2_i \Delta r^2} ~ d2  
+$$
+
+$$
+d1=
+\begin{bmatrix}
+    2      & -1     & -1       &   \\
+           &  1     & -1              &             \\
+     &        & \ddots    &\ddots       \\
+     &        &            & 1 & -1         \\
+         &   &      &   0         &  0
+\end{bmatrix}
+d2=
+\begin{bmatrix}
+     0     & 0      &   &     &        \\
+    -1     & 1      &  &          &            \\
+     & \ddots & \ddots &    &      \\
+     &              &  -1      &  1         \\
+         &      &  -1     & -1        & 2 \\
+\end{bmatrix}
+$$
+
+\end{frame}
+%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%

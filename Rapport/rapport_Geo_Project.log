@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  9 DEC 2016 20:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.5)  11 DEC 2016 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1691,17 +1691,17 @@ File: logo_univ_lyon.jpg Graphic file (type jpg)
 Package pdftex.def Info: logo_univ_lyon.jpg used on input line 72.
 (pdftex.def)             Requested size: 111.52771pt x 56.9055pt.
 
-<figures/front_simu.jpg, id=122, 4787.8875pt x 4787.8875pt>
-File: figures/front_simu.jpg Graphic file (type jpg)
+<figures/terre_core.pdf, id=122, 670.66563pt x 514.56241pt>
+File: figures/terre_core.pdf Graphic file (type pdf)
 
-<use figures/front_simu.jpg>
-Package pdftex.def Info: figures/front_simu.jpg used on input line 109.
-(pdftex.def)             Requested size: 170.66159pt x 170.71652pt.
+<use figures/terre_core.pdf>
+Package pdftex.def Info: figures/terre_core.pdf used on input line 109.
+(pdftex.def)             Requested size: 185.42114pt x 142.26378pt.
  [1
 Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo-ens.jpg> <./logo_ly
-on1.jpg> <./logo_univ_lyon.jpg> <./figures/front_simu.jpg>] (./rapport_Geo_Proj
+on1.jpg> <./logo_univ_lyon.jpg> <./figures/terre_core.pdf>] (./rapport_Geo_Proj
 ect.toc
 
 Package xcolor Warning: Incompatible color definition on input line 2.
@@ -1803,7 +1803,7 @@ eps-converted-to.pdf ./figures/graph_sim1_fig1.eps>
 (epstopdf)             \includegraphics on input line 330.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/graph_sim1_fig1-eps-converted-to.pdf, id=191, 433.62pt x 578.16pt>
+<./figures/graph_sim1_fig1-eps-converted-to.pdf, id=197, 433.62pt x 578.16pt>
 File: ./figures/graph_sim1_fig1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/graph_sim1_fig1-eps-converted-to.pdf>
@@ -1822,7 +1822,7 @@ eps-converted-to.pdf ./figures/graph_sim1_fig2.eps>
 (epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/graph_sim1_fig2-eps-converted-to.pdf, id=192, 433.62pt x 578.16pt>
+<./figures/graph_sim1_fig2-eps-converted-to.pdf, id=198, 433.62pt x 578.16pt>
 File: ./figures/graph_sim1_fig2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figures/graph_sim1_fig2-eps-converted-to.pdf>
@@ -1843,7 +1843,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 482.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/graph_sim2_fig2_1-eps-converted-to.pdf, id=313, 433.62pt x 578.16pt>
+<./figures/graph_sim2_fig2_1-eps-converted-to.pdf, id=319, 433.62pt x 578.16pt>
 File: ./figures/graph_sim2_fig2_1-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figures/graph_sim2_fig2_1-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/graph_sim2_fig2_1-eps-converted-to.pdf used 
@@ -1861,7 +1861,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 488.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/graph_sim2_fig2_2-eps-converted-to.pdf, id=314, 433.62pt x 578.16pt>
+<./figures/graph_sim2_fig2_2-eps-converted-to.pdf, id=320, 433.62pt x 578.16pt>
 File: ./figures/graph_sim2_fig2_2-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figures/graph_sim2_fig2_2-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/graph_sim2_fig2_2-eps-converted-to.pdf used 
@@ -1879,7 +1879,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 499.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figures/graph_sim2_fig2_3-eps-converted-to.pdf, id=315, 578.16pt x 361.35pt>
+<./figures/graph_sim2_fig2_3-eps-converted-to.pdf, id=321, 578.16pt x 361.35pt>
 File: ./figures/graph_sim2_fig2_3-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figures/graph_sim2_fig2_3-eps-converted-to.pdf>
 Package pdftex.def Info: ./figures/graph_sim2_fig2_3-eps-converted-to.pdf used 
@@ -1939,10 +1939,10 @@ re/texmf/fonts/type1/public/cm-super/sfcc0700.pfb></usr/share/texmf/fonts/type1
 /public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
 m0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/shar
 e/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on rapport_Geo_Project.pdf (12 pages, 2185454 bytes).
+Output written on rapport_Geo_Project.pdf (12 pages, 2287850 bytes).
 PDF statistics:
- 584 PDF objects out of 1000 (max. 8388607)
- 346 compressed objects within 4 object streams
+ 590 PDF objects out of 1000 (max. 8388607)
+ 350 compressed objects within 4 object streams
  85 named destinations out of 1000 (max. 500000)
  306 words of extra memory for PDF output out of 10000 (max. 10000000)
 
