@@ -92,14 +92,14 @@ class terre:
 
         elif isinstance(T_imp, int) or isinstance(T_imp, float) : 
             print("T_imp = {}K".format(T_imp))
-            T_imp = np.ones(6,2)*T_imp
+            T_imp = np.ones((6,2))*T_imp
             T_imp[0] = [0,100]
             self.T_imp = interp1d(T_imp[0],T_imp[4+beta],kind='nearest',
                     fill_value="extrapolate",assume_sorted=True) 
 
         elif T_imp is None : 
             print("T_imp = 1000K")
-            T_imp = np.ones(6,2)*1000
+            T_imp = np.ones((6,2))*1000
             T_imp[0] = [0,100]
             self.T_imp = interp1d(T_imp[0],T_imp[4+beta],kind='nearest',
                     fill_value="extrapolate",assume_sorted=True) 
