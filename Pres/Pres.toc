@@ -3,12 +3,11 @@
 \beamer@sectionintoc {1}{Un probl\IeC {\`e}me de diffusion}{4}{0}{1}
 \beamer@subsectionintoc {1}{1}{Equation de la diffusion}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Grandeurs caract\IeC {\'e}ristiques}{5}{0}{1}
-\beamer@subsectionintoc {1}{3}{M\IeC {\'e}thodes num\IeC {\'e}riques}{6}{0}{1}
-\beamer@sectionintoc {2}{Diffusion sans accr\IeC {\'e}tion}{7}{0}{2}
-\beamer@subsectionintoc {2}{1}{yolo}{7}{0}{2}
-\beamer@sectionintoc {3}{Diffusion avec accr\IeC {\'e}tion}{8}{0}{3}
-\beamer@subsectionintoc {3}{1}{yolo}{8}{0}{3}
-\beamer@sectionintoc {4}{Chauffage par impact}{9}{0}{4}
-\beamer@subsectionintoc {4}{1}{yolo}{9}{0}{4}
-\beamer@sectionintoc {5}{Perspectives}{10}{0}{5}
-\beamer@subsectionintoc {5}{1}{yolo}{10}{0}{5}
+\beamer@subsectionintoc {1}{3}{Condition initiale}{6}{0}{1}
+\beamer@subsectionintoc {1}{4}{M\IeC {\'e}thodes num\IeC {\'e}riques}{7}{0}{1}
+\beamer@sectionintoc {2}{Diffusion sans accr\IeC {\'e}tion}{8}{0}{2}
+\beamer@subsectionintoc {2}{1}{yolo}{8}{0}{2}
+\beamer@sectionintoc {3}{Diffusion avec accr\IeC {\'e}tion}{9}{0}{3}
+\beamer@subsectionintoc {3}{1}{yolo}{9}{0}{3}
+\beamer@sectionintoc {4}{Chauffage par impact}{10}{0}{4}
+\beamer@subsectionintoc {4}{1}{yolo}{10}{0}{4}
