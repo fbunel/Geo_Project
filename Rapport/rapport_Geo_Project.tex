@@ -543,13 +543,14 @@ Avec :
 et sur la couche $\Delta R$:
  
 \begin{align}
- &H_g = \frac{f}{4 \pi \rho R^2 \Delta R}(\partial_{t} E_g + \partial_{t} E_t) \\
+ &H_g = \frac{f}{4 \pi R^2 \Delta R}(\partial_{t} E_g + \partial_{t} E_t) \\
  &\partial_{t} E_g =\frac{16}{3} \pi^2 G \rho^2 R^4 \dot R \\
  &\partial_{t} E_t = 4 \pi \rho C_p ( T_{imp} - T_{neb} ) R^2 \dot R
 \end{align}
 
+
 \begin{equation}
-H_g = f\frac{\dot R}{\Delta R}(\frac{4 \pi}{3} G\rho R^2 + C_p ( T_{imp} - T_{neb} ) )
+H_g = f \frac{4 \pi}{3} G \rho^2 \frac{R^2\dot R}{\Delta R} + f \rho C_p \frac{\dot R}{\Delta R} ( T_{imp} - T_{neb} )
 \end{equation}
 
 
@@ -571,39 +572,6 @@ $c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
 \frac{r^2_{i-1/2}}{\Delta r^2 R^2 r^2_i}$
 , $c_3 = \Delta t \frac{ r \dot{R}}{2\Delta r R}$
 , $c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$ 
-
-\section{Condition initiale}
-
-Energie gravitationnelle nécessaire pour apporter une particule de masse $dm$ de l'infini à une distance $R$ d'un objet de masse $m$ :
-$$ dE = G \frac{m dm}{R}$$ 
-
-Ainsi, l'énergie gravitationnelle récupérée lors de la formation d'un planétésimal de masse totale $M$ est :
-$$ E = \int_0^M G \frac{m dm}{R(m)}$$
-
-Si on considère une masse volumique $\rho$ de l'objet :
-$$\rho\frac{4}{3}\pi R(m)^3=m$$
-soit 
-$$R(m)=\left(\frac{3}{4\pi}\frac{m}{\rho}\right)^{\frac{1}{3}}$$
-
-en remplaçant dans l'énergie :
-$$E=G\left(\frac{4\pi}{3}\rho\right)^\frac{1}{3}\int_0^M m^\frac{2}{3}dm$$
-en calculant l'intégrale :
-$$E=G\left(\frac{4\pi}{3}\rho\right)^\frac{1}{3}\left[\frac{3}{5} m^\frac{5}{3}\right]_0^M$$
-soit :
-$$E=G\left(\frac{4\pi}{3}\rho\right)^\frac{1}{3}\frac{3}{5} M^\frac{5}{3}$$
-Si on veut une expression en fonction du rayon initiale $R$ :
-$$E=G\left(\frac{4\pi}{3}\rho\right)^\frac{1}{3}\frac{3}{5} \left(\rho\frac{4}{3}\pi\right)^{5/3}R^5$$
-soit :
-$$E=\frac{3}{5}G\left(\frac{4\pi}{3}\rho\right)^2 R^5$$
-
-comme condition initiale sur la température :
-$$T_0=T_{neb} + \frac{1}{C_p M} E$$
-
-soit en remplaçant l'expression de $E$ et en exprimant en fonction du rayon:
-$$T_0 = T_{neb} + \frac{1}{C_p} \frac{3}{5}G\frac{4\pi}{3}\rho R^2$$
-soit :
-$$T_0 = T_{neb} + \frac{4\pi}{5}\frac{\rho G}{C_p} R^2$$
-
 
 
 
