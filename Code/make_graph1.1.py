@@ -65,13 +65,13 @@ def graphe1():
 
 
     plt.figure(figsize=(8,6))
-    plt.plot(t1.r[:-1]/t1.r[-2],t1.T[:-1]*t1.T0,'b',label="Avec chaleur latente")
-    plt.plot(t3.r[:-1]/t3.r[-2],t3.T[:-1]*t3.T0,'r',label="Sans chaleur latente")
+    plt.plot(t3.r[:-1]/t3.r[-2],t3.T[:-1]*t3.T0,'b',label="Sans chaleur latente")
+    plt.plot(t1.r[:-1]/t1.r[-2],t1.T[:-1]*t1.T0,'r',label="Avec chaleur latente")
     plt.ylabel(r"T (en K)")
     plt.xlabel(r"r/R")
     #plt.title(r"Temp\'erature apr\`es : {0:.2}My".format(t1.t*0.717))
     plt.legend(loc="best")
-    plt.savefig("graph_sim1_fig1.pdf")
+    plt.savefig("graph_sim1_fig1.pdf",bbox_inches='tight')
 
 def graphe2():
     print("Calcule un graphe qui compare les 2 deux régimes de diffusion selon le rayon")
@@ -117,7 +117,7 @@ def graphe2():
     plt.ylabel(r"T (en K)")
     plt.xlabel(r"r/R")
     #plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
-    plt.savefig("graph_sim1_fig2.pdf")
+    plt.savefig("graph_sim1_fig2.pdf",bbox_inches='tight')
 
 graphe1()
 graphe2()
