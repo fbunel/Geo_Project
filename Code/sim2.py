@@ -209,7 +209,17 @@ class terre:
 
     def step(self):
         self.t += self.dt
-        self.T = linalg.spsolve(self.m, self.T + self.c0*self.P)
+        self.lu = linalg.splu(self.m)
+        self.Ti = self.T.copy()
+        self.T = self.lu.solve(self.T + self.c0*self.P)
+
+        self.fusion()
+        self.P_fusion = self.delta_phi_s*((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s']) + self.delta_phi_m*(cst['phi']*cst['L_m'])/(self.T0*cst['Cp_m'])
+        self.T = self.lu.solve( self.Ti - self.P_fusion + self.c0*self.P)
+
+        self.fusion()
+        self.P_fusion += self.delta_phi_s*((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s']) + self.delta_phi_m*(cst['phi']*cst['L_m'])/(self.T0*cst['Cp_m'])
+        self.T = self.lu.solve( self.Ti - self.P_fusion + self.c0*self.P)
 
     def fusion(self):
         """
@@ -221,6 +231,9 @@ class terre:
            l'excedant en chaleur
         """
         cst = self.cst 
+        phi_mi = self.phi_m.copy()
+        phi_si = self.phi_s.copy()
+
 
         fus_m = np.where((self.T>cst['Tafus_m'])*(self.phi_m < 1))
         sol_m = np.where((self.T<cst['Tafus_m'])*(self.phi_m > 0))
@@ -254,6 +267,11 @@ class terre:
 
         self.T[excess_sol] = self.T[excess_sol] + self.phi_s[excess_sol] * ((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s'])
         self.phi_s[excess_sol] =  0
+
+        self.delta_phi_m = self.phi_m - phi_mi
+        self.delta_phi_s = self.phi_s - phi_si
+        #print(self.phi_m[:3],phi_mi[:3])
+        #print(self.phi_m[:3]-phi_mi[:3])
 
     def store(self):
         self.stored.append({
@@ -361,8 +379,6 @@ def test_R():
 
     plt.show()
 
-
-
 def test_fusion():
     print("test visuel de la fusion")
     t = terre(Ri=20000,Ti=0,dt=0.1,size=100)
@@ -433,8 +449,8 @@ if __name__ == '__main__' :
             t.update_m()
             #t.P[:]=0
             t.step()
-            t.fusion()
-            print("R: {:.6}  , t: {:.3} My".format(t.R,t.t*0.717))
+            #t.fusion()
+            print("R: {:.3}  , t: {:.3} My".format(t.R,t.t*0.717))
 
         plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
         #plt.plot(t.phi_m,'-')

@@ -152,13 +152,13 @@ class terre:
         d3[-1,-2:] = [0,-0]
 
 
-        self.eye = eye
-        self.u1 = u1
-        self.d1 = d1
-        self.u2 = u2
-        self.d2 = d2
-        self.u3 = u3
-        self.d3 = d3
+        self.eye = eye.tocsc()
+        self.u1 = u1.tocsc()
+        self.d1 = d1.tocsc()
+        self.u2 = u2.tocsc()
+        self.d2 = d2.tocsc()
+        self.u3 = u3.tocsc()
+        self.d3 = d3.tocsc()
         self.c1 = c1
         self.c2 = c2
         self.c3 = c3
@@ -259,11 +259,79 @@ class terre:
         
         #print(self.T[-2:])
 
+
     def step(self):
+        cst = self.cst
+        self.t += self.dt
+        self.lu = linalg.splu(self.m)
+        self.Ti = self.T.copy()
+        self.T = self.lu.solve(self.T + self.c0*self.P)
+
+        self.fusion()
+        self.P_fusion = self.delta_phi_s*((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s']) + self.delta_phi_m*(cst['phi']*cst['L_m'])/(self.T0*cst['Cp_m'])
+        self.T = self.lu.solve( self.Ti - self.P_fusion + self.c0*self.P)
+
+        self.fusion()
+        self.P_fusion += self.delta_phi_s*((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s']) + self.delta_phi_m*(cst['phi']*cst['L_m'])/(self.T0*cst['Cp_m'])
+        self.T = self.lu.solve( self.Ti - self.P_fusion + self.c0*self.P)
+
+    def fusion(self):
+        """
+        Cette fonction calcule la modification du ratio solide/liquide
+        en deux etapes : 
+        1. Si la condition pour un changement d'état est verifiée
+           on utilise toute la chaleur pour changer d'état
+        2. Si on a plus de 100% de liquide ou de solide on rebalance
+           l'excedant en chaleur
+        """
+        cst = self.cst 
+        phi_mi = self.phi_m.copy()
+        phi_si = self.phi_s.copy()
+
+
+        fus_m = np.where((self.T>cst['Tafus_m'])*(self.phi_m < 1))
+        sol_m = np.where((self.T<cst['Tafus_m'])*(self.phi_m > 0))
+        tot_m = [np.concatenate([fus,sol]) for fus,sol in zip(fus_m,sol_m)]
+
+        self.phi_m[tot_m] = self.phi_m[tot_m] + (self.T[tot_m] - cst['Tafus_m']) * self.T0*cst['Cp_m']/(cst['phi']*cst['L_m'])
+        self.T[tot_m] = cst['Tafus_m']
+
+
+        excess_fus = np.where(self.phi_m > 1)
+        excess_sol = np.where(self.phi_m < 0)
+
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_m[excess_fus] - 1) * (cst['phi']*cst['L_m'])/(self.T0*cst['Cp_m'])
+        self.phi_m[excess_fus] =  1
+
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_m[excess_sol] * (cst['phi']*cst['L_m'])/(self.T0*cst['Cp_m'])
+        self.phi_m[excess_sol] =  0
+
+        fus_s = np.where((self.T>cst['Tafus_s'])*(self.phi_s < 1))
+        sol_s = np.where((self.T<cst['Tafus_s'])*(self.phi_s > 0))
+        tot_s = [np.concatenate([fus,sol]) for fus,sol in zip(fus_s,sol_s)]
+
+        self.phi_s[tot_s] = self.phi_s[tot_s] + (self.T[tot_s] - cst['Tafus_s']) * self.T0*cst['Cp_s']/((1-cst['phi'])*cst['L_s'])
+        self.T[tot_s] = cst['Tafus_s']
+
+        excess_fus = np.where(self.phi_s > 1)
+        excess_sol = np.where(self.phi_s < 0)
+
+        self.T[excess_fus] = self.T[excess_fus] + (self.phi_s[excess_fus] - 1) * ((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s'])
+        self.phi_s[excess_fus] =  1
+
+        self.T[excess_sol] = self.T[excess_sol] + self.phi_s[excess_sol] * ((1-cst['phi'])*cst['L_s'])/(self.T0*cst['Cp_s'])
+        self.phi_s[excess_sol] =  0
+
+        self.delta_phi_m = self.phi_m - phi_mi
+        self.delta_phi_s = self.phi_s - phi_si
+        #print(self.phi_m[:3],phi_mi[:3])
+        #print(self.phi_m[:3]-phi_mi[:3])
+
+    def step_bak(self):
         self.t += self .dt
         self.T = linalg.spsolve(self.m, self.T + self.c0*self.P)
 
-    def fusion(self):
+    def fusion_bak(self):
         """
         Cette fonction calcule la modification du ratio solide/liquide
         en deux etapes : 
@@ -487,7 +555,7 @@ if __name__ == '__main__' :
             t.update_m()
             #t.P[:]=0
             t.step()
-            t.fusion()
+            #t.fusion()
             print("R: {:.6}  , t: {:.3} My".format(t.R,t.t*0.717))
             #raise Exception
 
