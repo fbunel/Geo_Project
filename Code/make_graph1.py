@@ -1,6 +1,8 @@
 from sim1 import terre
 import matplotlib.pyplot as plt
 import numpy as np
+#plt.rc('text', usetex=True)
+#plt.rc('font', family='serif', size=18)
 
 
 #on va calculer T à t=+infini(~20My) pour 4 CI différentes :
@@ -88,12 +90,17 @@ def graphe1():
     plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'--')
     plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'r')
     plt.plot(t4.T[:-1]*t4.T0,t4.r[:-1]/t4.r[-2],'r--')
-    plt.xlabel('Température en K')
-    plt.ylabel('Rayon adimentioné')
-    plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
-    plt.savefig("graph_sim1_fig1.eps")
+    plt.xlabel(r"Température (en K)")
+    plt.ylabel(r"r/R")
+    #plt.title(r"Temp\'erature apr\`es : {0:.2}My".format(t1.t*0.717))
+    plt.savefig("graph_sim1_fig1.pdf")
+
 
 def graphe2():
+    #On remet les bonnes constantes
+    cst['L_m'] =  2.5E5  #J kg-1
+    cst['L_s'] =  5.0E5  #J kg-1
+
     print("Calcule un graphe qui compare les 2 deux régimes de diffusion selon le rayon")
     dt=0.0001
     n = int(1/(dt*0.717))
@@ -129,15 +136,15 @@ def graphe2():
 
     plt.figure(figsize=(6,8))
     plt.plot(t3.T[:-1]*t3.T0,t3.r[:-1]/t3.r[-2],'b',label=r"$R \gg L_d$")
-    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g--',label=r"$R \simeq L_d$")
-    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'r-.',label=r"$R \ll L_d$")
+    plt.plot(t2.T[:-1]*t2.T0,t2.r[:-1]/t2.r[-2],'g',label=r"$R \simeq L_d$")
+    plt.plot(t1.T[:-1]*t1.T0,t1.r[:-1]/t1.r[-2],'r',label=r"$R \ll L_d$")
     
     
     plt.legend(loc="best")
-    plt.xlabel('Température en K')
-    plt.ylabel('Rayon adimentioné')
-    plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
-    plt.savefig("graph_sim1_fig2.eps")
+    plt.xlabel("Température (en K)")
+    plt.ylabel("r/R")
+    #plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
+    plt.savefig("graph_sim1_fig2.pdf")
 
 graphe1()
 graphe2()

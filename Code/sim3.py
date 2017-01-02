@@ -242,21 +242,17 @@ class terre:
 
         #Pour la sim2, ce qui suit n'est JAMAIS exécuté
         #On complete avec la radiation de corps noir à la surface
-        try :
-            self.cS
-        except AttributeError:
-            self.cS = (((self.r[-1]/(self.r[-1]+self.dr))**2)
-            *self.dr*self.r0*cst['sigma']*(cst['T_neb']**4)
-            /(self.cst['kT']*self.T0))
-            #on utilise un point de temperature pour definir le flux radiatif
-        self.T[-1] = self.T[-2] + self.R*self.cS*(1-(self.T[-2])**4)
-        # si la température du point fictif est plus petit que 0
-        # la formule de la loi de Stephan n'est plus valable et la valeur 
-        # calculée explose, il faut donc borner par zero pour que la 
-        # diffusion puisse equilbrer 
-        if self.T[-1] < 0 :
-            self.T[-1] = 0
+
+        self.cS = (((self.r[-1]/(self.r[-1]+self.dr))**2)
+        *self.dr*self.r0*cst['sigma']*(cst['T_neb']**4)
+        /(self.cst['kT']*self.T0))
         
+        #on injecte le flux radiatif sur les 4 derniers points
+        self.T[-4:] = self.T[-4:] + 0.25*self.R*self.cS*(1-(self.T[-4])**4)
+        # physiquement on peut jamais passer en dessous de 1 (300K)
+        # ca cause des instabilité qui plus est
+        if self.T[-4] < 1 :
+            self.T[-4:] = 1 
         #print(self.T[-2:])
 
 
@@ -545,7 +541,7 @@ if __name__ == '__main__' :
             #'L_m'   :  1 , #J kg-1
             #'L_s'   :  1 , #J kg-1
             }
-    t = terre(Ri=50000,Rf=500000,ta=1*cst['tau_al'],beta=1,Ti=200,dt=5E-4*cst['tau_al'],size=1000,cst=cst)
+    t = terre(Ri=5000,Rf=500000,ta=1*cst['tau_al'],beta=1,Ti=200,dt=5E-4*cst['tau_al'],size=1000,cst=cst)
     print(t.alpha,t.beta)
     plt.figure(figsize=(6,8))
     n = int(t.ta/(5*t.dt))

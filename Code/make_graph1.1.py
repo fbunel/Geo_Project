@@ -1,6 +1,7 @@
 from sim1 import terre
 import matplotlib.pyplot as plt
 import numpy as np
+from datetime import datetime
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif', size=18)
 plt.rc('lines', linewidth=4)
@@ -118,7 +119,42 @@ def graphe2():
     plt.xlabel(r"r/R")
     #plt.title('Température après : {0:.2}My'.format(t1.t*0.717))
     plt.savefig("graph_sim1_fig2.pdf",bbox_inches='tight')
+    
+    
+def graphes_T_moy():
 
-graphe1()
-graphe2()
+  
+    print("T moy planétésimal rayon fixe 500km")
+    dt=0.0001
+    n = int(2/(dt*0.717))
+
+    R = 5000
+    
+    fig = plt.figure(figsize=(8,6))
+    
+    
+    t5 = terre(Ri=R,Ti=300,dt=dt,size=1000,cst=cst)
+    T5 = []
+    for _ in range(n):
+        t5.update_P()
+        t5.step()
+        t5.fusion()
+        T5.append([t5.t*0.717,300*(t5.T*t5.r**2).sum()/(t5.r**2).sum()])
+        #print(T5[-1])
+        print("t: {:.3} My    ".format(t5.t*0.717),end='\r')
+        
+    T5 = np.array(T5)
+    plt.plot(T5[:,0],T5[:,1],lw=2,label=r'$R = {} km$'.format(R/1000))
+        
+
+    #plt.ylim(0,500)
+    plt.ylabel(r'T (en K)')
+    plt.xlabel(r't (en My)')
+    #plt.legend(loc='best')
+
+    plt.savefig("graph_sim2_fig2_4_pla_{}.pdf".format(datetime.now().strftime('%Y%m%d-%H%M%S')),bbox_inches='tight')
+
+#graphe1()
+#graphe2()
+graphes_T_moy()
 plt.show()

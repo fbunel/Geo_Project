@@ -1,5 +1,4 @@
 from sim2 import terre
-#from sim2_v2 import terre
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid.axes_grid import Grid
 import numpy as np
@@ -39,7 +38,7 @@ def graphe1():
     'beta': 0,
     'ta':1*cst['tau_al']/0.717,#1My
     'Ti':300,
-    'dt':1E-4*cst['tau_al'],
+    'dt':5E-4*cst['tau_al'],
     'size':1000,
     }
     n = int(params['ta']/params['dt'])
@@ -49,7 +48,7 @@ def graphe1():
     t1 = terre(**params,cst=cst)
     print("courbe 1")
     for _ in range(n):
-        t1.update_P()
+        t1.update_P() 
         t1.update_m()
         #t.P[:]=0
         t1.step()

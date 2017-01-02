@@ -208,6 +208,7 @@ class terre:
         #print(self.T[-2:])
 
     def step(self):
+        cst = self.cst
         self.t += self.dt
         self.lu = linalg.splu(self.m)
         self.Ti = self.T.copy()

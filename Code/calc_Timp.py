@@ -98,7 +98,7 @@ def calc_T_1My():
     T_arr = np.array([t,R1,R2,R3,T1,T2,T3])
     T_arr[-3:] = T_arr[-3:]*t1.T0
     
-    print(T_arr)
+    print(T_arr[:,100])
     np.save('T_imp_1My.npy',T_arr)
 
     plt.plot(T_arr[0],T_arr[4])
@@ -119,7 +119,6 @@ def load_T_1My():
     t1 = terre(**params,cst=cst)
 
     T_arr = np.load('T_imp_1My.npy')
-    #T_arr = T_arr*t1.T0
 
     plt.plot(T_arr[0],T_arr[4])
     plt.plot(T_arr[0],T_arr[5])
@@ -213,7 +212,6 @@ def load_T_5My():
     t1 = terre(**params,cst=cst)
 
     T_arr = np.load('T_imp_5My.npy')
-    #T_arr = T_arr*t1.T0
 
     plt.plot(T_arr[0],T_arr[4])
     plt.plot(T_arr[0],T_arr[5])
@@ -275,7 +273,7 @@ def calc_R():
 
 
 
-calc_R()
+#calc_R()
 calc_T_1My()
 load_T_1My()
 calc_T_5My()

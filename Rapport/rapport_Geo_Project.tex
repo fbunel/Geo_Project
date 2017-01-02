@@ -133,19 +133,66 @@ Sous-titre
 
 \newpage
 \renewcommand\thepage{\arabic{page}}
+
+
+\bigskip
+\bigskip
+
+Notes de rédaction
+
+Choses à dire dans une intro :
+\begin{itemize}
+\item définition des termes: un planétésimal, l’accrétion c'est quoi ?-> résumé des étapes de formation d'une planète
+\item contexte de l’étude : pourquoi on fait ça ? -> la motivation c'est l’étude de la Terre , l'histoire de sa formation , les détails de la séparation du noyau
+\item Preciser un peu sur quoi on a travaillé : évolution de la température en Python
+\end{itemize}
+
+Hypothèses simplificatrices et modèle
+\begin{itemize}
+\item symetrie sphérique
+\item seulment deux composant Al et silicate
+\item les proprietes des materiaux ne dependes pas de la temperature
+\item pas de dynamique dans les materiaux ie molange hommogène tout le temps
+\item radioactivité
+\item fusion
+\item T initiale
+\end{itemize}
+
+
+Methode numerique
+\begin{itemize}
+\item equation
+\item discretisation/schema numérique
+\item méthode implicite 
+\item méthode prédicteur-correcteur pour la fusion
+\end{itemize}
+
+
+
 \setcounter{page}{1}
 
 
 \definecolor{linkcolor}{rgb}{0,0,1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section*{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addcontentsline{toc}{section}{Introduction}
 
+Le but de ce  projet a été d'étudier l'influence du chauffage par impact lors de la formation des planétésimaux par accrétion. Cette étude s'inscrit dans une problématique plus large d'étude des différents scénarios de formations ayant pu mener à la différenciation du noyau et du manteau de la Terre. Cette étude se résume essentiellement à la résolution numérique de l'équation de diffusion de la chaleur.
+Pour réaliser cette étude on a procédé en trois étapes avec des modèles successifs de complexité croissante, pour finir avec un modèle qui tient compte de l'évolution du rayon du planétésimal et des deux sources de chaleurs en jeu, à savoir le chauffage radioactif dû au $^{26}$Al et à l'énergie apportée par les impactants qui déposent à la fois leur énergie cinétique et leur chaleur propre, le seul terme de perte de chaleur étant dû aux dissipations radiatives à la surface du planétésimal. On détaillera ces trois modèles ainsi que les méthodes numériques utilisées pour les résoudre.
 
+
+Points importants :
+\begin{itemize}
+\item on etudie l'\textit{influence} du chauffage par impact (sous entendu par rapport au seul chauffage par radioactivité) sur la température dans les planétésimaux lors de leur formation par accretion
+\item deux sources de chaleur : radiocativite et impact (E gravtationnelle + Temperature de l'impactant)
+\item Un drain  de chaleur : les dissipations radiatives a la surface
+\item Motivation de l'étude de la température : étudier les scenarios de formation du noyau
+\end{itemize}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -327,13 +374,13 @@ d2=
 \begin{subfigure}{.5\textwidth}
   \centering
   
-  \includegraphics[height=9cm]{./figures/graph_sim1_fig1.eps}
+  \includegraphics[height=9cm]{./figures/graph_sim1_fig1.pdf}
   \caption{}
   \label{fig:sub1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[height=9cm]{./figures/graph_sim1_fig2.eps}
+  \includegraphics[height=9cm]{./figures/graph_sim1_fig2.pdf}
   \caption{}
   \label{fig:sub2}
 \end{subfigure}
@@ -571,6 +618,11 @@ $c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
 \frac{r^2_{i-1/2}}{\Delta r^2 R^2 r^2_i}$
 , $c_3 = \Delta t \frac{ r \dot{R}}{2\Delta r R}$
 , $c_0 = \frac{\Delta t \tau_{1/2} }{\rho C_p T_{neb}}$ 
+
+
+\subsubsection{Résultats}
+
+
 
 \section{Condition initiale}
 
