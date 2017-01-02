@@ -623,6 +623,17 @@ $c_1 = \frac{\tau_{1/2} k_T \Delta t }{\rho C  }
 \subsubsection{Résultats}
 
 
+\begin{figure}[h!]
+\centering
+\includegraphics[height=7cm]{./figures/graph_sim3.pdf}
+\caption{Profil de température dans une planète qui croît par accrétion de \SI{5}{km} à \SI{500}{km} sur une période de \SI{1}{My}. En traits pleins et en tirets sont tracés les résultats avec chauffage par impact. Les courbes en traits pleins corresponde à un chauffage par impact avec des impacts de température fixe à \SI{1000}{K} et les courbes en tirets correspondent à un chauffage avec des impactants dont la température est calculée via le modèle précédent. En traits pointillés sont rappelés les résultats du modèle précédent sans chauffage par impact.}
+\label{fig3}
+\end{figure}
+
+On constate que la prise en compte du chauffage par impact avec des planétésimaux à 1000K entraîne un chauffage homogène sur toute l'épaisseur du planétésimal d'environ 100 à 200 K. 
+Quand on considère la seconde hypothèse avec une température moyenne des impactants ayant évoluée selon le modèle 2, on obtient un chauffage moindre . Pour $\beta =0$ le chauffage supplémentaire est de quelques dizaines de kelvins au centre et augmente jusqu'à 200 K proche de la surface. Pour $\beta =1$ et 2 le chauffage est moindre mais plus uniforme, il est d'environ 50K pour $\beta=2$ et de 100K pour $\beta=1$.
+Le chauffage par impact ne permet ainsi pas l'apparition d'un noyau fondu là où les conditions ne le permettaient pas déjà. On note de plus que pour $\beta =0$ et 1 les 100K supplémentaire sont une contribution faible au profil de température qui atteint respectivement 3000K et 2200K au centre, mais pour $\beta = 2$ cette contribution est très significative puisque la quasi-totalité de l'épaisseur a fortement diffusé sa chaleur radioactive et est thermalisée avec la nébuleuse à 300K.
+
 
 \section{Condition initiale}
 
