@@ -212,14 +212,14 @@ Comme nous l'avons mentionné, nous avons considéré un modèle à une seule di
 
 
 
-Pour éviter tout souci lié à la représentation numérique des grands nombres que nos équations manipulent, nous avons commencé par ré-exprimer cette équation en unités adimentionnées. Pour cela, nous avons introduit les trois variables adimentionnées suivantes en divisant les variables par les grandeurs caractéristiques du modèle, respectivement le temps de demi-vie du $^{26}$Al, la longueur de diffusion dans le planétésimal sur ce temps et la température de la nébuleuse: 
+Pour éviter tout souci lié à la représentation numérique des grands nombres que nos équations manipulent, nous avons commencé par ré-exprimer cette équation en unités nées. Pour cela, nous avons introduit les trois variables adimensionnées suivantes en divisant les variables par les grandeurs caractéristiques du modèle, respectivement le temps de demi-vie du $^{26}$Al, la longueur de diffusion dans le planétésimal sur ce temps et la température de la nébuleuse: 
 
 
 \begin{equation}
 t= \frac{t'}{\tau^{Al}_{1/2}}  \quad \textrm{,} \quad   r = r' \sqrt{\frac{\rho C_p} {k_T \tau^{Al}_{1/2}}} \quad  \textrm{et} \quad T = \frac{T'}{T_{neb}} 
 \end{equation}
 
-Nous avons ensuite injecté ces nouvelles variables dans notre équation afin d'obtenir une équation adimentionnée:
+Nous avons ensuite injecté ces nouvelles variables dans notre équation afin d'obtenir une équation adimensionnée:
 
 \begin{equation}
  \partial_{t} T =  \frac{1}{r^2} \partial_{r} ( {r}^2 \partial_{r} T)  + c_0 P 
@@ -241,7 +241,7 @@ Nous avons discrétisé l'équation sur un maillage régulier à une dimension �
 
 où $\Delta t$ et $\Delta r$ sont les pas de temps et d'espace choisis et où on utilise la notation $T^{t}_i$ pour désigner $T(t,r_i)$ 
 
-En utilisant cette discrétisation, l'équation adimensionnée se réécrit sous la forme de l'équation matricielle suivante :
+En utilisant cette discrétisation, l'équation née se réécrit sous la forme de l'équation matricielle suivante :
 \begin{equation}
 MT^{t+1} = T^t + c_0 P^{t}
 \end{equation}
@@ -354,7 +354,7 @@ Nous avons tenu compte de rayon variable dans notre modèle sans changer le mail
 \rho C_p (\partial_{t'} T' - r \frac{\dot{R}}{R}\partial_{r} T')= \frac{1}{r^2} \partial_{r} ( k_{T} \frac{r^2}{R^2} \partial_{r} T')  + P
 \end{equation}
 
-Une fois adimentionné et discrétisé, nous avons obtenu une nouvelle équation matricielle que nous avons traité de la même façon que précédemment.
+Une fois adimensionné et discrétisé, nous avons obtenu une nouvelle équation matricielle que nous avons traité de la même façon que précédemment.
 Pour ce modèle, nous avons considéré l'évolution d'un planétésimal partant d'un rayon initial de \SI{5}{km} pour arriver à un rayon final de \SI{500}{km}. 
 
 On peut voir sur la figure \ref{fig2:1} les profils obtenus pour une croissance en \SI{1}{My}. Constate que pour $\beta = 0$ on observe un profil linéaire du centre à la surface du planétésimal, ce qui est cohérent avec la croissance régulière de l'épaisseur du planétésimal. La température au centre est proche de la température maximale. Contrairement au cas $\beta = 1$ et $2$ où la croissance est initialement lente ce qui laisse le planétésimal dans le régime de diffusion efficace pendant une longue période, c'est pourquoi la température au centre reste faible à respectivement \SI{2200}{K} et \SI{1200}{K} pour $\beta = 1$ et $2$. La croissance rapide, qui arrive après cela, ajoute la majorité de l'épaisseur qui n'a pas le temps de chauffer et reste donc proche de \SI{300}{K}.
