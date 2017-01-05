@@ -20,8 +20,9 @@
 \contentsline {subsubsection}{\numberline {3.3.2}Donn\IeC {\'e}es initiales et constantes}{7}{subsubsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.3}\IeC {\'E}quations}{7}{subsubsection.3.3.3}
 \contentsline {subsubsection}{\numberline {3.3.4}\IeC {\'E}quations discr\IeC {\'e}tis\IeC {\'e}es}{8}{subsubsection.3.3.4}
+\contentsline {subsubsection}{\numberline {3.3.5}R\IeC {\'e}sultats}{8}{subsubsection.3.3.5}
 \contentsline {section}{\numberline {4}Condition initiale}{8}{section.4}
-\contentsline {section}{Conclusion}{8}{section*.7}
-\contentsline {section}{\numberline {A}Premi\IeC {\`e}re annexe}{9}{appendix.A}
-\contentsline {subsubsection}{\numberline {A.0.1}autre m\IeC {\'e}thode possible (en fait pas besoin de ca)}{9}{subsubsection.A.0.1}
-\contentsline {section}{R\IeC {\'e}f\IeC {\'e}rences}{10}{section*.8}
+\contentsline {section}{Conclusion}{9}{section*.8}
+\contentsline {section}{\numberline {A}Premi\IeC {\`e}re annexe}{10}{appendix.A}
+\contentsline {subsubsection}{\numberline {A.0.1}autre m\IeC {\'e}thode possible (en fait pas besoin de ca)}{10}{subsubsection.A.0.1}
+\contentsline {section}{R\IeC {\'e}f\IeC {\'e}rences}{11}{section*.9}

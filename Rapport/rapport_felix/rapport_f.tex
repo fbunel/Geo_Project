@@ -1,0 +1,382 @@
+\documentclass[10pt,a4paper]{article}
+
+% Marges du document %
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0.4cm}
+\setlength{\headsep}{0.8cm}
+\setlength{\footskip}{1cm}
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{25cm}
+\setlength{\voffset}{-1.5cm}
+\setlength{\hoffset}{-0.5cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+\usepackage{amssymb}
+\usepackage{psfrag}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{eurosym} % symbole 
+\usepackage{siunitx}
+\usepackage{stmaryrd}
+\usepackage{bm}
+
+\usepackage{tabu}
+\def\{\euro{}}
+
+\numberwithin{equation}{section}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} 
+
+\usepackage{color} % gestion de différentes couleurs
+\definecolor{linkcolor}{rgb}{0,0,0}
+\definecolor{linkcolorurl}{rgb}{0,0,1}
+\usepackage[ pdftex,colorlinks=true,
+pdfstartview=FitV,
+linkcolor= linkcolor,
+citecolor= linkcolor,
+urlcolor= linkcolorurl,
+hyperindex=true,
+hyperfigures=false]
+{hyperref} % fichiers pdf 'intelligents', avec des liens entre les références, etc.
+
+% En-tête et pied de page % 
+\pagestyle{fancy}
+\fancyhead[L]{\scriptsize \textsc{Chauffage par impact des planétésimaux}} 
+\fancyhead[R]{\scriptsize \textsc{BUNEL Félix et VERGNET Hadrien}} 
+\fancyfoot[C]{ \thepage}
+
+\author{BUNEL Félix et VERGNET Hadrien}
+
+\input{figures/preamble_tikz.tex}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\includegraphics[height=1.9cm]{logo-ens.jpg} \hfill \includegraphics[height=2cm]{logo_lyon1.jpg} \hfill \includegraphics[height=2cm]{logo_univ_lyon.jpg}
+
+
+
+Master Sciences de la matière
+\hfill
+Projet de Géophysique
+
+\textit{École Normale Supérieure de Lyon}
+\hfill
+BUNEL Félix et VERGNET Hadrien
+
+\textit{Université Claude Bernard Lyon 1}
+\hfill
+M2 Physique 2016-2017
+\vspace{0.5cm}
+
+\hrulefill
+\vspace{-0.6cm}
+
+\hrulefill
+\begin{center}\bfseries
+\vspace{0.4cm}
+
+\begin{huge}
+	Chauffage par impact des planétésimaux    
+\end{huge}
+\vspace{0.5cm}
+
+Rapport de Félix Bunel. Projet réalisé avec Hadrien Vergnet
+\end{center}
+\hrulefill
+\vspace{-0.6cm}
+
+\hrulefill
+
+
+\begin{center}
+\includegraphics[height=5cm]{figures/terre_core.pdf} 
+\end{center} 
+
+
+\textbf{Résumé :} 
+\vspace{0.3cm}
+
+\textbf{Mots clefs :} planétésimaux, diffusion, accrétion.
+\vspace{0.3cm}
+
+
+\tableofcontents
+
+\end{titlepage}
+
+\newpage
+\renewcommand\thepage{\arabic{page}}
+
+
+\setcounter{page}{1}
+
+
+\definecolor{linkcolor}{rgb}{0,0,1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Introduction}
+
+La formation de notre système solaire est encore aujourd'hui un mystère qui suscite de nombreuses recherches. Le mécanisme ayant permis l'évolution d'un nuage de poussières vers les planètes que l'on connaît aujourd'hui est encore mal compris. 
+\medskip
+
+Les grandes lignes de ce mécanisme sont bien connus. La poussière autour du soleil va coalescer et former des corps de quelques kilomètres de diamètres. Ces embryons de planètes appelés planétésimaux, attirent ensuite la matière environnante ainsi que des planétésimaux plus petits et évoluent finalement vers les planètes telle que nous les connaissons.
+Cependant, le détail de ces mécanismes sont encore à préciser. Des preuves récentes montrent par exemple que la séparation des astres en un noyau métallique liquide et un manteau solide composé de silicates se serait faite très tôt dans l'histoire de ces planètes. Les mécanismes permettant cette différentiation rapide au niveau des planétésimaux reste une question ouverte de la recherche actuelle. 
+\medskip
+
+Dans ce rapport, on s'intéresse justement à ces mécanismes de différentiation. Plus précisément, l'objectif est d'étudier par une étude de diffusion thermique simple la différentiation dans les planétésimaux. En comparant les profils de températures à l'intérieur d'un planétésimal aux températures de fusion des éléments présents, il est possible de déterminer si oui ou non la fusion est possible. La présence de cette fusion pourrait en effet expliquer les différentiations rapides observées par des mécanismes de percolation ou simplement de séparation de phase. 
+L'originalité de ce projet réside dans l'étude de l'influence de différents termes de chauffage dans l'équation de la chaleur. En plus d'un terme de chauffage radioactif généralement utilisé dans ce genre d'étude, on a considérer un terme de chauffage par impact couplé à l'évolution en taille du planétésimal.
+\medskip
+
+La résolution de ce problème a été réalisée numériquement. Pour résumer, on a résolu l'équation de la chaleur en géométrie sphérique par des différences finies. Les méthodes numériques ainsi que les détails du modèle physique employés sont décrit dans la première partie de ce rapport. Ensuite, une seconde partie présente les résultats obtenus pour une planète de taille constante. Une troisième partie présente l'influence de la croissance de la planète sur les profils de températures observées. Enfin, la manière dont le chauffage par impact ainsi que son importance dans le chauffage des planétésimaux sont discuter dans une dernière partie.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Modèle et méthodes numériques}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modèle théorique}
+
+On cherche donc à étudier l'évolution d'un planétésimal. Pour cela, plusieurs hypothèses simplificatrices ont été réalisées. 
+\medskip
+
+Tout d'abord, on ne tient compte que des effets de diffusion. Le planétésimal est modélisé par un mélange homogène constitué de $18\%$ de métal à et de $82\%$ silicates. La séparation de phase n'est donc pas prise en compte. De même les variations des propriétés du mélange avec la température sont négligées. Les constantes du mélanges sont simplement calculées par la moyenne des constantes du métal et des silicates avec des poids associés à leurs proportions. Les valeurs des constantes obtenues sont retranscrites en table \ref{constantes}.
+\medskip
+
+Utiliser un tel modèle ou l'on ne considère qu'un mélange alors que l'on souhaite justement expliquer la différentiation peut sembler inapproprié. Cependant, si l'on considère que la séparation du métal des silicates ne peut se faire que sous forme liquide notre approche reste valide et permet de répondre à la question : est-il possible d'atteindre la température de fusion dans le mélange solide ce qui permettrait une différentiation sous forme liquide ultérieurement ? 
+\medskip
+
+Les transitions de phases du métal et des silicates sont prises en compte par l'intermédiaire d'une chaleur latente de changement d'état qui apparaît donc comme une énergie libérée la ou il y a solidification et absorbée au niveau de la fusion. L'influence de cette chaleur latente est détaillée en partie \ref{latente}.
+
+\tabulinesep=0.3mm
+\begin{table}[h!]
+  \center
+  \begin{tabu}{ r | c c c l}
+     & moyenne & métal & silicate & unité\\ \hline
+    Densité ($\rho$) & 4028 & 7800 &  3200 & \SI{}{kg.m^{-3}}\\ \hline
+    Capacité calorifique ($C_p$) & 939 & 450 & 1200 &  \SI{}{J.K^{-1}.kg^{-1}} \\ \hline
+    Conductivité ($k_T$)& 11.48 & 50 & 3 & \SI{}{W.K^{-1}.m^{-1}}  \\ \hline    
+    Chaleur latente de fusion & 413 & 250 & 500 & \SI{}{kJ.kg^{-1}}\\ \hline
+    Température de fusion & & 1261 & 1408 & \SI{}{K}\\ \hline
+  \end{tabu}
+  \caption{Valeur des constantes utilisées pour le modèle.}
+  \label{constantes}
+\end{table}
+
+Enfin, on a considéré que le problème avait la symétrie sphérique, c'est à dire que les variations de températures ne dépendent que de la coordonnée radiale. Sous ces hypothèses, notre planétésimal est régit simplement par une équation de la diffusion en sphérique :
+\begin{equation}
+\rho C_p \dfrac{\partial T}{\partial t} = \frac{k_{T}}{r^2} \dfrac{\partial }{\partial r}\left( r^2 \dfrac{\partial T}{\partial r} \right) + P
+\label{diffusion}
+\end{equation}
+où $r$ est la coordonnée radiale, $T$ la température et $P$ un terme de production de chaleur.
+\medskip
+
+Le terme de production comprend tout d'abord le chauffage radioactif $P_{rad}$ dû à la décomposition des éléments radioactifs présent. Dans cette étude, on considère uniquement le chauffage du à l'aluminium 26. Bien entendu, l'amplitude de ce terme décroît de manière exponentielle avec le temps. Il est sous la forme :
+\begin{equation}
+P_{rad} = P_{0}2^{-t/\tau_{1/2}}
+\end{equation}
+où $P_{0}$ est le chauffage initial et $\tau_{1/2}$ le temps de demi-vie de l'aluminium 26 qui est de 0.717 My. Le chauffage initial peut être calculé à l'aide de l'abondance en aluminium 26 à l'intérieur du planétésimal et a été estimé à $1.5\ 10^{-7}$ W.kg$^{-1}$.
+Le terme de production comprend également les pertes à la surface qui ont été prises comme le rayonnement d'un corps noir à la température de la surface.
+Enfin, ce terme comprend également le chauffage par impact dû aux impactants. Le détail de ce terme sera développé en partie \ref{impactant}.
+\medskip
+
+La dernière chose à préciser est la question de la condition initiale. Une des possibilités est de considérer que le planétésimal s'est formé presque instantanément à partir d'un nuage de poussière. De sorte, la température initiale du planétésimal est essentiellement dû à la température de la nébuleuse soit 300 K. L'autre source d'énergie pouvant augmenter la température initiale est bien entendu l'énergie gravitationnelle récupérée lors de l'effondrement du nuage de poussière. Cette énergie peut être calculée analytiquement et vaut :
+\begin{equation}
+E_{G} = \frac{3}{5}\frac{GM}{R^2}
+\end{equation}
+où $M$ est la masse et $R$ le rayon du planétésimal. Cette énergie introduit un surplus de température par rapport à la température de la nébuleuse qui vaut :
+\begin{equation}
+\Delta T = \frac{4 \pi}{5}\frac{\rho G}{C_p}R^2
+\end{equation}
+Cependant, pour le rayon initial de 5 km utilisé dans toute cette étude, cette énergie n'est que de 0.02 K et peut donc être négligée devant la température de la nébuleuse.
+
+
+\subsection{Résolution numérique}
+
+On souhaite résoudre l'équation de la chaleur sphérique numériquement. 
+\medskip
+
+Pour cela, la première des étapes est d'adimensionnées les équations pour limiter les erreurs numériques. Une bonne échelle temporelle est bien évidement le temps de demi-vie de l'aluminium 26 $\tau_{1/2}$ qui est le temps caractéristique de notre modèle. \`A partir de ce temps, il est possible de créer une longueur de diffusion à l'aide de la conductivité thermique $L_d = \sqrt{\frac{k_T \tau_{1/2}}{\rho C_p} } \simeq 10$ km. Enfin, une bonne température de référence est celle de la nébuleuse $T_{neb}$.
+En injectant ces variables dans l'équation de diffusion \ref{diffusion}, on obtient en unité adimensionnées :
+\begin{equation}
+\dfrac{\partial T}{\partial t} = \frac{1}{r^2} \dfrac{\partial }{\partial r}\left( r^2 \dfrac{\partial T}{\partial r} \right) + c_0P
+\label{diffusion_adim}
+\end{equation}
+avec 
+\begin{equation}
+c_0 = \frac{\tau_{1/2}}{\rho C_p T_{neb}}
+\end{equation}
+
+L'équation a ensuite été discrétisée tant dans le domaine temporel que spatial. La discrétisation sur la coordonnée radiale se fait sur un maillage uniforme de pas $\Delta r$ à l'aide d'un schéma d'Euler centré. Le laplacien est alors donné par :
+\begin{align}
+\frac{1}{r^2} \dfrac{\partial }{\partial r}\left( r^2 \dfrac{\partial T}{\partial r} \right) &\rightarrow \frac{1}{r^2_i \Delta r}\left[ r^2_{i+1/2}\frac{T_{i+1} - T_{i}}{\Delta r} + r^2_{i-1/2}\frac{T_{i-1} - T_{i}}{\Delta r} \right]
+\end{align}
+Les variations temporelles sont quant à elle décrite à l'aide d'un schéma d'Euler implicite.
+\medskip
+
+En pratique, résoudre un pas de temps revient donc à résoudre un système de la forme :
+\begin{equation}
+MT^{t+1} = T^t + c_0 P^{t}
+\end{equation}
+Avec la matrice $$M = \left[ Id + \frac{\Delta t ~ r^2_{i+1/2}}{r^2_i \Delta r^2} ~ d1 + \frac{\Delta t ~ r^2_{i-1/2}}{r^2_i \Delta r^2} ~ d2  \right]$$
+où $d_1$ et $d_2$ sont des matrices sur et sous diagonales supérieur et inférieur. $M$ est donc une matrice tridiagonale.
+$$
+d1=
+\begin{bmatrix}
+    2      & -1     & -1       &   \\
+           &  1     & -1              &             \\
+     &        & \ddots    &\ddots       \\
+     &        &            & 1 & -1         \\
+         &   &      &   0         &  0
+\end{bmatrix}
+\qquad
+d2=
+\begin{bmatrix}
+     0     & 0      &   &     &        \\
+    -1     & 1      &  &          &            \\
+     & \ddots & \ddots &    &      \\
+     &              &  -1      &  1         \\
+         &      &  -1     & -1        & 2 \\
+\end{bmatrix}
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Influence du chauffage et de la chaleur latente}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+On s'intéresse dans un premier temps à l'évolution en température d'un corps de taille fixe chauffé uniquement par le chauffage radioactif. Les profils de températures observées seront donc le résultat de l'équilibre entre le chauffage radioactif et les pertes de chaleur à la surface.
+
+\subsection{Régimes d'évolution}
+
+Tout d'abord, il est possible de s'intéresser au profil de température dans le planétésimal. Bien entendu, les résultats dépendront du seul paramètre non fixé de ce modèle qui est la taille de l'astre. La figure \ref{diffusion2} représente les profils obtenus pour différentes tailles d'astres. 
+
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/diffusion2.pdf}
+    \caption{Profil de température après 1 My pour différents rayons : $R= 2$, $20$ et $200$ km. }
+    	\label{diffusion2} 
+\end{figure}
+
+La première chose a remarquer sur cette figure est que la température à la surface est toujours très proche de la température de la nébuleuse. Le rayonnement du corps noir est en effet extrêmement efficace pour évacuer la chaleur. 
+\medskip
+
+Ensuite, on peut voir que 3 régimes suivant le rayon sont observées. Lorsque le rayon est faible devant la longueur de diffusion, les effets de la diffusion sont très importants de sorte que toute la chaleur générée par la radioactivité est rapidement diffusé vers la surface. La température de l'astre est donc relativement uniforme et proche de celle de la nébuleuse. Pour des rayons grands devant la longueur de diffusion, la température à l'intérieure est beaucoup plus élevée puisque l'énergie créée n'a pas le temps d'être diffusée à la surface. La température est donc constante en dehors de la surface ou la température est fixée par le rayonnement. Pour des rayons proches de la longueur de diffusion un comportement intermédiaire est observée où la température augmente avec la profondeur.
+
+\newpage
+\subsection{Chaleur latente de changement d'état}
+\label{latente}
+
+Il est également possible de s'intéresser à l'importance de la chaleur latente de changement d'état en comparant les profils de températures lorsque l'on la considère et lorsqu'elle est négligée.
+
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/diffusion1.pdf}
+    \caption{Profil de température après 1 My pour un rayon de 500 km avec et sans chaleur latente.}
+    	\label{diffusion1} 
+\end{figure}
+\medskip
+
+Comme on peut le voir en figure \ref{diffusion1}, un décalage de 300 K entre le cas avec et sans chaleur latente est observée. En effet, ce décalage s'explique par l'énergie qui a été nécessaire pour réaliser la fusion. On peut dire que cette énergie est stockée dans l'état liquide et pourra être libérée si il y a solidification.
+
+\subsection{Température moyenne au cours du temps}
+Enfin, la dernière chose que l'on peut vérifiée avec ce modèle est l'évolution temporelle logique d'un tel astre. Au début de sa vie, le chauffage radioactif est suffisamment important pour augmenter sa température. Après un temps supérieur à quelque fois le temps de demi-vie ce chauffage n'est cependant plus très efficace et la température de l'astre diminue à cause des pertes à la surface. La figure \ref{tempMoy} représente une telle évolution en fonction du temps.
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/tempMoy.pdf}
+    \caption{Température moyenne en fonction du temps pour un rayon de 5 km.}
+    	\label{tempMoy} 
+\end{figure}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Influence d'un terme d'accrétion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forme de l'accrétion}
+
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/rayon.pdf}
+    \caption{rayon}
+    	\label{rayon} 
+\end{figure}
+
+\subsection{Profil de température}
+
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/profil_acre.pdf}
+    \caption{profil acre}
+    	\label{profilacre} 
+\end{figure}
+
+\subsection{Température moyenne au cours du temps}
+
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/tempMoy_acretion.pdf}
+    \caption{tempMoyacre}
+    	\label{tempMoyacre} 
+\end{figure}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Influence du chauffage par impact}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Prise en compte dans le modèle}
+\label{impactant}
+\subsection{Profil de température}
+
+\begin{figure}[h]
+    \centering	    
+	\includegraphics[scale=0.5]{figures/profil_acre_impact.pdf}
+    \caption{impact}
+    	\label{impact} 
+\end{figure}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{rapport} 
+\addcontentsline{toc}{section}{Références} 
+
+
+\end{document}
