@@ -275,7 +275,7 @@ Tout d'abord, il est possible de s'intéresser au profil de température dans le
 
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/diffusion2.pdf}
+	\includegraphics[scale=0.43]{figures/diffusion2.pdf}
     \caption{Profil de température après 1 My pour différents rayons : $R= 2$, $20$ et $200$ km. }
     	\label{diffusion2} 
 \end{figure}
@@ -293,7 +293,7 @@ Il est également possible de s'intéresser à l'importance de la chaleur latent
 
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/diffusion1.pdf}
+	\includegraphics[scale=0.43]{figures/diffusion1.pdf}
     \caption{Profil de température après 1 My pour un rayon de 500 km avec et sans chaleur latente.}
     	\label{diffusion1} 
 \end{figure}
@@ -305,7 +305,7 @@ Comme on peut le voir en figure \ref{diffusion1}, un décalage de 300 K entre le
 Enfin, la dernière chose que l'on peut vérifiée avec ce modèle est l'évolution temporelle logique d'un tel astre. Au début de sa vie, le chauffage radioactif est suffisamment important pour augmenter sa température. Après un temps supérieur à quelque fois le temps de demi-vie ce chauffage n'est cependant plus très efficace et la température de l'astre diminue à cause des pertes à la surface. La figure \ref{tempMoy} représente une telle évolution en fonction du temps.
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/tempMoy.pdf}
+	\includegraphics[scale=0.43]{figures/tempMoy.pdf}
     \caption{Température moyenne en fonction du temps pour un rayon de 5 km.}
     	\label{tempMoy} 
 \end{figure}
@@ -319,33 +319,58 @@ Enfin, la dernière chose que l'on peut vérifiée avec ce modèle est l'évolut
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Forme de l'accrétion}
 
+On considère maintenant une augmentation du rayon de la planète avec le temps. La croissance est supposée suivre une loi de la forme 
+\begin{equation}
+\dot{R} \propto R^\beta
+\end{equation}
+en prenant $\beta =$ 0, 1,  où 2. Dans toutes les simulations réalisées, le planétésimal évolue en suivant cette loi de 5 à 500 km en 1 My. La taille du planétésimal en fonction du temps sont représentés en figure \ref{rayon}.
+
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/rayon.pdf}
-    \caption{rayon}
+	\includegraphics[scale=0.43]{figures/rayon.pdf}
+    \caption{Taille du planétésimal en fonction du temps pour différents $\beta$. Les tracés en pointillés correspondent à une simplification des profils en deux régimes.}
     	\label{rayon} 
 \end{figure}
 
+Le profil est parfaitement linéaire pour $\beta = 0$. Pour les autres exposants $\beta = 1$ et 2, la croissance se fait plus tardivement : la croissance est lente au début de l'évolution puis croît rapidement vers la fin. Ce rayon variable doit être pris en compte dans les équations ce qui entraîne l'apparition d'un terme qui s'assimile à un terme de transport vers l'intérieur de la planète. Une fois adimensionnée comme précédemment, on obtient l'équation :
+\begin{equation}
+\dfrac{\partial T}{\partial t} - \dot{R} \dfrac{\partial T}{\partial r} = \frac{1}{r^2} \dfrac{\partial }{\partial r}\left( r^2 \dfrac{\partial T}{\partial r} \right) + c_0P
+\label{accretion_adim}
+\end{equation}
+En pratique, les longueurs sont adimensionnées par rapport au rayon du planétésimal qui évolue avec le temps.
+
 \subsection{Profil de température}
+
+On peut réitérer l'étude précédente en prenant en compte ce terme d'accrétion. La figure \ref{profilacre} représente les profils obtenus.
 
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/profil_acre.pdf}
-    \caption{profil acre}
+	\includegraphics[scale=0.43]{figures/profil_acre.pdf}
+    \caption{Profil de température à la fin de l'évolution d'un planétésimal de 5 à 500 km en 1 My. Le tracé en pointillés correspond au profil présenté en figure \ref{diffusion1} obtenu pour un astre de 500km après 1 My.}
     	\label{profilacre} 
 \end{figure}
 
+Dans le cas ou $\beta = 1$, un profil quasiment linéaire est observée et la température au centre est proche de celle observée pour un planétésimal de taille fixe. Le matériel étant ajouté relativement tôt dans l'histoire de la planète, il est encore capable de chauffer grâce à la radioactivité. 
+\medskip
+
+Pour $\beta = 1$ et 2, les températures sont nettement plus basse. Cela s'explique par le fait que la planète reste petite devant la longueur de diffusion pendant un long temps et tout le chauffage radioactif initial est évacué. La masse apportée à la fin de l'évolution  est moins efficace pour chauffer le planétésimal et n'a pas le temps de le faire, ce qui résulte en des températures sensiblement plus basses.
+
+
 \subsection{Température moyenne au cours du temps}
+
+Pour la suite, il peut être intéressant de s'intéresser à la température moyenne du planétésimal en fonction du temps. Ces courbes sont présentées en figure \ref{tempMoyacre}.
 
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/tempMoy_acretion.pdf}
-    \caption{tempMoyacre}
-    	\label{tempMoyacre} 
+	\includegraphics[scale=0.45]{figures/tempMoy_acretion.pdf}
+    \caption{Température moyenne en fonction du temps pour l'évolution d'un planétésimal de 5 à 500 km en 1 My. Le tracé en pointillé correspond aux températures obtenu pour un astre de taille fixe égale à 500km.} 
+    \label{tempMoyacre}
 \end{figure}
 
+Au début de l'évolution, les planètes évoluant avec un exposant $\beta= 1$ ou 2 sont les plus chaudes. Cela s'explique par le fait qu'elles récupèrent une petite quantité de matière leurs permettant de s'isoler en obtenant un rayon supérieur à la longueur de diffusion. Elles augmentent ensuite en température grâce au chauffage radioactif, sans être refroidi par la matière froide progressivement apportée de la surface par le terme d'accrétion. Cependant au fur et à mesure du temps, de plus en plus de masse est apportée et refroidit la planète.
+\medskip
 
-\newpage
+À l'inverse, pour $\beta = 0$, de la matière froide est apportée en plus grosse quantité dès le début de l'évolution. Cette matière va ensuite chauffé le planétésimal. La matière supplémentaire apporté continuellement de la surface vient cependant refroidir la planète en moyenne.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Influence du chauffage par impact}
@@ -354,24 +379,49 @@ Enfin, la dernière chose que l'on peut vérifiée avec ce modèle est l'évolut
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Prise en compte dans le modèle}
+On considère maintenant l'ajout d'une source de chaleur supplémentaire qui est celle des impacts. L'énergie apportée provient de deux sources. La première est bien sur l'énergie cinétique qui a été prise comme étant l'énergie gravitationnelle des impactants. Cette énergie correspond donc à l'énergie cinétique associé à la vitesse de libération de l'impactant. La seconde source d'énergie est l'énergie thermique propre des impactants. Pour évaluer la température de ces impactants et donc cette énergie, deux modèles ont été utilisé. Dans le premier on considère que la température des impactants est de 1000K. Dans le second on utilise le modèle précédant d'accrétion pour déterminer cette énergie : les impactants évoluent de la même manière que le planétésimal.
+\medskip
+
+Ensuite, seul $20\%$ de l'énergie de l'impact est effectivement transmise au planétésimal. Ce facteur permet de tenir compte du fait que le paramètre d'impact n'est pas toujours parfait, mais aussi du fait que, le choc ayant lieu à la surface, une grosse partie de l'énergie est directement perdu à la surface.
+\medskip
+
+Enfin, le rayon des impactant a été évalué à R/5 à l'aide de modèles statistiques d'agrégation et on a considérer que l'énergie était introduite sur cette profondeur.
+
+Cette étude peut donc être résumer en 4 points :
+\begin{enumerate}
+\item La croissance est due à la masse apportée par les impactants
+\item Seulement $20\%$ de l'énergie des impactants est introduite
+\item L'énergie est répartie sur une couche d'épaisseur $R/5$
+\item La température des impactants est de 1000 K ou déterminée par le modèle précédant.
+\end{enumerate}
+
+%%%%%%%%%%%%%
 \label{impactant}
 \subsection{Profil de température}
 
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.5]{figures/profil_acre_impact.pdf}
-    \caption{impact}
+	\includegraphics[scale=0.45]{figures/profil_acre_impact.pdf}
+    \caption{Profil de température à la fin de l'évolution d'un planétésimal de 5 à 500 km en 1 My. Le tracé en pointillés correspond à des impactants dont la température est déterminée à l'aide du modèle d'accrétion simple. Le tracé en trait plein correspond à des impactants de 1000K Le tracé en tirets correspond au profil présenté en figure \ref{profilacre}.}
     	\label{impact} 
 \end{figure}
 
+La figure \ref{impact} montre les résultats de cette étude. Le chauffage par des impactants de température 1000K implique une augmentation de la température de 200K par rapport au modèle d'accrétion simple. Ce comportement est observé pour les trois exposants $\beta$ utilisés.
+\medskip
 
-\newpage
+Le modèle complet considérant l'évolution en température des impactants donne cependant des résultats plus mitigés et l'augmentation n'est plus que de quelques dizaines de kelvin.
+\medskip
+
+Ainsi, l'importance du chauffage par impact pour les simulations est faible comparée à celle du chauffage radioactif et de l'accrétion. Cette dernière n'est pas suffisante pour permettre la création d'un noyau fondu la où il n'apparaît pas déjà. Bien entendu, comme on s'est intéressé au planétésimaux au début de leur évolution, le chauffage radioactif prédomine. A l'inverse, si on s'intéresse au temps long, il est certain que le chauffage par impact devient la source principale d'énergie puisque la radioactivité diminue exponentiellement. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+En conclusion, on a pu étudier l'influence des différents termes apparaissant dans le modèle gouvernant l'évolution en température d'un planétésimal. Cette étude permet de mieux comprendre les conditions dans lesquels un noyau liquide peut se former. L'hypothèse de départ stipulant que le chauffage par impact joue un rôle important dans la différentiation est cependant fausse. En effet, la formation ou non du noyau est déterminée par la vitesse de croissance du planétésimal. On peut cependant nuancer nos propos en remarquant que le chauffage par impact est néanmoins responsable d'une nette augmentation de température sur l'intégralité du planétésimal et que ce dernier prédominera aux temps longs auxquels on ne s'est pas intéressé.
+
 
 \newpage
 \bibliographystyle{unsrt}
