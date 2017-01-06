@@ -400,8 +400,13 @@ def graphes_T_moy():
     plt.savefig("graph_sim2_fig2_4_pla_{}.eps".format(datetime.now().strftime('%Y%m%d-%H%M%S')))
 
 
-graphe1()
+plt.figure(figsize=(8,6))
+graphe1(T_imp=1000,style='')
+plt.legend(loc='best')
+graphe1(T_imp='T_imp_1My.npy',style='--')
 graphe1_addref()
+#graphe1()
+#graphe1_addref()
 #graphe2()
 #graphe2_addref()
 #graphe_R()
