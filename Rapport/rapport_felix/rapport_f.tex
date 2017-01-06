@@ -111,7 +111,12 @@ Rapport de Félix Bunel. Projet réalisé avec Hadrien Vergnet
 \end{center} 
 
 
-\textbf{Résumé :} 
+\textbf{Résumé :} Le projet réalisé s'intéresse à l'évolution en température d'un planétésimal afin d'étudier l'importance du chauffage par impact dans la différentiation. 
+On montre à l'aide de plusieurs modèles de complexité croissante que le chauffage par impact n'est pas le facteur permettant une formation rapide d'un noyau métallique.
+Ce projet s'inspire grandement de l'article \textit{Thermal evolution and differentiation of planetesimals and planetary embryos. (2012), Icarus, 217(1), 339-354.} par Šrámek, O., Milelli, L., Ricard, Y., et Labrosse, S. . 
+
+
+
 \vspace{0.3cm}
 
 \textbf{Mots clefs :} planétésimaux, diffusion, accrétion.
@@ -150,7 +155,7 @@ Dans ce rapport, on s'intéresse justement à ces mécanismes de différentiatio
 L'originalité de ce projet réside dans l'étude de l'influence de différents termes de chauffage dans l'équation de la chaleur. En plus d'un terme de chauffage radioactif généralement utilisé dans ce genre d'étude, on a considérer un terme de chauffage par impact couplé à l'évolution en taille du planétésimal.
 \medskip
 
-La résolution de ce problème a été réalisée numériquement. Pour résumer, on a résolu l'équation de la chaleur en géométrie sphérique par des différences finies. Les méthodes numériques ainsi que les détails du modèle physique employés sont décrit dans la première partie de ce rapport. Ensuite, une seconde partie présente les résultats obtenus pour une planète de taille constante. Une troisième partie présente l'influence de la croissance de la planète sur les profils de températures observées. Enfin, la manière dont le chauffage par impact ainsi que son importance dans le chauffage des planétésimaux sont discuter dans une dernière partie.
+La résolution de ce problème a été réalisée numériquement. Pour résumer, on a résolu l'équation de la chaleur en géométrie sphérique par des différences finies. Les méthodes numériques ainsi que les détails du modèle physique employés sont décrit dans la première partie de ce rapport. Ensuite, une seconde partie présente les résultats obtenus pour une planète de taille constante. Une troisième partie présente l'influence de la croissance de la planète sur les profils de températures observées. Enfin, l'implémentation du chauffage par impact ainsi que son importance dans le chauffage des planétésimaux sont discuter dans une dernière partie.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -401,8 +406,8 @@ Cette étude peut donc être résumer en 4 points :
 
 \begin{figure}[h]
     \centering	    
-	\includegraphics[scale=0.45]{figures/profil_acre_impact.pdf}
-    \caption{Profil de température à la fin de l'évolution d'un planétésimal de 5 à 500 km en 1 My. Le tracé en pointillés correspond à des impactants dont la température est déterminée à l'aide du modèle d'accrétion simple. Le tracé en trait plein correspond à des impactants de 1000K Le tracé en tirets correspond au profil présenté en figure \ref{profilacre}.}
+	\includegraphics[scale=0.45]{figures/impact2.pdf}
+    \caption{Profil de température à la fin de l'évolution d'un planétésimal de 5 à 500 km en 1 My. Le tracé en trait plein correspond à des impactants de 1000K. Le tracé en tirets correspond à des impactants dont la température est déterminée à l'aide du modèle d'accrétion simple.  Le tracé en pointillés correspond au profil présenté en figure \ref{profilacre} (sans impacts).}
     	\label{impact} 
 \end{figure}
 
