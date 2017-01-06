@@ -6,6 +6,11 @@ from mpl_toolkits.axes_grid.axes_grid import Grid
 import numpy as np
 from datetime import datetime
 
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif', size=18)
+plt.rc('lines', linewidth=4)
+plt.rcParams['lines.linewidth'] = 2
+
 #on va calculer T à t=+infini(~20My) pour 4 CI différentes :
 # 1.  t0 = 0My  , avec fusion des materiaux
 # 2.  t0 = 1My  , avec fusion des materiaux
@@ -41,7 +46,7 @@ def graphe1(T_imp='T_imp_1My.npy',style=''):
     'beta': 0,
     'ta':1*cst['tau_al']/0.717,#1My
     'Ti':300,
-    'dt':1E-2*cst['tau_al'],
+    'dt':1E-4*cst['tau_al'],
     'size':1000,
     'T_imp':T_imp,
     #'T_imp':1000,
@@ -105,7 +110,7 @@ def graphe1_addref():
     'beta': 0,
     'ta':1*cst['tau_al']/0.717,#1My
     'Ti':300,
-    'dt':1E-2*cst['tau_al'],
+    'dt':1E-4*cst['tau_al'],
     'size':1000,
     }
     n = int(params['ta']/params['dt'])
