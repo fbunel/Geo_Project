@@ -148,10 +148,10 @@ La formation de notre système solaire est encore aujourd'hui un mystère qui su
 \medskip
 
 Les grandes lignes de ce mécanisme sont bien connues. La poussière autour du soleil va coalescer et former des corps de quelques kilomètres de diamètre. Ces embryons de planètes appelés planétésimaux, attirent ensuite la matière environnante ainsi que des planétésimaux plus petits et évoluent finalement vers les planètes telles que nous les connaissons.
-Cependant, les détails de ces mécanismes sont encore à préciser. Des preuves récentes montrent par exemple que la séparation des astres en un noyau métallique liquide et un manteau solide composé de silicates se serait faite très tôt dans l'histoire de ces planètes. Les mécanismes permettant cette différentiation rapide au niveau des planétésimaux reste une question ouverte de la recherche actuelle. 
+Cependant, les détails sont encore à préciser. Des preuves récentes montrent par exemple que la séparation des astres en un noyau métallique liquide et un manteau solide composé de silicates se serait faite très tôt dans l'histoire de ces planètes. Les processus permettant cette différentiation rapide reste une question ouverte de la recherche actuelle. 
 \medskip
 
-Dans ce rapport, on s'intéresse justement à ces mécanismes de différentiation. Plus précisément, l'objectif est d'étudier, par une étude de diffusion thermique simple, la différentiation dans les planétésimaux. En comparant les profils de températures à l'intérieur d'un planétésimal aux températures de fusion des éléments présents, il est possible de déterminer si oui ou non la fusion est possible. La présence de cette fusion pourrait en effet expliquer les différentiations rapides observées par des mécanismes de percolation ou simplement de séparation de phase. 
+Dans ce rapport, on s'intéresse justement à ces mécanismes de différentiation. Plus précisément, l'objectif est de les étudier par une étude de diffusion thermique simple. En comparant les profils de températures à l'intérieur d'un planétésimal aux températures de fusion des éléments présents, il est possible de déterminer si oui ou non la fusion est possible. La présence de cette fusion pourrait en effet expliquer les différentiations rapides observées par des mécanismes de percolation ou simplement de séparation de phase. 
 L'originalité de ce projet réside dans l'étude de l'influence de différents termes de chauffage dans l'équation de la chaleur. En plus d'un terme de chauffage radioactif généralement utilisé dans ce genre d'étude, on a considéré un terme de chauffage par impact couplé à l'évolution en taille du planétésimal.
 \medskip
 
@@ -167,7 +167,7 @@ La résolution de ce problème a été réalisée numériquement. Pour résumer,
 On cherche donc à étudier l'évolution d'un planétésimal. Pour cela, plusieurs hypothèses simplificatrices ont été réalisées. 
 \medskip
 
-Tout d'abord, on ne tient compte que des effets de diffusion. Le planétésimal est modélisé par un mélange homogène constitué de $18\%$ de métal à et de $82\%$ silicates. La séparation de phase n'est donc pas prise en compte. De même les variations des propriétés du mélange avec la température sont négligées. Les constantes du mélanges sont simplement calculées par la moyenne des constantes du métal et des silicates avec des poids associés à leur proportion. Les valeurs des constantes obtenues sont retranscrites en table \ref{constantes}.
+Tout d'abord, on ne tient compte que des effets de diffusion. Le planétésimal est modélisé par un mélange homogène constitué de $18\%$ de métal à et de $82\%$ silicates. La séparation de phase n'est donc pas prise en compte. De même, les variations des propriétés du mélange avec la température sont négligées. Les constantes du mélanges sont simplement calculées par la moyenne des constantes du métal et des silicates avec des poids associés à leur proportion. Les valeurs des constantes obtenues sont retranscrites en table \ref{constantes}.
 \medskip
 
 Utiliser un tel modèle où l'on ne considère qu'un mélange alors que l'on souhaite justement expliquer la différentiation peut sembler inapproprié. Cependant, si l'on considère que la séparation du métal des silicates ne peut se faire que sous forme liquide notre approche reste valide et permet de répondre à la question : est-il possible d'atteindre la température de fusion dans le mélange solide ce qui permettrait une différentiation sous forme liquide ultérieurement ? 
@@ -246,7 +246,7 @@ En pratique, résoudre un pas de temps revient donc à résoudre un système de 
 MT^{t+1} = T^t + c_0 P^{t}
 \end{equation}
 Avec la matrice $$M = \left[ Id + \frac{\Delta t ~ r^2_{i+1/2}}{r^2_i \Delta r^2} ~ d1 + \frac{\Delta t ~ r^2_{i-1/2}}{r^2_i \Delta r^2} ~ d2  \right]$$
-où $d_1$ et $d_2$ sont des matrices sur et sous diagonales supérieures et inférieures. $M$ est donc une matrice tridiagonale.
+où $d_1$ et $d_2$ sont des matrices sur et sous diagonales. $M$ est donc une matrice tridiagonale.
 $$
 d1=
 \begin{bmatrix}
