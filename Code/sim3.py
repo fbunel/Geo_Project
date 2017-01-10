@@ -541,20 +541,21 @@ if __name__ == '__main__' :
             #'L_m'   :  1 , #J kg-1
             #'L_s'   :  1 , #J kg-1
             }
-    t = terre(Ri=5000,Rf=500000,ta=1*cst['tau_al'],beta=1,Ti=200,dt=5E-4*cst['tau_al'],size=1000,cst=cst)
-    print(t.alpha,t.beta)
+    t = terre(Ri=5000,Rf=500000,ta=1.3947*cst['tau_al'],beta=1,Ti=300,dt=5E-4*cst['tau_al'],size=1000,T_imp=1000,cst=cst)
+    #t = terre(Ri=5000,Rf=500000,ta=1.3947*cst['tau_al'],beta=1,Ti=200,dt=5E-4*cst['tau_al'],size=1000,T_imp="./data/T_imp_1My.npy",cst=cst)
+    #print(t.alpha,t.beta)
     plt.figure(figsize=(6,8))
     n = int(t.ta/(5*t.dt))
     for _ in range(5):
         for __ in range(n):
             t.update_P()
             t.update_m()
-            #t.P[:]=0
             t.step()
-            #t.fusion()
-            print("R: {:.6}  , t: {:.3} My".format(t.R,t.t*0.717))
+            print("R: {:.3} km  , t: {:.3} My".format(t.R,t.t*0.717),end='\r')
+            
             #raise Exception
 
+        print("plot @  R: {:.3} km, t: {:.3} My".format(t.R,t.t*0.717))
         plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
         #plt.plot(t.phi_m,'-')
 

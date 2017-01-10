@@ -15,8 +15,8 @@ class terre:
     """
     def __init__(self, Ri, Ti, dt, size, cst=None):
         """
-        R0 : rayon initial de la Terre en m
-        T0 : temperature initiale en K
+        Ri : rayon initial de la Terre en m
+        Ti : temperature initiale en K
         dt : pas de temps en fraction de tau_al
         size : nombre de pas d'espace
         """
@@ -314,10 +314,7 @@ if __name__ == '__main__' :
             'H0'    :  1.5E-7, #W kg-1
             'T_neb' :  300   , #K
             'sigma' :  5.67E-8,#W m-2 K-4
-            #'sigma' :  0,#W m-2 K-4
-            #'sigma' :  0,#W m-2 K-4
             'phi'   :  0.18  , # sans unité
-            #'kT'    :  11.48 , #W K-1 m-1
             'kT'    :  11.48 , #W K-1 m-1
             'kT_m'  :  50    , #W K-1 m-1
             'kT_s'  :  3     , #W K-1 m-1
@@ -334,16 +331,17 @@ if __name__ == '__main__' :
             #'L_m'   :  1 , #J kg-1
             #'L_s'   :  1 , #J kg-1
             }
-    t = terre(Ri=1000,Ti=300,dt=0.0001,size=1000,cst=cst)
+    t = terre(Ri=10000,Ti=300,dt=0.0001,size=1000,cst=cst)
     #t.t = 1/0.717
     plt.figure(figsize=(6,8))
-    for _ in range(100):
+    for _ in range(10):
+        
         for __ in range(1000):
             t.update_P()
             #t.P[:]=0
             t.step()
             t.fusion()
-            print("t: {} My".format(t.t*0.717))
+            print("t: {:.4} My    ".format(t.t*0.717),end="\r")
             """
             if t.t*0.74 > 1.0 :
                 break
@@ -352,6 +350,7 @@ if __name__ == '__main__' :
             """
 
         plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
+        print("plot : {:.4} My".format(t.t*0.717))
         #plt.plot(t.phi_m,'-')
 
     plt.xlabel('Température en K')

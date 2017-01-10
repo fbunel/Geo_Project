@@ -57,7 +57,7 @@ class terre:
         self.ta = ta/cst['tau_al']
         self.c0 = self.dt*cst['tau_al']/(cst['rho']*cst['Cp']*cst['T_neb'])
 
-        print("rayon : {}->{} km (en {:.2}My), dt : {} My, Ti {} K, size : {},  ".format(Ri*1E-3,Rf*1E-3,self.ta*0.717,self.dt*0.717,Ti,size))
+        print("rayon : {}->{} km (en {:.2}My), dt : {} My, Ti {} K, size : {},  ".format(Ri*1E-3,Rf*1E-3,self.ta*0.717,self.dt*0.717,Ti,size,beta))
         
         #l'equation n'est pas definie en r=0 on decale donc le premier 
         # point de dr
@@ -127,14 +127,14 @@ class terre:
         d3[0,0:2]  = [0,-0]
         d3[-1,-2:] = [0,-0]
 
-
-        self.eye = eye
-        self.u1 = u1
-        self.d1 = d1
-        self.u2 = u2
-        self.d2 = d2
-        self.u3 = u3
-        self.d3 = d3
+        
+        self.eye = eye.tocsc()
+        self.u1 = u1.tocsc()
+        self.d1 = d1.tocsc()
+        self.u2 = u2.tocsc()
+        self.d2 = d2.tocsc()
+        self.u3 = u3.tocsc()
+        self.d3 = d3.tocsc()
         self.c1 = c1
         self.c2 = c2
         self.c3 = c3
@@ -441,7 +441,7 @@ if __name__ == '__main__' :
             #'L_s'   :  1 , #J kg-1
             }
     t = terre(Ri=50000,Rf=500000,ta=1*cst['tau_al'],beta=1,Ti=200,dt=5E-4*cst['tau_al'],size=1000,cst=cst)
-    print(t.alpha,t.beta)
+    #print(t.alpha,t.beta)
     plt.figure(figsize=(6,8))
     n = int(t.ta/(5*t.dt))
     for _ in range(5):
@@ -451,8 +451,9 @@ if __name__ == '__main__' :
             #t.P[:]=0
             t.step()
             #t.fusion()
-            print("R: {:.3}  , t: {:.3} My".format(t.R,t.t*0.717))
-
+            print("R: {:.3} km  , t: {:.3} My".format(t.R,t.t*0.717),end='\r')
+        
+        print("plot @  R: {:.3} km, t: {:.3} My".format(t.R,t.t*0.717))
         plt.plot(t.T[:-1]*t.T0,t.r[:-1]/t.r[-2])
         #plt.plot(t.phi_m,'-')
 

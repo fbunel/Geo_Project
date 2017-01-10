@@ -124,12 +124,11 @@ Nous avons réalisé, dans le cadre du module de Géophysique, un modèle numér
 
 \setcounter{page}{1}
 
-\section*{Introduction}
-\addcontentsline{toc}{section}{Introduction}
+\section{Introduction}
 
-Pour remettre dans son contexte le sujet de cette étude, revenons d'abord sur les étapes de la formation de notre système solaire. Nous commencerons avec le gigantesque nuage d'hydrogène et d'hélium qui deviendra notre galaxie; dans ce nuage naissent des premières étoiles qui synthétisent en leur cœur les éléments lourds comme le fer et les dispersent à leur mort. Ce nuage désormais enrichi en éléments lourds se fractionne ensuite en plus petits nuages dont un deviendra notre système solaire. Ce petit nuage s'effondre sur lui-même pour donner naissance à notre Soleil. Autour de ce Soleil il reste encore de la poussière qui va progressivement coalescer pour former des corps de plus en plus volumineux jusqu'à devenir des planétésimaux, qui ne sont autre que des embryons de planètes. Ces planétésimaux vont alors grossir par accrétion gravitationnelle de la matière environnante pour finalement devenir des planètes. Le planétésimal est donc un corps céleste de quelques kilomètres de diamètre se trouvant dans une nébuleuse de poussières composées d'éléments lourds. Une caractéristique importante de ces planétésimaux est que leur champs gravitationnel est suffisamment intense pour attirer les autres planétésimaux et la matière environnante et qu'ils peuvent ainsi croître.
+Pour remettre dans son contexte le sujet de cette étude, revenons d'abord sur les étapes de la formation de notre système solaire. Nous commencerons avec le gigantesque nuage d'hydrogène et d'hélium qui deviendra notre galaxie; dans ce nuage naissent des premières étoiles qui synthétisent en leur cœur les éléments lourds comme le fer et les dispersent à leur mort. Ce nuage désormais enrichi en éléments lourds se fractionne ensuite en plus petits nuages dont un deviendra notre système solaire. Ce petit nuage s'effondre sur lui-même pour donner naissance à notre Soleil. Autour de cette étoile, il reste encore de la poussière qui va progressivement coalescer pour former des corps de plus en plus volumineux jusqu'à devenir des planétésimaux, qui ne sont autre que des embryons de planètes. Ces planétésimaux vont alors grossir par accrétion gravitationnelle de la matière environnante pour finalement devenir des planètes. Le planétésimal est donc un corps céleste de quelques kilomètres de diamètre se trouvant dans une nébuleuse de poussières composées d'éléments lourds. Une caractéristique importante de ces planétésimaux est que leur champs gravitationnel est suffisamment intense pour attirer les autres planétésimaux et la matière environnante et qu'ils peuvent ainsi croître.
 
-Le but de ce  projet a été d'étudier l'influence du chauffage par impact lors de la formation d'un planétésimal par accrétion. Cette étude s'inscrit dans une problématique plus large d'étude des différents scénarios de formations ayant pu mener à la différenciation du noyau et du manteau de la Terre. En effet la formation d'un noyau liquide est principalement conditionnée par la température atteinte  qui permet ou non la fusion du matériau dans le planétésimal. Ainsi nous avons concentré notre étude sur la résolution numérique de l'équation de diffusion de la chaleur dans un planétésimal qui nous a permis de calculer l'évolution de la température $T$ dans celui-ci :
+Le but de ce  projet a été d'étudier l'influence du chauffage par impact lors de la formation d'un planétésimal par accrétion. Cette étude s'inscrit dans une problématique plus large d'étude des différents scénarios de formations ayant pu mener à la différenciation du noyau et du manteau de la Terre. En effet, la formation d'un noyau liquide est principalement conditionnée par la température atteinte qui permet ou non la fusion du matériau dans le planétésimal. Ainsi nous avons concentré notre étude sur la résolution numérique de l'équation de diffusion de la chaleur dans un planétésimal qui nous a permis de calculer l'évolution de la température $T$ dans celui-ci :
 
 \begin{equation}
 \rho C_p \frac{\partial T(\vec{r},t)}{\partial t} =  k_{T} \nabla T(\vec{r},t)  + P(\vec{r},t)
@@ -147,7 +146,7 @@ On détaillera ces trois modèles ainsi que les méthodes numériques utilisées
 
 \subsection{Hypothèses de départ}
 
-Le modèle que nous avons étudié est celui d'un planétésimal simplifié. Nous avons en particulier supposé que le problème présentait une symétrie sphérique et qu'il pouvait se réduire à un modèle à une dimension en tenant compte de cette symétrie dans les équations. Nous avons ensuite supposé que le planétésimal était constitué d'un mélange homogène de métal et de silicates dans les proportions 18\% de métal pour 82\% de silicates et que les propriétés de ces matériaux ne dépendaient pas de la température, de la pression, ou de l'état (liquide ou solide) du matériau. Dans le continuité de cette hypothèse d'un mélange homogène, nous n'avons pas tenu compte des phénomènes mécaniques qui conduisent à la séparation des matériaux comme la séparation de phases et la percolation, qui ont lieux lors de la fusion des matériaux. Nous avons toutefois tenu compte de l’énergie libérée ou absorbée lors du changement d'état du métal et des silicates.
+Le modèle que nous avons étudié est celui d'un planétésimal simplifié. Nous avons en particulier supposé que le problème présentait une symétrie sphérique et qu'il pouvait se réduire à un modèle à une dimension en tenant compte de cette symétrie dans les équations. Nous avons ensuite supposé que le planétésimal était constitué d'un mélange homogène de métal et de silicates dans les proportions 18\% de métal pour 82\% de silicates et que les propriétés de ces matériaux ne dépendaient pas de la température, de la pression, ou de l'état (liquide ou solide) du matériau. Dans le continuité de cette hypothèse d'un mélange homogène, nous n'avons pas tenu compte des phénomènes mécaniques qui conduisent à la séparation des matériaux comme la séparation de phase et la percolation, qui ont lieu lors de la fusion des matériaux. Nous avons toutefois tenu compte de l’énergie libérée ou absorbée lors du changement d'état du métal et des silicates.
 Avec ces hypothèses l'équation de diffusion de la chaleur qui décrit l'évolution de notre système devient :
 
 \begin{equation}
@@ -212,7 +211,7 @@ Comme nous l'avons mentionné, nous avons considéré un modèle à une seule di
 
 
 
-Pour éviter tout souci lié à la représentation numérique des grands nombres que nos équations manipulent, nous avons commencé par ré-exprimer cette équation en unités nées. Pour cela, nous avons introduit les trois variables adimensionnées suivantes en divisant les variables par les grandeurs caractéristiques du modèle, respectivement le temps de demi-vie du $^{26}$Al, la longueur de diffusion dans le planétésimal sur ce temps et la température de la nébuleuse: 
+Pour éviter tout souci lié à la représentation numérique des grands nombres que nos équations manipulent, nous avons commencé par ré-exprimer cette équation en unités adimensionnées. Pour cela, nous avons introduit les trois variables adimensionnées suivantes en divisant les variables par les grandeurs caractéristiques du modèle, respectivement le temps de demi-vie du $^{26}$Al, la longueur de diffusion dans le planétésimal sur ce temps et la température de la nébuleuse: 
 
 
 \begin{equation}
@@ -231,7 +230,7 @@ Avec :
 \end{equation}
 
 
-Nous avons discrétisé l'équation sur un maillage régulier à une dimension à l'aide d'une méthode de différence finie implicite. Nous avons utilisé une discrétisation d'Euler centrée en espace et en temps. Les différentes dérivées présentent dans l'équation devenant :
+Nous avons discrétisé l'équation sur un maillage régulier à une dimension à l'aide d'une méthode de différence finie implicite. Nous avons utilisé une discrétisation d'Euler centrée en espace et en temps. Les différentes dérivées présentes dans l'équation devenant :
 
 \begin{align}
 \partial_t T &\rightarrow  \frac{T^{t+1}_r - T^{t+1}_r}{\Delta t}\\
@@ -241,7 +240,7 @@ Nous avons discrétisé l'équation sur un maillage régulier à une dimension �
 
 où $\Delta t$ et $\Delta r$ sont les pas de temps et d'espace choisis et où on utilise la notation $T^{t}_i$ pour désigner $T(t,r_i)$ 
 
-En utilisant cette discrétisation, l'équation née se réécrit sous la forme de l'équation matricielle suivante :
+En utilisant cette discrétisation, l'équation adimensionnée se réécrit sous la forme de l'équation matricielle suivante :
 \begin{equation}
 MT^{t+1} = T^t + c_0 P^{t}
 \end{equation}
@@ -291,7 +290,7 @@ où $\Delta \phi_{met}$ et $\Delta \phi_{met}$ sont les variations des proportio
 
 \section{Modèles numériques}
 
-\subsection{Modèle 1 : Chaleur latente et régimes de diffusion}
+\subsection{Chaleur latente et régimes de diffusion}
 
 \begin{figure}
 \centering
@@ -309,7 +308,7 @@ où $\Delta \phi_{met}$ et $\Delta \phi_{met}$ sont les variations des proportio
   \label{fig1:sub2}
 \end{subfigure}%
 
-\caption{On peut voir sur ces figures le profil de température dans une planète après \SI{1}{My} de chauffage par la décomposition radioactive du $^{26}$Al. Sur la figure (a) on peut voir le profil de température après \SI{1}{My} selon le rapport entre le rayon de la planète $R$ et la longueur caractéristique de diffusion $L_d \simeq 10 km $.  Sur la figure (b) on peut voir en trait plein le profil en supposant une origine des temps à \SI{0}{My} et en pointillé une origine des temps à \SI{1}{My}, les courbes bleues tiennent compte de la fusion des matériaux et les courbes rouges n'en tiennent pas compte.}
+\caption{On peut voir sur ces figures le profil de température dans une planète après \SI{1}{My} de chauffage par la décomposition radioactive du $^{26}$Al. Sur la figure (a) on peut voir le profil de température après \SI{1}{My} selon le rapport entre le rayon de la planète $R$ et la longueur caractéristique de diffusion $L_d \simeq 10 km $.  Sur la figure (b) on peut voir, en trait plein, le profil en supposant une origine des temps à \SI{0}{My} et, en pointillé, une origine des temps à \SI{1}{My}, les courbes bleues tiennent compte de la fusion des matériaux et les courbes rouges n'en tiennent pas compte.}
 \label{fig1}
 \end{figure}
 
@@ -321,7 +320,7 @@ On peut voir sur la figure \ref{fig1:sub2} que la conséquence  de la prise en c
 
 
 
-\subsection{Modèle 2 : Accrétion}
+\subsection{Accrétion}
 
 \begin{figure}[h!]
 \centering
@@ -354,7 +353,7 @@ Nous avons tenu compte de rayon variable dans notre modèle sans changer le mail
 \rho C_p (\partial_{t'} T' - r \frac{\dot{R}}{R}\partial_{r} T')= \frac{1}{r^2} \partial_{r} ( k_{T} \frac{r^2}{R^2} \partial_{r} T')  + P
 \end{equation}
 
-Une fois adimensionné et discrétisé, nous avons obtenu une nouvelle équation matricielle que nous avons traité de la même façon que précédemment.
+Une fois adimensionné et discrétisée, nous avons obtenu une nouvelle équation matricielle que nous avons traitée de la même façon que précédemment.
 Pour ce modèle, nous avons considéré l'évolution d'un planétésimal partant d'un rayon initial de \SI{5}{km} pour arriver à un rayon final de \SI{500}{km}. 
 
 On peut voir sur la figure \ref{fig2:1} les profils obtenus pour une croissance en \SI{1}{My}. Constate que pour $\beta = 0$ on observe un profil linéaire du centre à la surface du planétésimal, ce qui est cohérent avec la croissance régulière de l'épaisseur du planétésimal. La température au centre est proche de la température maximale. Contrairement au cas $\beta = 1$ et $2$ où la croissance est initialement lente ce qui laisse le planétésimal dans le régime de diffusion efficace pendant une longue période, c'est pourquoi la température au centre reste faible à respectivement \SI{2200}{K} et \SI{1200}{K} pour $\beta = 1$ et $2$. La croissance rapide, qui arrive après cela, ajoute la majorité de l'épaisseur qui n'a pas le temps de chauffer et reste donc proche de \SI{300}{K}.
@@ -362,7 +361,7 @@ On peut voir sur la figure \ref{fig2:1} les profils obtenus pour une croissance 
 Dans le cas où la croissance se fait plus lentement, comme on peut le voir sur la figure \ref{fig2:2} on voit que les températures sont largement inférieures à la situation précédente, le planétésimal ne conserve que très peu de sa chaleur puisqu'il a plus de temps pour se thermaliser avec la nébuleuse. On mesure ainsi des températures maximales au centre valant respectivement \SI{3600}{K}, \SI{1000}{K} et \SI{400}{K} pour $\beta = 0$, 1 et 2.
 
 
-\subsection{Modèle 3 : Chauffage par impact}
+\subsection{Chauffage par impact}
 
 \begin{figure}[h!]
 \centering
@@ -378,15 +377,14 @@ On peut constater sur la figure \ref{fig3} que le chauffage par impact avec une 
 
 Quand on considère l'évolution de la température des planétésimaux impactants on trouve un chauffage moindre. Pour $\beta = 0$ le chauffage est de quelques dizaines de kelvins au centre et il croit jusqu'à \SI{200}{K} proche de la surface. Pour $\beta = 1$ et 2 le chauffage est plus uniforme sur l'épaisseur du planétésimal et vaut environ \SI{100}{K} pour $\beta = 1$ et \SI{50}{K} pour $\beta = 2$.
 
-On constate ainsi que la contribution du chauffage par impact au profil de température du planétésimal est faible en comparaison à l'influence du chauffage radioactif et de la croissance causée par ces mêmes impacts dans les cas $\beta=0$ et 1. Mais que pour $\beta = 2$ l’augmentation de \SI{200}{K} grâce aux impactants à \SI{1000}{K} est très significative puisqu'on a observé, dans le modèle précédent, que la majorité de l'épaisseur était thermalisée avec la nébuleuse à \SI{300}{K} ou autrement dit totalement froide.
+On constate ainsi que la contribution du chauffage par impact au profil de température du planétésimal est faible en comparaison à l'influence du chauffage radioactif et de la loi de croissance causée par ces mêmes impacts dans les cas $\beta=0$ et 1. Mais que pour $\beta = 2$ l’augmentation de \SI{200}{K} grâce aux impactants à \SI{1000}{K} est très significative puisqu'on a observé, dans le modèle précédent, que la majorité de l'épaisseur était thermalisée avec la nébuleuse à \SI{300}{K} ou autrement dit totalement froide.
 
 On constate finalement que l'augmentation de température due au chauffage par impact n'est pas ici suffisante pour permettre un noyau fondu là où les autres sources de chaleur ne le permettaient pas déjà.
 
 
-\section*{Conclusion}
-\addcontentsline{toc}{section}{Conclusion}
+\section{Conclusion}
 
 Avec les trois modèles que nous avons étudiés, nous avons pu constater les contributions de différents paramètres importants sur le profil de température final dans le planétésimal et sur la possibilité ou non de former un noyau fondu. Ainsi nous avons constaté que pour un planétésimal qui croît de \SI{5}{km} à \SI{500}{km} en \SI{1}{My}, le chauffage par impact est responsable d'une élévation de la température de 100 à 200 K uniformément sur la totalité de l'épaisseur du planétésimal. Mais nous avons observé que cette contribution est moins critique que celle du taux de croissance $\beta$ qui conditionne de façon nettement plus importante l'apparition d'un noyau fondu, on avait en effet constaté que pour $\beta = 0$ ou 1 on pouvait observer de la fusion alors que $\beta=2$ la température au centre restait trop faible.
-On peut toutefois nuancer ces observations en remarquant qu'à l'instar du calcul que nous avons effectué pour estimer la température initiale du planétésimal, l'énergie déposée par l'impact est proportionnelle au carré du rayon du planétésimal ainsi la contribution du chauffage par impact va dominer pour des planétésimaux plus grands.
+On peut toutefois nuancer ces observations en remarquant qu'à l'instar du calcul que nous avons effectué pour estimer la température initiale du planétésimal, l'énergie déposée par l'impact est proportionnelle au carré du rayon du planétésimal ainsi la contribution du chauffage par impact devrait dominer pour des planétésimaux plus grands.
 
 \end{document}
